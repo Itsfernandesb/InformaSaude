@@ -14,7 +14,7 @@ body {
   font-family: var(--fonte-principal);
 }
 
-/* Estrutura para empurrar o footer para o final da tela */
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -23,5 +23,5 @@ body {
 
 .main-content {
   flex: 1;
-  padding: 20px;
+  padding: 0px;
 }

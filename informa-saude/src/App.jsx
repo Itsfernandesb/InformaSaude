@@ -1,20 +1,22 @@
-import './App.css'
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import './App.css';
+import CabecalhoLP from "./pages/LP/HeaderLP";
+import Hero from "./pages/LP/Hero";
+import SecaoBeneficios from "./pages/LP/Beneficios";
+import SecaoComoFunciona from "./pages/LP/ComoFunciona";
+import RodapeLP from "./pages/LP/Footer";
 
 function App() {
-  console.log("O App.jsx foi carregado!");
-  
   return (
     <div className="app-container">
-      <Header />
+      <CabecalhoLP />
       <main className="main-content">
-        <h1>InformaSaúde</h1>
+        <Hero />
+        <SecaoBeneficios />
+        <SecaoComoFunciona />
       </main>
-      <Footer />
+      <RodapeLP />
     </div>
   );
 }
 
-
-export default App
+export default App;
