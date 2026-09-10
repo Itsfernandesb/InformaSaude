@@ -6,11 +6,10 @@ export function Footer() {
       <div className="is-container">
         <div className="row g-4 justify-content-between">
           <div className="col-12 col-md-3">
-           <img 
+            <img 
               src={logoImg} 
               alt="InformaSaúde" 
-              className="mb-3 d-block" 
-              style={{ height: '48px', width: 'auto' }} 
+              className="mb-3 d-block is-footer-logo" 
             />
             <p className="text-white-50 fs-6">
               Informações claras, acessíveis e seguras para cuidar da sua saúde diariamente.

@@ -1,0 +1,20 @@
+:root {
+  color-scheme: light;
+
+  --is-green: #00645A;
+  --is-green-dark: #004840;
+  --is-green-light: #E6F2F1;
+  --is-orange: #F58634;
+  --is-orange-dark: #D96F20;
+  
+  --is-gray: #F5F5F5;
+  --is-text: #1E1E1E;
+  --is-muted: #667085;
+  --is-white: #FFFFFF;
+  --is-border: #9FC4C0;
+
+  --font-principal: 'Inter', 'Atkinson Hyperlegible', sans-serif;
+
+  --is-margin-desktop: 100px;
+  --is-margin-mobile: 20px;
+}

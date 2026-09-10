@@ -1,0 +1,98 @@
+.is-top-accessibility-bar {
+  background-color: var(--is-green);
+  color: var(--is-white);
+  font-weight: 600;
+}
+
+.is-acc-btn {
+  background: transparent;
+  border: none;
+  color: var(--is-white);
+  font-weight: 700;
+  padding: 0 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease;
+}
+
+.is-acc-btn:hover {
+  opacity: 0.85;
+  color: var(--is-white);
+}
+
+html.font-aumentada {
+  font-size: 120% !important;
+}
+
+html.font-reduzida {
+  font-size: 90% !important;
+}
+
+html.alto-contraste,
+html.alto-contraste body,
+html.alto-contraste main,
+html.alto-contraste section,
+html.alto-contraste .is-section,
+html.alto-contraste .is-section--gray,
+html.alto-contraste .is-navbar,
+html.alto-contraste .bg-white,
+html.alto-contraste .bg-light,
+html.alto-contraste .is-card,
+html.alto-contraste .is-step {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #00E676 !important;
+}
+
+html.alto-contraste .is-top-accessibility-bar {
+  background-color: var(--is-green-light) !important;
+  color: #000000 !important;
+  border-bottom: 2px solid #00E676 !important;
+}
+
+html.alto-contraste .is-top-accessibility-bar .is-acc-btn {
+  color: #000000 !important;
+}
+
+html.alto-contraste .is-footer-green {
+  background-color: #008952 !important;
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .is-footer-logo {
+  filter: brightness(0) invert(1) !important;
+}
+
+html.alto-contraste h1,
+html.alto-contraste h2,
+html.alto-contraste h3,
+html.alto-contraste .is-eyebrow {
+  color: #00E676 !important;
+}
+
+html.alto-contraste p,
+html.alto-contraste span,
+html.alto-contraste a,
+html.alto-contraste label,
+html.alto-contraste .nav-link,
+html.alto-contraste .is-lead {
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .is-icon-chip,
+html.alto-contraste .is-step-number {
+  background-color: #000000 !important;
+  border: 2px solid #00E676 !important;
+  color: #00E676 !important;
+}
+
+html.alto-contraste .is-btn--orange,
+html.alto-contraste .is-nav-btn--orange {
+  background-color: #00E676 !important;
+  border-color: #00E676 !important;
+  color: #000000 !important;
+}

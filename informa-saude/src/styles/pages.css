@@ -1,0 +1,246 @@
+.is-hero-card {
+  position: relative;
+  min-height: 520px;
+  border-radius: 1.25rem;
+  background-color: #000000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.is-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.92) 100%);
+  z-index: 1;
+}
+
+.is-jornada-card {
+  position: relative;
+  min-height: 380px;
+  border-radius: 1.25rem;
+  background-color: var(--is-green-dark);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.is-jornada-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.is-jornada-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 1;
+}
+
+.is-card-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.is-jornada-content,
+.is-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.is-action-card {
+  min-height: 124px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 0.5rem;
+}
+
+.is-action-title {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.is-icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background-color: var(--is-green-light) !important;
+  color: var(--is-green) !important;
+  margin-bottom: 1.25rem;
+}
+
+.is-benefit {
+  height: 100%;
+  padding-top: 1.5rem;
+  border-top: 4px solid var(--is-green) !important;
+}
+
+.is-benefit--accent {
+  border-top-color: var(--is-orange) !important;
+}
+
+.is-benefit h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: var(--is-text);
+}
+
+.is-benefit p {
+  color: var(--is-muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.is-step {
+  height: 100%;
+  background-color: var(--is-white);
+  border: 1px solid rgba(51, 51, 51, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.is-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.is-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--is-green);
+  margin-bottom: 1.5rem;
+}
+
+.is-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--is-green-dark);
+  color: var(--is-white);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.is-slider-dot {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--is-white);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.is-slider-dot.ativo {
+  background-color: var(--is-orange);
+  opacity: 1;
+}
+
+.is-footer-green {
+  background-color: var(--is-green);
+  color: var(--is-white);
+}
+
+.is-auth-container {
+  width: 100%;
+  max-width: 460px;
+}
+
+.is-auth-split-container {
+  width: 100%;
+  max-width: 960px;
+}
+
+.is-profile-container {
+  max-width: 640px;
+}
+
+.is-profile-avatar {
+  width: 120px;
+  height: 120px;
+}
+
+.is-profile-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.is-link-green {
+  color: var(--is-green);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.is-link-green:hover {
+  color: var(--is-green-dark);
+}
+
+.is-header-logo {
+  height: 52px;
+  width: auto;
+}
+
+.is-logo-white {
+  height: 48px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.is-footer-logo-container {
+  height: 48px;
+  max-width: 220px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.is-footer-logo {
+  height: 100%;
+  max-height: 48px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.is-modal-logo {
+  height: 36px;
+  width: auto;
+}
