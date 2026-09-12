@@ -18,11 +18,14 @@ import EditarPerfil from "./pages/Sistema-frontend/EditarPerfil";
 import Configuracoes from "./pages/Sistema-frontend/Configuracoes";
 
 function LandingPage() {
-  const [modalLogin, setModalLogin] = useState(false);
+  const [modalConfig, setModalConfig] = useState({ aberto: false, abaInicial: 'login' });
 
   return (
     <div className="app-container">
-      <HeaderLP onAbrirLogin={() => setModalLogin(true)} />
+      <HeaderLP 
+        onAbrirLogin={() => setModalConfig({ aberto: true, abaInicial: 'login' })} 
+        onAbrirCadastro={() => setModalConfig({ aberto: true, abaInicial: 'cadastro' })} 
+      />
       <main className="main-content">
         <Hero />
         <Beneficios />
@@ -30,7 +33,12 @@ function LandingPage() {
       </main>
       <Footer />
 
-      {modalLogin && <ModalLogin onClose={() => setModalLogin(false)} />}
+      {modalConfig.aberto && (
+        <ModalLogin 
+          abaInicial={modalConfig.abaInicial}
+          onClose={() => setModalConfig({ ...modalConfig, aberto: false })} 
+        />
+      )}
     </div>
   );
 }

@@ -99,53 +99,133 @@
 .is-form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
+  gap: 0.15rem;
+  margin-bottom: 0.75rem;
 }
 
 .is-form-label {
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--is-text);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #334155;
+  margin-bottom: 2px;
 }
 
-.is-form-input {
-  min-height: 50px;
-  padding: 0.75rem 1rem;
-  font-size: 1.125rem;
-  border: 2px solid var(--is-border);
-  border-radius: 0.5rem;
+.is-form-input,
+.form-select.is-form-input,
+.form-control.is-form-input {
+  min-height: 44px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--is-border);
+  border-radius: 8px;
   background-color: var(--is-white);
-  transition: border-color 0.2s ease;
+  color: #1E293B;
+  transition: all 0.2s ease;
 }
 
-.is-form-input:focus {
+.is-form-input:focus,
+.form-select.is-form-input:focus,
+.form-control.is-form-input:focus {
   outline: none;
   border-color: var(--is-green);
   box-shadow: 0 0 0 3px rgba(0, 100, 90, 0.15);
+}
+
+select.is-form-input {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2300645A' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 14px 12px;
+  padding-right: 2.2rem;
 }
 
 .is-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
   z-index: 1050;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  overflow-y: auto;
+}
+
+.form-check-input:checked {
+  background-color: var(--is-green) !important;
+  border-color: var(--is-green) !important;
+}
+
+.form-check-input:focus {
+  border-color: var(--is-green) !important;
+  box-shadow: 0 0 0 3px rgba(0, 100, 90, 0.2) !important;
 }
 
 .is-modal-box {
   width: 100%;
   max-width: 760px;
-  max-height: 85vh;
+  max-height: calc(100vh - 2rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .is-modal-box {
+    height: 560px;
+    min-height: 560px;
+  }
+
+  .is-modal-content-col {
+    height: 560px;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.is-modal-content-col {
+  max-height: calc(100vh - 2rem);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.is-modal-box .is-form-group {
+  margin-bottom: 0.55rem;
+}
+
+.is-modal-box .is-form-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.is-modal-box .is-form-input {
+  min-height: 40px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+.is-modal-box .is-btn {
+  min-height: 42px;
+  padding: 0.45rem 1rem;
+  font-size: 0.95rem;
+}
+
+.is-modal-box .is-btn-google {
+  min-height: 40px;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
 }
 
 .is-modal-box-sm {
@@ -155,3 +235,147 @@
 .progress-bar {
   background-color: var(--is-orange) !important;
 }
+
+/* ==========================================================================
+   Design System: Botão Hambúrguer & Menu Mobile
+   ========================================================================== */
+.is-burger {
+  background: transparent;
+  border: none;
+  color: var(--is-green);
+  border-radius: 8px;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.is-burger:hover {
+  background-color: var(--is-green-light);
+  color: var(--is-green-dark);
+}
+
+.is-burger:focus-visible {
+  background-color: var(--is-green-light);
+  color: var(--is-green-dark);
+  outline: 3px solid var(--is-orange);
+  outline-offset: 3px;
+}
+
+.is-mobile-menu {
+  background-color: var(--is-white);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem 1rem;
+  animation: slideDown 0.25s ease-out forwards;
+}
+
+.is-mobile-menu .is-nav-btn {
+  min-height: 40px;
+  padding: 0.4rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Design System: Checklist de Senha & Passos de Cadastro
+   ========================================================================== */
+.is-form-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #495057;
+}
+
+.is-password-checklist {
+  background-color: #F8FAF9;
+  border: 1px solid var(--is-border);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.78rem;
+  color: var(--is-muted);
+}
+
+.is-password-checklist ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.is-password-checklist li {
+  margin-bottom: 0.15rem;
+}
+
+.is-modal-box .dropdown-menu {
+  max-height: 170px;
+  overflow-y: auto;
+  padding: 0.25rem 0;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  z-index: 1060;
+}
+
+.is-modal-box .dropdown-item {
+  font-size: 0.9rem;
+  padding: 0.45rem 1rem;
+  color: #334155;
+}
+
+.is-modal-box .dropdown-item:hover {
+  background-color: var(--is-green-light);
+  color: var(--is-green-dark);
+}
+
+.is-step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--is-border);
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.is-step-dot.ativo {
+  background-color: var(--is-orange);
+  transform: scale(1.25);
+}
+
+.is-btn-google {
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  color: #1E293B;
+  font-weight: 600;
+  border-radius: 50px;
+  min-height: 42px;
+  transition: all 0.2s ease;
+}
+
+.is-btn-google:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+}
+
+.is-link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--is-green);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.is-link-button:hover {
+  color: var(--is-green-dark);
+}
+

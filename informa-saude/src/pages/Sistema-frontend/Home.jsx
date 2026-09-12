@@ -38,21 +38,23 @@ export function HomeSistema() {
 
   return (
     <div className="bg-light min-vh-100 pb-5">
-      <header className="is-footer-green py-2 px-3 shadow-sm sticky-top">
+      {/* Topbar do Sistema */}
+      <header className="is-navbar sticky-top bg-white border-bottom shadow-sm py-2 px-3">
         <div className="is-container d-flex align-items-center justify-content-between">
           <Link to="/" className="d-flex align-items-center text-decoration-none">
-            <img src={logoImg} alt="InformaSaúde" className="is-logo-white is-modal-logo" />
+            <img src={logoImg} alt="InformaSaúde" className="is-header-logo" />
           </Link>
-          <Link to="/" className="is-nav-btn is-nav-btn--outline-white py-1 px-3 fs-6 d-inline-flex align-items-center gap-1 text-decoration-none">
+          <Link to="/" className="is-nav-btn is-nav-btn--outline-green py-1 px-3 fs-6 d-inline-flex align-items-center gap-1 text-decoration-none">
             <LogOut size={16} /> Sair
           </Link>
         </div>
       </header>
 
-      <div className="is-footer-green border-top border-white border-opacity-10 py-4">
+      {/* Banner de Boas-Vindas */}
+      <div className="bg-white border-bottom py-4">
         <div className="is-container">
-          <h1 className="fw-bold text-white fs-2 mb-1">Bem-vindo, João da Silva</h1>
-          <p className="text-white-50 fs-6 mb-0">Acesse suas jornadas, pontos e serviços de saúde</p>
+          <h1 className="fw-bold text-dark fs-2 mb-1">Bem-vindo, João da Silva</h1>
+          <p className="text-muted fs-6 mb-0">Acesse suas jornadas, pontos e serviços de saúde</p>
         </div>
       </div>
 

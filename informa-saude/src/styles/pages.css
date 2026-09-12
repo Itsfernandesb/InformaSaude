@@ -241,6 +241,14 @@
 }
 
 .is-modal-logo {
-  height: 36px;
+  height: 30px;
+  max-height: 30px;
   width: auto;
+}
+
+@media (min-width: 768px) {
+  .is-modal-logo {
+    height: 40px;
+    max-height: 40px;
+  }
 }

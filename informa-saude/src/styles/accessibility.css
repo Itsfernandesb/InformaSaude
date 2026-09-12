@@ -50,10 +50,12 @@ html.alto-contraste .is-step {
 
 html.alto-contraste .is-top-accessibility-bar {
   background-color: var(--is-green-light) !important;
-  color: #000000 !important;
   border-bottom: 2px solid #00E676 !important;
 }
 
+html.alto-contraste .is-top-accessibility-bar,
+html.alto-contraste .is-top-accessibility-bar span,
+html.alto-contraste .is-top-accessibility-bar div,
 html.alto-contraste .is-top-accessibility-bar .is-acc-btn {
   color: #000000 !important;
 }
@@ -95,4 +97,36 @@ html.alto-contraste .is-nav-btn--orange {
   background-color: #00E676 !important;
   border-color: #00E676 !important;
   color: #000000 !important;
+}
+
+html.alto-contraste .is-burger {
+  color: #00E676 !important;
+  background-color: #000000 !important;
+}
+
+html.alto-contraste .is-burger:hover,
+html.alto-contraste .is-burger:focus-visible {
+  background-color: #00E676 !important;
+  color: #000000 !important;
+  outline: 3px solid #FFFF00 !important;
+}
+
+html.alto-contraste .is-mobile-menu {
+  background-color: #000000 !important;
+  border: 2px solid #00E676 !important;
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .form-check-input {
+  background-color: #000000 !important;
+  border-color: #00E676 !important;
+}
+
+html.alto-contraste .form-check-input:checked {
+  background-color: #00E676 !important;
+  border-color: #00E676 !important;
+}
+
+html.alto-contraste .form-check-label {
+  color: #FFFFFF !important;
 }

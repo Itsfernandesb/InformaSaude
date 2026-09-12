@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logoImagem from '../../assets/images/logo.svg';
 
-export function HeaderLP({ onAbrirLogin }) {
+export function HeaderLP({ onAbrirLogin, onAbrirCadastro }) {
   const [open, setOpen] = useState(false);
 
   const handleAcessibilidade = (acao) => {
@@ -93,12 +93,13 @@ export function HeaderLP({ onAbrirLogin }) {
               >
                 Entrar
               </button>
-              <Link 
+              <button 
+                type="button"
                 className="is-nav-btn is-nav-btn--outline-green" 
-                to="/cadastro"
+                onClick={onAbrirCadastro}
               >
                 Criar Conta
-              </Link>
+              </button>
             </div>
 
             <button
@@ -106,10 +107,56 @@ export function HeaderLP({ onAbrirLogin }) {
               className="is-burger d-lg-none"
               onClick={() => setOpen(!open)}
               aria-expanded={open}
+              aria-label={open ? "Fechar menu de navegação" : "Abrir menu de navegação"}
             >
-              {open ? <X size={26} /> : <Menu size={26} />}
+              {open ? <X size={30} strokeWidth={2.5} /> : <Menu size={30} strokeWidth={2.5} />}
             </button>
           </div>
+
+          {/* Menu Responsivo Mobile */}
+          {open && (
+            <div className="is-mobile-menu d-lg-none mt-2 rounded-3">
+              <ul className="nav flex-column gap-3 mb-3">
+                <li className="nav-item">
+                  <a className="nav-link p-0 text-dark fw-bold" href="#beneficios" onClick={() => setOpen(false)}>
+                    Benefícios
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link p-0 text-dark fw-bold" href="#como-funciona" onClick={() => setOpen(false)}>
+                    Como Funciona
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link p-0 text-dark fw-bold" href="#contato" onClick={() => setOpen(false)}>
+                    Contato
+                  </a>
+                </li>
+              </ul>
+              <div className="d-flex flex-column gap-2 pt-2 border-top">
+                <button 
+                  type="button"
+                  className="is-nav-btn is-nav-btn--orange w-100 fs-6" 
+                  onClick={() => {
+                    setOpen(false);
+                    onAbrirLogin();
+                  }}
+                >
+                  Entrar
+                </button>
+                <button 
+                  type="button"
+                  className="is-nav-btn is-nav-btn--outline-green w-100 fs-6" 
+                  onClick={() => {
+                    setOpen(false);
+                    onAbrirCadastro();
+                  }}
+                >
+                  Criar Conta
+                </button>
+              </div>
+            </div>
+          )}
         </nav>
       </header>
     </>
