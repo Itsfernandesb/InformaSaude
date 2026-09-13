@@ -6,6 +6,7 @@ import HeaderLP from "./pages/LP/HeaderLP";
 import Hero from "./pages/LP/Hero";
 import Beneficios from "./pages/LP/Beneficios";
 import ComoFunciona from "./pages/LP/ComoFunciona";
+import FaqSection from "./pages/LP/FaqSection";
 import Footer from "./pages/LP/Footer";
 
 import Login from "./pages/Auth/Login";
@@ -28,8 +29,9 @@ function LandingPage() {
       />
       <main className="main-content">
         <Hero />
-        <Beneficios />
+        <Beneficios onAbrirCadastro={() => setModalConfig({ aberto: true, abaInicial: 'cadastro' })} />
         <ComoFunciona />
+        <FaqSection />
       </main>
       <Footer />
 

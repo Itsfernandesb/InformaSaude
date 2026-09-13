@@ -38,34 +38,78 @@ export function HomeSistema() {
 
   return (
     <div className="bg-light min-vh-100 pb-5">
-      {/* Topbar do Sistema */}
-      <header className="is-navbar sticky-top bg-white border-bottom shadow-sm py-2 px-3">
-        <div className="is-container d-flex align-items-center justify-content-between">
-          <Link to="/" className="d-flex align-items-center text-decoration-none">
-            <img src={logoImg} alt="InformaSaúde" className="is-header-logo" />
-          </Link>
-          <Link to="/" className="is-nav-btn is-nav-btn--outline-green py-1 px-3 fs-6 d-inline-flex align-items-center gap-1 text-decoration-none">
-            <LogOut size={16} /> Sair
-          </Link>
-        </div>
-      </header>
-
-      {/* Banner de Boas-Vindas */}
-      <div className="bg-white border-bottom py-4">
-        <div className="is-container">
-          <h1 className="fw-bold text-dark fs-2 mb-1">Bem-vindo, João da Silva</h1>
-          <p className="text-muted fs-6 mb-0">Acesse suas jornadas, pontos e serviços de saúde</p>
+      {/* Barra de Acessibilidade no topo */}
+      <div className="is-top-accessibility-bar py-1 px-3 border-bottom fs-6">
+        <div className="is-container d-flex justify-content-between align-items-center">
+          <div className="d-none d-md-block fs-6">
+            Acessibilidade:
+          </div>
+          <div className="d-flex align-items-center gap-3 ms-auto fs-6">
+            <span>Tamanho do texto:</span>
+            <button 
+              type="button"
+              onClick={() => {
+                document.documentElement.classList.remove('font-reduzida');
+                document.documentElement.classList.add('font-aumentada');
+              }} 
+              className="is-acc-btn"
+              title="Aumentar Texto"
+            >
+              A+
+            </button>
+            <button 
+              type="button"
+              onClick={() => {
+                document.documentElement.classList.remove('font-aumentada');
+                document.documentElement.classList.add('font-reduzida');
+              }} 
+              className="is-acc-btn"
+              title="Diminuir Texto"
+            >
+              A-
+            </button>
+            <span className="ms-1 opacity-50">|</span>
+            <button 
+              type="button"
+              onClick={() => document.documentElement.classList.toggle('alto-contraste')} 
+              className="is-acc-btn"
+              title="Alternar Alto Contraste"
+            >
+              Alto Contraste ◐
+            </button>
+          </div>
         </div>
       </div>
 
+      {/* Topbar do Sistema (Idêntica ao HeaderLP para não dar pulo de altura) */}
+      <header className="is-navbar sticky-top bg-white border-bottom shadow-sm">
+        <nav className="is-container py-2 d-flex align-items-center justify-content-between">
+          <Link className="navbar-brand m-0 p-0 text-decoration-none d-flex align-items-center" to="/">
+            <img src={logoImg} alt="InformaSaúde" className="is-header-logo" />
+          </Link>
+          <Link to="/" className="is-nav-btn is-nav-btn--outline-green d-inline-flex align-items-center gap-1 text-decoration-none">
+            <LogOut size={16} /> Sair
+          </Link>
+        </nav>
+      </header>
+
       <main className="is-container py-4">
         
+        {/* Saudação do Usuário */}
+        <div className="mb-4">
+          <h1 className="fw-bold text-dark fs-2 mb-1">
+            Bem-vindo de volta, <span style={{ color: 'var(--is-green)' }}>João da Silva!</span>
+          </h1>
+          <p className="text-muted fs-6 mb-0">Acesse suas jornadas, pontos e serviços de saúde</p>
+        </div>
+        
+        {/* Ações Rápidas */}
         <section className="mb-5">
-          <h3 className="fw-bold text-dark fs-4 mb-3">Ações Rápidas</h3>
-          
+          <h2 className="fs-4 mb-3" style={{ color: 'var(--is-orange)', fontWeight: 600 }}>Ações Rápidas</h2>
+
           <div className="row g-3">
             
-            <div className="col-6 col-md-4 col-lg-2">
+            <div className="col-6 col-md-4 col-lg-3">
               <button 
                 type="button"
                 className="is-card is-action-card h-100 w-100 border-0 shadow-sm cursor-pointer"
@@ -80,7 +124,7 @@ export function HomeSistema() {
               </button>
             </div>
 
-            <div className="col-6 col-md-4 col-lg-2">
+            <div className="col-6 col-md-4 col-lg-3">
               <a 
                 href="#jornadas" 
                 className="is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none"
@@ -94,20 +138,9 @@ export function HomeSistema() {
               </a>
             </div>
 
-            <div className="col-6 col-md-4 col-lg-2">
+            <div className="col-6 col-md-4 col-lg-3">
               <div className="is-card is-action-card h-100 w-100 border-0 shadow-sm">
-                <div className="is-icon-chip mb-2 text-warning bg-warning-subtle">
-                  <QuizIcon size={24} />
-                </div>
-                <div className="is-action-title">
-                  <span className="fw-bold text-dark fs-6">Quiz do Dia</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-6 col-md-4 col-lg-2">
-              <div className="is-card is-action-card h-100 w-100 border-0 shadow-sm">
-                <div className="is-icon-chip mb-2 text-warning bg-warning-subtle">
+                <div className="is-icon-chip mb-2">
                   <Gift size={24} />
                 </div>
                 <div className="is-action-title">
@@ -116,7 +149,7 @@ export function HomeSistema() {
               </div>
             </div>
 
-            <div className="col-6 col-md-4 col-lg-2">
+            <div className="col-6 col-md-4 col-lg-3">
               <Link 
                 to="/meu-perfil" 
                 className="is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none"
@@ -130,20 +163,10 @@ export function HomeSistema() {
               </Link>
             </div>
 
-            <div className="col-6 col-md-4 col-lg-2">
-              <div className="is-card is-action-card h-100 w-100 border-0 shadow-sm">
-                <div className="is-icon-chip mb-2">
-                  <HelpCircle size={24} />
-                </div>
-                <div className="is-action-title">
-                  <span className="fw-bold text-dark fs-6">Fale Conosco</span>
-                </div>
-              </div>
-            </div>
-
           </div>
         </section>
 
+        {/* Banner Hero Original Restaurado */}
         <div className="is-hero-card p-4 p-md-5 mb-5 shadow-sm">
           <img src={imgCardiaca} alt="Jornada Cardíaca" className="is-card-bg-img" />
           
@@ -160,7 +183,7 @@ export function HomeSistema() {
         </div>
 
         <section className="mb-5">
-          <h3 className="fw-bold text-dark fs-3 mb-3">Continue Assistindo</h3>
+          <h2 className="fs-4 mb-3" style={{ color: 'var(--is-orange)', fontWeight: 600 }}>Continue Assistindo</h2>
           <div className="row g-3">
             <div className="col-12 col-md-6 col-lg-4">
               <div className="is-card h-100 d-flex flex-column justify-content-between">
@@ -201,7 +224,7 @@ export function HomeSistema() {
         </section>
 
         <section className="mb-5" id="jornadas">
-          <h3 className="fw-bold text-dark fs-3 mb-3">Jornadas Recomendadas</h3>
+          <h2 className="fs-4 mb-3" style={{ color: 'var(--is-orange)', fontWeight: 600 }}>Jornadas Recomendadas</h2>
           <div className="row g-4">
             
             <div className="col-12 col-md-6 col-lg-4">
@@ -260,7 +283,7 @@ export function HomeSistema() {
       {modalRede && (
         <div className="is-modal-overlay" onClick={() => setModalRede(false)}>
           <div 
-            className="bg-white rounded-4 shadow-lg border-0 position-relative is-modal-box p-4"
+            className="bg-white rounded-4 shadow-lg border-0 position-relative is-modal-box is-modal-box-auto p-4 p-md-5"
             onClick={(e) => e.stopPropagation()}
           >
             <button 

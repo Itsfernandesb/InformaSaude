@@ -63,7 +63,7 @@ export function ModalLogin({ onClose, abaInicial = 'login' }) {
   const handleIrParaQuestionario = () => {
     setModalSucesso(false);
     onClose();
-    navigate('/questionario');
+    navigate('/perfil');
   };
 
   const handleIrParaPerfilDireto = () => {
@@ -78,7 +78,7 @@ export function ModalLogin({ onClose, abaInicial = 'login' }) {
         className="bg-white rounded-4 shadow-lg overflow-hidden border-0 position-relative is-modal-box"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="row g-0">
+        <div className="row g-0 h-100">
           
           {/* Painel Lateral Verde (Banner Superior no Mobile) */}
           <div className="col-12 col-md-5 is-footer-green py-3 px-4 p-md-4 d-flex flex-column justify-content-between text-white position-relative">

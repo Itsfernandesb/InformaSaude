@@ -61,7 +61,10 @@ export function HeaderLP({ onAbrirLogin, onAbrirCadastro }) {
         </div>
       </div>
 
-      <header className="is-navbar sticky-top bg-white border-bottom shadow-sm">
+      <header 
+        className="is-navbar sticky-top border-bottom shadow-sm"
+        style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
+      >
         <nav className="is-container py-2" aria-label="Navegação principal">
           <div className="d-flex align-items-center justify-content-between gap-3">
             

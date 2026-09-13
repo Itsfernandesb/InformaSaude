@@ -13,7 +13,7 @@
   --is-white: #FFFFFF;
   --is-border: #9FC4C0;
 
-  --font-principal: 'Inter', 'Atkinson Hyperlegible', sans-serif;
+  --font-principal: 'Inter', system-ui, -apple-system, sans-serif;
 
   --is-margin-desktop: 100px;
   --is-margin-mobile: 20px;
