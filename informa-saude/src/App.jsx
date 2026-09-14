@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
 
 import HeaderLP from "./pages/LP/HeaderLP";
 import Hero from "./pages/LP/Hero";
@@ -9,9 +8,8 @@ import ComoFunciona from "./pages/LP/ComoFunciona";
 import FaqSection from "./pages/LP/FaqSection";
 import Footer from "./pages/LP/Footer";
 
-import Login from "./pages/Auth/Login";
-import Cadastro from "./pages/Auth/Cadastro";
 import ModalLogin from "./pages/Auth/ModalLogin";
+import ModalCriarConta from "./pages/Auth/ModalCriarConta";
 
 import HomeSistema from "./pages/Sistema-frontend/Home";
 import MeuPerfil from "./pages/Sistema-frontend/MeuPerfil";
@@ -35,10 +33,16 @@ function LandingPage() {
       </main>
       <Footer />
 
-      {modalConfig.aberto && (
-        <ModalLogin 
-          abaInicial={modalConfig.abaInicial}
-          onClose={() => setModalConfig({ ...modalConfig, aberto: false })} 
+      {modalConfig.aberto && modalConfig.abaInicial === 'login' && (
+        <ModalLogin
+          onClose={() => setModalConfig({ ...modalConfig, aberto: false })}
+          onAbrirCadastro={() => setModalConfig({ aberto: true, abaInicial: 'cadastro' })}
+        />
+      )}
+      {modalConfig.aberto && modalConfig.abaInicial === 'cadastro' && (
+        <ModalCriarConta
+          onClose={() => setModalConfig({ ...modalConfig, aberto: false })}
+          onAbrirLogin={() => setModalConfig({ aberto: true, abaInicial: 'login' })}
         />
       )}
     </div>
@@ -50,8 +54,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/perfil" element={<HomeSistema />} />
         <Route path="/meu-perfil" element={<MeuPerfil />} />
         <Route path="/editar-perfil" element={<EditarPerfil />} />

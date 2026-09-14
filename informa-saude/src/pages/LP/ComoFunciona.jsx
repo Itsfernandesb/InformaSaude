@@ -9,7 +9,7 @@ const STEPS = [
 
 export function ComoFunciona() {
   return (
-    <section className="is-section py-5 bg-white border-top" id="como-funciona">
+    <section className="is-section bg-white" id="como-funciona">
       <div className="is-container">
         <div className="mb-4">
           <span className="is-eyebrow mb-2">Passo a passo</span>
@@ -20,14 +20,16 @@ export function ComoFunciona() {
         <div className="row g-4">
           {STEPS.map(({ icon: Icon, title, text }, index) => (
             <div className="col-12 col-md-6 col-lg-3" key={title}>
-              <article className="h-100 p-4 bg-white rounded-3 border shadow-sm d-flex flex-column justify-content-between">
-                <div>
-                  <div className="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
-                    <span className="fw-bold text-success fs-5">0{index + 1}</span>
-                    <Icon size={24} className="text-success" aria-hidden="true" />
+              <article className="card h-100 shadow-sm">
+                <div className="card-body p-4 d-flex flex-column justify-content-between">
+                  <div>
+                    <div className="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
+                      <span className="fw-bold text-success fs-5">0{index + 1}</span>
+                      <Icon size={24} className="text-success" aria-hidden="true" />
+                    </div>
+                    <h3 className="card-title fw-bold fs-5 text-dark mb-2">{title}</h3>
+                    <p className="card-text fs-6 text-muted m-0 lh-base">{text}</p>
                   </div>
-                  <h3 className="fw-bold fs-5 text-dark mb-2">{title}</h3>
-                  <p className="fs-6 text-muted m-0 lh-base">{text}</p>
                 </div>
               </article>
             </div>

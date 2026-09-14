@@ -41,8 +41,7 @@ html.alto-contraste .is-section--gray,
 html.alto-contraste .is-navbar,
 html.alto-contraste .bg-white,
 html.alto-contraste .bg-light,
-html.alto-contraste .is-card,
-html.alto-contraste .is-step {
+html.alto-contraste .is-card {
   background-color: #000000 !important;
   color: #FFFFFF !important;
   border-color: #00E676 !important;
@@ -60,6 +59,14 @@ html.alto-contraste .is-top-accessibility-bar .is-acc-btn {
   color: #000000 !important;
 }
 
+html.alto-contraste .is-navbar,
+html.alto-contraste #home,
+html.alto-contraste #heroCarousel,
+html.alto-contraste #beneficios {
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
 html.alto-contraste .is-footer-green {
   background-color: #008952 !important;
   color: #FFFFFF !important;
@@ -67,6 +74,99 @@ html.alto-contraste .is-footer-green {
 
 html.alto-contraste .is-footer-logo {
   filter: brightness(0) invert(1) !important;
+}
+
+html.alto-contraste .is-header-logo {
+  filter: brightness(0) invert(1) !important;
+}
+
+html.alto-contraste .navbar-toggler {
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .btn-close {
+  filter: invert(1) grayscale(1) brightness(2) !important;
+}
+
+html.alto-contraste .is-nav-btn--outline-green {
+  background-color: #000000 !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .is-card-green,
+html.alto-contraste .is-card-orange,
+html.alto-contraste .is-card-green-light,
+html.alto-contraste .is-card-gray {
+  background-color: #000000 !important;
+  border: 2px solid #00E676 !important;
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .is-card-green h3,
+html.alto-contraste .is-card-orange h3,
+html.alto-contraste .is-card-green-light h3,
+html.alto-contraste .is-card-gray h3,
+html.alto-contraste .is-card-green p,
+html.alto-contraste .is-card-orange p,
+html.alto-contraste .is-card-green-light p,
+html.alto-contraste .is-card-gray p,
+html.alto-contraste .is-card-green svg,
+html.alto-contraste .is-card-orange svg,
+html.alto-contraste .is-card-green-light svg,
+html.alto-contraste .is-card-gray svg {
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .accordion-item,
+html.alto-contraste .accordion-button,
+html.alto-contraste .accordion-body {
+  background-color: #000000 !important;
+  border-color: #00E676 !important;
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .accordion-button:not(.collapsed) {
+  box-shadow: inset 0 -1px 0 #00E676;
+}
+
+html.alto-contraste .is-card-green .is-btn,
+html.alto-contraste .is-card-orange .is-btn,
+html.alto-contraste .is-card-green-light .is-btn,
+html.alto-contraste .is-card-gray .is-btn {
+  background-color: transparent !important;
+  border: 2px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste .is-card-green .is-btn:hover,
+html.alto-contraste .is-card-orange .is-btn:hover,
+html.alto-contraste .is-card-green-light .is-btn:hover,
+html.alto-contraste .is-card-gray .is-btn:hover {
+  background-color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+html.alto-contraste .is-card-green .is-btn:hover svg,
+html.alto-contraste .is-card-orange .is-btn:hover svg,
+html.alto-contraste .is-card-green-light .is-btn:hover svg,
+html.alto-contraste .is-card-gray .is-btn:hover svg {
+  color: #000000 !important;
+}
+
+html.alto-contraste #como-funciona .card {
+  background-color: #000000 !important;
+  border: 2px solid #00E676 !important;
+  color: #FFFFFF !important;
+}
+
+html.alto-contraste #como-funciona .card h3,
+html.alto-contraste #como-funciona .card p,
+html.alto-contraste #como-funciona .card svg,
+html.alto-contraste #como-funciona .card .border-bottom {
+  color: #FFFFFF !important;
+  border-color: #00E676 !important;
 }
 
 html.alto-contraste h1,
@@ -85,8 +185,7 @@ html.alto-contraste .is-lead {
   color: #FFFFFF !important;
 }
 
-html.alto-contraste .is-icon-chip,
-html.alto-contraste .is-step-number {
+html.alto-contraste .is-icon-chip {
   background-color: #000000 !important;
   border: 2px solid #00E676 !important;
   color: #00E676 !important;
@@ -97,24 +196,6 @@ html.alto-contraste .is-nav-btn--orange {
   background-color: #00E676 !important;
   border-color: #00E676 !important;
   color: #000000 !important;
-}
-
-html.alto-contraste .is-burger {
-  color: #00E676 !important;
-  background-color: #000000 !important;
-}
-
-html.alto-contraste .is-burger:hover,
-html.alto-contraste .is-burger:focus-visible {
-  background-color: #00E676 !important;
-  color: #000000 !important;
-  outline: 3px solid #FFFF00 !important;
-}
-
-html.alto-contraste .is-mobile-menu {
-  background-color: #000000 !important;
-  border: 2px solid #00E676 !important;
-  color: #FFFFFF !important;
 }
 
 html.alto-contraste .form-check-input {

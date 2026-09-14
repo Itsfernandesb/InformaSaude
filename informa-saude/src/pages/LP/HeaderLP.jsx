@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import logoImagem from '../../assets/images/logo.svg';
 
 export function HeaderLP({ onAbrirLogin, onAbrirCadastro }) {
@@ -61,105 +61,59 @@ export function HeaderLP({ onAbrirLogin, onAbrirCadastro }) {
         </div>
       </div>
 
-      <header 
-        className="is-navbar sticky-top border-bottom shadow-sm"
-        style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
-      >
-        <nav className="is-container py-2" aria-label="Navegação principal">
-          <div className="d-flex align-items-center justify-content-between gap-3">
-            
-            <Link className="navbar-brand m-0 p-0 text-decoration-none d-flex align-items-center" to="/">
-              <img 
-                src={logoImagem} 
-                alt="InformaSaúde" 
-                className="is-header-logo"
-              />
-            </Link>
+      <header className="is-navbar is-navbar--translucent sticky-top border-bottom shadow-sm">
+        <nav className="navbar navbar-expand-lg is-container py-2" aria-label="Navegação principal">
+          <Link className="navbar-brand m-0 p-0 text-decoration-none d-flex align-items-center" to="/">
+            <img src={logoImagem} alt="InformaSaúde" className="is-header-logo" />
+          </Link>
 
-            <ul className="nav d-none d-lg-flex align-items-center flex-nowrap gap-4 mb-0">
+          <button
+            type="button"
+            className={`d-lg-none border-0 shadow-none ${open ? 'btn-close' : 'navbar-toggler'}`}
+            onClick={() => setOpen((estadoAtual) => !estadoAtual)}
+            aria-expanded={open}
+            aria-controls="menuPrincipal"
+            aria-label={open ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
+          >
+            {!open && <Menu size={30} strokeWidth={2.5} aria-hidden="true" />}
+          </button>
+
+          <div id="menuPrincipal" className={`collapse navbar-collapse ${open ? 'show' : ''}`}>
+            <ul className="navbar-nav mx-auto align-items-lg-center gap-lg-4">
               <li className="nav-item">
-                <a className="nav-link p-0 text-dark fw-bold" href="#beneficios">Benefícios</a>
+                <a className="nav-link text-dark fw-bold" href="#beneficios" onClick={() => setOpen(false)}>Benefícios</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link p-0 text-dark fw-bold" href="#como-funciona">Como Funciona</a>
+                <a className="nav-link text-dark fw-bold" href="#como-funciona" onClick={() => setOpen(false)}>Como Funciona</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link p-0 text-dark fw-bold" href="#contato">Contato</a>
+                <a className="nav-link text-dark fw-bold" href="#contato" onClick={() => setOpen(false)}>Contato</a>
               </li>
             </ul>
 
-            <div className="d-none d-lg-flex align-items-center gap-2">
-              <button 
+            <div className="d-flex flex-column flex-lg-row gap-2 mt-3 mt-lg-0">
+              <button
                 type="button"
-                className="is-nav-btn is-nav-btn--orange" 
-                onClick={onAbrirLogin}
+                className="is-nav-btn is-nav-btn--orange"
+                onClick={() => {
+                  setOpen(false);
+                  onAbrirLogin();
+                }}
               >
                 Entrar
               </button>
-              <button 
+              <button
                 type="button"
-                className="is-nav-btn is-nav-btn--outline-green" 
-                onClick={onAbrirCadastro}
+                className="is-nav-btn is-nav-btn--outline-green"
+                onClick={() => {
+                  setOpen(false);
+                  onAbrirCadastro();
+                }}
               >
                 Criar Conta
               </button>
             </div>
-
-            <button
-              type="button"
-              className="is-burger d-lg-none"
-              onClick={() => setOpen(!open)}
-              aria-expanded={open}
-              aria-label={open ? "Fechar menu de navegação" : "Abrir menu de navegação"}
-            >
-              {open ? <X size={30} strokeWidth={2.5} /> : <Menu size={30} strokeWidth={2.5} />}
-            </button>
           </div>
-
-          {/* Menu Responsivo Mobile */}
-          {open && (
-            <div className="is-mobile-menu d-lg-none mt-2 rounded-3">
-              <ul className="nav flex-column gap-3 mb-3">
-                <li className="nav-item">
-                  <a className="nav-link p-0 text-dark fw-bold" href="#beneficios" onClick={() => setOpen(false)}>
-                    Benefícios
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link p-0 text-dark fw-bold" href="#como-funciona" onClick={() => setOpen(false)}>
-                    Como Funciona
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link p-0 text-dark fw-bold" href="#contato" onClick={() => setOpen(false)}>
-                    Contato
-                  </a>
-                </li>
-              </ul>
-              <div className="d-flex flex-column gap-2 pt-2 border-top">
-                <button 
-                  type="button"
-                  className="is-nav-btn is-nav-btn--orange w-100 fs-6" 
-                  onClick={() => {
-                    setOpen(false);
-                    onAbrirLogin();
-                  }}
-                >
-                  Entrar
-                </button>
-                <button 
-                  type="button"
-                  className="is-nav-btn is-nav-btn--outline-green w-100 fs-6" 
-                  onClick={() => {
-                    setOpen(false);
-                    onAbrirCadastro();
-                  }}
-                >
-                  Criar Conta
-                </button>
-              </div>
-            </div>
-          )}
         </nav>
       </header>
     </>

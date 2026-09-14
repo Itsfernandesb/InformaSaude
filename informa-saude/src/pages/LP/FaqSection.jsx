@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 
 const FAQS = [
   {
@@ -41,7 +40,7 @@ export function FaqSection() {
       <div className="is-container py-4">
         <div className="row g-4 align-items-start">
           
-          {/* Coluna Esquerda (Título e Texto) */}
+          
           <div className="col-12 col-lg-4">
             <span className="is-eyebrow mb-2">Dúvidas Frequentes</span>
             <h2 className="fw-bold text-dark fs-2 mb-3">Perguntas Frequentes</h2>
@@ -50,45 +49,30 @@ export function FaqSection() {
             </p>
           </div>
 
-          {/* Coluna Direita (Accordion) */}
+          
           <div className="col-12 col-lg-8">
             <div className="accordion d-flex flex-column gap-3" id="accordionFaq">
               {FAQS.map((faq, idx) => {
                 const isExpanded = aberto === idx;
+                const itemId = `faq-item-${faq.id}`;
 
                 return (
-                  <div 
-                    key={faq.id} 
-                    className={`border rounded-3 transition-all overflow-hidden bg-white ${
-                      isExpanded ? 'border-dark shadow-sm' : 'border-light'
-                    }`}
-                  >
+                  <div key={faq.id} className="accordion-item rounded-3 overflow-hidden shadow-sm">
                     <button
                       type="button"
                       onClick={() => toggleFaq(idx)}
-                      className="w-100 p-4 text-start bg-white border-0 d-flex align-items-center justify-content-between gap-3 cursor-pointer"
+                      className={`accordion-button ${isExpanded ? '' : 'collapsed'} fw-bold text-dark fs-5`}
                       aria-expanded={isExpanded}
+                      aria-controls={itemId}
                     >
-                      <span className="fw-bold text-dark fs-5 mb-0">{faq.pergunta}</span>
-                      <div 
-                        className={`rounded-circle p-2 d-flex align-items-center justify-content-center transition-transform ${
-                          isExpanded ? 'text-white rotate-180' : 'bg-light text-muted'
-                        }`}
-                        style={{ 
-                          width: '36px', 
-                          height: '36px',
-                          backgroundColor: isExpanded ? 'var(--is-green)' : '#F5F5F5' 
-                        }}
-                      >
-                        <ChevronDown size={20} />
-                      </div>
+                      {faq.pergunta}
                     </button>
 
-                    {isExpanded && (
-                      <div className="px-4 pb-4 text-muted fs-6 border-top pt-3 bg-white">
+                    <div id={itemId} className={`accordion-collapse collapse ${isExpanded ? 'show' : ''}`}>
+                      <div className="accordion-body text-muted fs-6">
                         {faq.resposta}
                       </div>
-                    )}
+                    </div>
                   </div>
                 );
               })}

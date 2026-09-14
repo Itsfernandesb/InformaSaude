@@ -1,4 +1,4 @@
-import logoImg from '../../assets/images/logo.jpg';
+import logoImg from '../../assets/images/logo.svg';
 
 export function Footer() {
   return (
@@ -9,7 +9,7 @@ export function Footer() {
             <img 
               src={logoImg} 
               alt="InformaSaúde" 
-              className="mb-3 d-block is-footer-logo" 
+              className="mb-3 d-block is-footer-logo is-logo-white" 
             />
             <p className="text-white-50 fs-6">
               Informações claras, acessíveis e seguras para cuidar da sua saúde diariamente.

@@ -32,6 +32,12 @@
   outline-offset: 3px;
 }
 
+.is-btn svg,
+.is-nav-btn svg {
+  color: currentColor;
+  transition: color 0.2s ease;
+}
+
 .is-btn--green {
   background-color: var(--is-green);
   border-color: var(--is-green);
@@ -202,6 +208,59 @@ select.is-form-input {
   overflow: hidden;
 }
 
+.is-navbar--translucent {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.is-navbar .nav-link {
+  position: relative;
+  color: var(--is-text);
+  transition: color 0.2s ease;
+}
+
+.is-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 100%;
+  height: 3px;
+  background-color: var(--is-orange);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.is-navbar .nav-link:hover,
+.is-navbar .nav-link:focus-visible {
+  color: var(--is-orange) !important;
+}
+
+.is-navbar .nav-link:hover::after,
+.is-navbar .nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navbar-toggler:focus-visible,
+.btn-close:focus-visible {
+  outline: 3px solid var(--is-orange);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--is-green-light);
+  color: var(--is-green-dark);
+  box-shadow: inset 0 -1px 0 var(--is-border);
+}
+
+.accordion-button:focus {
+  border-color: var(--is-border);
+  box-shadow: 0 0 0 0.25rem rgba(0, 100, 90, 0.2);
+}
+
 @media (min-width: 768px) {
   .is-modal-box:not(.is-modal-box-auto) {
     height: 560px !important;
@@ -236,7 +295,46 @@ select.is-form-input {
   height: auto !important;
   min-height: auto !important;
   max-height: calc(100vh - 2rem) !important;
-  overflow-y: auto !important;
+  overflow: hidden !important;
+}
+
+@media (min-width: 768px) {
+  .is-modal-box-auto {
+    min-height: 620px !important;
+  }
+
+  .is-modal-box-auto .row {
+    min-height: 620px;
+  }
+
+  .is-modal-box-auto .is-footer-green {
+    min-height: 620px;
+  }
+
+  .is-modal-box-auto .is-modal-content-col {
+    min-height: 620px;
+  }
+
+  .is-modal-box-auto .is-modal-content-col {
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    justify-content: flex-start;
+  }
+
+  .is-modal-box-auto .is-modal-content-col--centered {
+    justify-content: center;
+  }
+
+  .is-modal-box-auto .is-modal-content-inner {
+    width: 100%;
+  }
+
+  .is-modal-box-auto .is-modal-content-col--centered .is-modal-content-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+  }
 }
 
 /* DS Card Helpers */
@@ -297,58 +395,6 @@ select.is-form-input {
   background-color: var(--is-orange) !important;
 }
 
-/* ==========================================================================
-   Design System: Botão Hambúrguer & Menu Mobile
-   ========================================================================== */
-.is-burger {
-  background: transparent;
-  border: none;
-  color: var(--is-green);
-  border-radius: 8px;
-  padding: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.is-burger:hover {
-  background-color: var(--is-green-light);
-  color: var(--is-green-dark);
-}
-
-.is-burger:focus-visible {
-  background-color: var(--is-green-light);
-  color: var(--is-green-dark);
-  outline: 3px solid var(--is-orange);
-  outline-offset: 3px;
-}
-
-.is-mobile-menu {
-  background-color: var(--is-white);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-  padding: 1.25rem 1rem;
-  animation: slideDown 0.25s ease-out forwards;
-}
-
-.is-mobile-menu .is-nav-btn {
-  min-height: 40px;
-  padding: 0.4rem 1.25rem;
-  font-size: 0.95rem;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 /* ==========================================================================
    Design System: Checklist de Senha & Passos de Cadastro
@@ -395,20 +441,6 @@ select.is-form-input {
 .is-modal-box .dropdown-item:hover {
   background-color: var(--is-green-light);
   color: var(--is-green-dark);
-}
-
-.is-step-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: var(--is-border);
-  display: inline-block;
-  transition: all 0.2s ease;
-}
-
-.is-step-dot.ativo {
-  background-color: var(--is-orange);
-  transform: scale(1.25);
 }
 
 .is-btn-google {
