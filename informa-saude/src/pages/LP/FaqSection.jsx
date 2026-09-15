@@ -9,7 +9,7 @@ const FAQS = [
   {
     id: 2,
     pergunta: 'Preciso pagar para usar a plataforma?',
-    resposta: 'Não! O Informa Saúde é um serviço 100% gratuito. Você pode criar sua conta, acessar os vídeos, participar das jornadas e localizar postos de saúde sem nenhum custo.'
+    resposta: 'Não! O Informa Saúde é um serviço 100% gratuito. Você pode criar sua conta, acessar os vídeos e participar das jornadas sem nenhum custo.'
   },
   {
     id: 3,
@@ -21,11 +21,6 @@ const FAQS = [
     pergunta: 'O Informa Saúde substitui consultas médicas?',
     resposta: 'Não. Nosso conteúdo é estritamente educativo e preventivo. Para diagnósticos, prescrições de medicamentos ou emergências, consulte sempre um médico ou dirija-se à Unidade Básica de Saúde (UBS) mais próxima.'
   },
-  {
-    id: 5,
-    pergunta: 'Como encontro um posto de saúde perto da minha casa?',
-    resposta: 'Dentro do sistema, acesse a ferramenta "Rede de Saúde" em Ações Rápidas. Basta digitar o seu CEP para visualizar as UBS e UPAs mais próximas do seu endereço.'
-  }
 ];
 
 export function FaqSection() {
