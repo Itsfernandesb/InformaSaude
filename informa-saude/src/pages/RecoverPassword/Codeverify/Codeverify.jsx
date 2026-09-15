@@ -1,0 +1,164 @@
+import React, { useState, useRef } from 'react'
+import './Codeverify.css'
+import { Link, useNavigate } from 'react-router-dom'
+import { verificarCodigoTeste } from '../test/code'
+
+export function VerifyCode() {
+  const [code, setCode] = useState(['', '', '', '', ''])
+  const [errorMessage, setErrorMessage] = useState('')
+  const [status, setStatus] = useState('idle')
+
+  const navigate = useNavigate()
+  const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)]
+
+  const handleChange = (index, value) => {
+    if (!/^\d*$/.test(value)) return
+
+    if (errorMessage) setErrorMessage('')
+    if (status !== 'idle') setStatus('idle')
+
+    const newCode = [...code]
+    newCode[index] = value.slice(-1)
+    setCode(newCode)
+
+    if (value && index < 4) {
+      inputRefs[index + 1].current?.focus()
+    }
+  }
+
+  const handleKeyDown = (index, e) => {
+    if (e.key === 'Backspace' && !code[index] && index > 0) {
+      inputRefs[index - 1].current?.focus()
+    }
+  }
+
+  const handlePaste = (e) => {
+    e.preventDefault()
+    const pastedData = e.clipboardData.getData('text').slice(0, 5).replace(/\D/g, '')
+    const newCode = [...code]
+
+    for (let i = 0; i < pastedData.length; i++) {
+      newCode[i] = pastedData[i]
+    }
+    setCode(newCode)
+
+    const nextFocus = Math.min(pastedData.length, 4)
+    inputRefs[nextFocus].current?.focus()
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const fullCode = code.join('')
+
+    if (fullCode.length < 5) {
+      setErrorMessage('Preencha os 5 dígitos do código.')
+      return
+    }
+
+    const ehValido = verificarCodigoTeste(fullCode)
+
+    if (ehValido) {
+      setErrorMessage('')
+      setStatus('success')
+
+      setTimeout(() => {
+        navigate('/ResetPassword')
+      }, 1800)
+    } else {
+      setErrorMessage('Código incorreto! Tente novamente.')
+      setStatus('error')
+
+      setTimeout(() => {
+        setCode(['', '', '', '', ''])
+        setStatus('idle')
+        inputRefs[0].current?.focus()
+      }, 1200)
+    }
+  }
+
+  const handleResendCode = () => {
+    alert('Um novo código foi enviado para o seu e-mail!')
+  }
+
+  return (
+    <div className="verify-container-VerifyCode">
+      <div className="verify-card-VerifyCode">
+
+        <Link className="back-button-VerifyCode" to="/esqueci-senha">&#10094;</Link>
+
+        <h1 className="title-VerifyCode">Digite seu código</h1>
+        <p className="subtitle-VerifyCode">
+          Digite o código de 5 dígitos enviado no e-mail.
+        </p>
+
+        <form onSubmit={handleSubmit} className="verify-form-VerifyCode">
+          <div className="animation-wrapper-VerifyCode">
+
+            <div className={`code-inputs-container-VerifyCode ${status}`}>
+              {code.map((digit, index) => (
+                <input
+                  key={index}
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={1}
+                  value={digit}
+                  ref={inputRefs[index]}
+                  onChange={(e) => handleChange(index, e.target.value)}
+                  onKeyDown={(e) => handleKeyDown(index, e)}
+                  onPaste={handlePaste}
+                  className={`code-input-VerifyCode ${digit ? 'filled' : ''}`}
+                />
+              ))}
+            </div>
+
+            {status === 'success' && (
+              <div className="icon-badge-VerifyCode success-badge">
+                <svg className="checkmark" viewBox="0 0 52 52">
+                  <circle className="checkmark-circle" cx="26" cy="26" r="23" />
+                  <path className="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+              </div>
+            )}
+
+            {status === 'error' && (
+              <div className="icon-badge-VerifyCode error-badge">
+                <svg className="crossmark" viewBox="0 0 52 52">
+                  <circle className="crossmark-circle" cx="26" cy="26" r="23" />
+                  <path className="crossmark-check" d="M16 16 L36 36 M36 16 L16 36" />
+                </svg>
+              </div>
+            )}
+
+          </div>
+
+          {errorMessage && (
+            <p className="error-message-VerifyCode">
+              {errorMessage}
+            </p>
+          )}
+
+          <button type="submit" className="submit-button-VerifyCode">
+            Verificar código
+          </button>
+        </form>
+
+        <div className="resend-container-VerifyCode">
+          <p>Não recebeu o código?</p>
+          <button
+            type="button"
+            className="resend-button-VerifyCode"
+            onClick={handleResendCode}
+          >
+            Reenviar código
+          </button>
+          <br />
+          <Link className="resend-link-VerifyCode" to="/esqueci-senha">
+            Tentar outro e-mail
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default VerifyCode
