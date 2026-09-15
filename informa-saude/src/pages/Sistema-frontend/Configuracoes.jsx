@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Bell, Trash2, ArrowLeft } from 'lucide-react';
 import fotoPerfil from '../../assets/images/foto-perfil.png';
+import SystemNavbar from '../../components/SystemNavbar/SystemNavbar';
 
 export function Configuracoes() {
   const navigate = useNavigate();
@@ -14,25 +15,14 @@ export function Configuracoes() {
 
   return (
     <div className="bg-light min-vh-100 pb-5">
-      <header className="is-footer-green py-2 px-3 shadow-sm sticky-top">
-        <div className="is-container d-flex align-items-center justify-content-between">
-          <Link to="/meu-perfil" className="d-flex align-items-center text-decoration-none text-white gap-2 fs-6 fw-bold">
-            <ArrowLeft size={20} /> Voltar para Meu Perfil
-          </Link>
-          <Link to="/perfil" className="is-nav-btn is-nav-btn--outline-white py-1 px-3 fs-6 text-decoration-none">
-            Início
-          </Link>
-        </div>
-      </header>
-
-      <div className="is-footer-green border-top border-white border-opacity-10 py-4">
-        <div className="is-container">
-          <h1 className="fw-bold text-white fs-2 mb-1">Configurações</h1>
-          <p className="text-white-50 fs-6 mb-0">Gerencie preferências de notificação e segurança da conta</p>
-        </div>
-      </div>
+      <SystemNavbar />
 
       <main className="is-container py-4">
+        <div className="mb-4">
+          <h1 className="fw-bold text-dark fs-2 mb-1">Configurações</h1>
+          <p className="text-muted fs-6 mb-0">Gerencie preferências de notificação e segurança da conta</p>
+        </div>
+
         <div className="mb-3">
           <Link to="/meu-perfil" className="is-link-green d-inline-flex align-items-center gap-1 fs-6">
             <ArrowLeft size={18} /> Voltar para Meu Perfil
@@ -100,25 +90,36 @@ export function Configuracoes() {
       {modalDeletar && (
         <div className="is-modal-overlay" onClick={() => setModalDeletar(false)}>
           <div 
-            className="bg-white rounded-4 shadow-lg border-0 position-relative is-modal-box is-modal-box-sm p-4 text-center"
+            className="bg-white rounded-4 shadow-lg border-0 position-relative is-modal-box is-modal-box-sm p-4 pt-5 text-center"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="excluir-conta-modal-title"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="fw-bold text-danger fs-3 mb-2">Excluir Conta?</h3>
-            <p className="text-muted fs-6 mb-4">
-              Esta ação é irreversível. Todos os seus pontos e histórico de jornadas serão removidos.
-            </p>
+            <button
+              type="button"
+              className="btn-close position-absolute top-0 end-0 m-3 z-3"
+              onClick={() => setModalDeletar(false)}
+              aria-label="Fechar"
+            ></button>
+            <div className="alert alert-danger mb-4" role="alert">
+              <h3 id="excluir-conta-modal-title" className="fw-bold fs-3 mb-2">Excluir Conta?</h3>
+              <p className="fs-6 mb-0">
+                Esta ação é irreversível. Todos os seus pontos e histórico de jornadas serão removidos.
+              </p>
+            </div>
 
-            <div className="d-flex flex-column gap-2">
+            <div className="is-modal-actions">
               <button 
                 type="button" 
-                className="is-btn is-btn--orange bg-danger border-danger w-100 fs-6 py-2"
+                className="is-btn is-btn--profile is-btn--orange bg-danger border-danger fs-6"
                 onClick={handleDeletarConta}
               >
                 Sim, excluir minha conta
               </button>
               <button 
                 type="button" 
-                className="is-btn is-btn--outline-green w-100 fs-6 py-2"
+                className="is-btn is-btn--profile is-btn--outline-green fs-6"
                 onClick={() => setModalDeletar(false)}
               >
                 Cancelar

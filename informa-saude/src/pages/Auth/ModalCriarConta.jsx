@@ -52,7 +52,7 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
   const handleIrParaPerfil = () => {
     setFeedback(null);
     onClose();
-    navigate('/perfil');
+    navigate('/inicio');
   };
 
   const atualizarCampo = (campo, valor) => {

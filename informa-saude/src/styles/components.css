@@ -20,10 +20,55 @@
   font-size: 1.0625rem;
 }
 
+.btn.is-btn-sm,
+.is-btn.is-btn-sm {
+  min-height: 40px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+.btn.is-btn--profile,
+.is-btn.is-btn--profile {
+  min-height: 44px;
+  padding: 0.55rem 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+}
+
+.is-modal-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+@media (max-width: 575.98px) {
+  .is-modal-actions {
+    flex-direction: column;
+  }
+}
+
 .is-nav-btn {
   min-height: 40px;
   padding: 0.4rem 1.25rem;
   font-size: 0.95rem;
+}
+
+.is-user-menu {
+  min-height: 44px;
+  padding: 0.25rem 0.5rem;
+  color: var(--is-text);
+  cursor: pointer;
+}
+
+.is-user-menu:focus-visible {
+  outline: 3px solid var(--is-orange);
+  outline-offset: 3px;
+}
+
+.is-user-menu-avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
 
 .is-btn:focus-visible,
@@ -389,6 +434,12 @@ select.is-form-input {
 
 .is-modal-box-sm {
   max-width: 420px;
+}
+
+.is-modal-box.is-modal-box-sm {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: calc(100vh - 2rem) !important;
 }
 
 .progress-bar {

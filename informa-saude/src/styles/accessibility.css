@@ -47,6 +47,12 @@ html.alto-contraste .is-card {
   border-color: #00E676 !important;
 }
 
+html.alto-contraste .is-action-card {
+  background-color: #000000 !important;
+  border: 2px solid #00E676 !important;
+  color: #FFFFFF !important;
+}
+
 html.alto-contraste .is-top-accessibility-bar {
   background-color: var(--is-green-light) !important;
   border-bottom: 2px solid #00E676 !important;
@@ -174,6 +180,11 @@ html.alto-contraste h2,
 html.alto-contraste h3,
 html.alto-contraste .is-eyebrow {
   color: #00E676 !important;
+}
+
+html.alto-contraste .is-card .text-dark,
+html.alto-contraste .is-card .text-muted {
+  color: #FFFFFF !important;
 }
 
 html.alto-contraste p,

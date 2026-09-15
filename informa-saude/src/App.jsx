@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import HeaderLP from "./pages/LP/HeaderLP";
 import Hero from "./pages/LP/Hero";
 import Beneficios from "./pages/LP/Beneficios";
 import ComoFunciona from "./pages/LP/ComoFunciona";
 import FaqSection from "./pages/LP/FaqSection";
 import Footer from "./pages/LP/Footer";
-
 import ModalLogin from "./pages/Auth/ModalLogin";
 import ModalCriarConta from "./pages/Auth/ModalCriarConta";
-
 import HomeSistema from "./pages/Sistema-frontend/Home";
 import MeuPerfil from "./pages/Sistema-frontend/MeuPerfil";
 import EditarPerfil from "./pages/Sistema-frontend/EditarPerfil";
@@ -54,7 +51,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/perfil" element={<HomeSistema />} />
+        <Route path="/inicio" element={<HomeSistema />} />
+        <Route path="/perfil" element={<Navigate to="/inicio" replace />} />
         <Route path="/meu-perfil" element={<MeuPerfil />} />
         <Route path="/editar-perfil" element={<EditarPerfil />} />
         <Route path="/configuracoes" element={<Configuracoes />} />

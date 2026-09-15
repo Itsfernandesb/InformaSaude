@@ -1,17 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Play, Award, Home as HomeIcon, User, BarChart2,
-  MapPin, HelpCircle, Gift, BookOpen, LogOut, HelpCircle as QuizIcon
-} from 'lucide-react';
-import logoImg from '../../assets/images/logo.svg';
-
+import {Play, Award, Home as HomeIcon, User, MapPin, Gift, BookOpen,} from 'lucide-react';
 import imgCardiaca from '../../assets/images/imagem-cardiaca.png';
 import imgSono from '../../assets/images/imagem-sono.png';
 import imgRespiracao from '../../assets/images/imagem-respiracao.jpg';
 import imgProgresso from '../../assets/images/acompanhe-progresso.png';
-
 import { buscarCep } from '../../services/viacep';
+import SystemNavbar from '../../components/SystemNavbar/SystemNavbar';
 
 export function HomeSistema() {
   const [modalRede, setModalRede] = useState(false);
@@ -38,74 +33,21 @@ export function HomeSistema() {
 
   return (
     <div className="bg-light min-vh-100 pb-5">
-      {/* Barra de Acessibilidade no topo */}
-      <div className="is-top-accessibility-bar py-1 px-3 border-bottom fs-6">
-        <div className="is-container d-flex justify-content-between align-items-center">
-          <div className="d-none d-md-block fs-6">
-            Acessibilidade:
-          </div>
-          <div className="d-flex align-items-center gap-3 ms-auto fs-6">
-            <span>Tamanho do texto:</span>
-            <button 
-              type="button"
-              onClick={() => {
-                document.documentElement.classList.remove('font-reduzida');
-                document.documentElement.classList.add('font-aumentada');
-              }} 
-              className="is-acc-btn"
-              title="Aumentar Texto"
-            >
-              A+
-            </button>
-            <button 
-              type="button"
-              onClick={() => {
-                document.documentElement.classList.remove('font-aumentada');
-                document.documentElement.classList.add('font-reduzida');
-              }} 
-              className="is-acc-btn"
-              title="Diminuir Texto"
-            >
-              A-
-            </button>
-            <span className="ms-1 opacity-50">|</span>
-            <button 
-              type="button"
-              onClick={() => document.documentElement.classList.toggle('alto-contraste')} 
-              className="is-acc-btn"
-              title="Alternar Alto Contraste"
-            >
-              Alto Contraste ◐
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Topbar do Sistema (Idêntica ao HeaderLP para não dar pulo de altura) */}
-      <header className="is-navbar sticky-top bg-white border-bottom shadow-sm">
-        <nav className="is-container py-2 d-flex align-items-center justify-content-between">
-          <Link className="navbar-brand m-0 p-0 text-decoration-none d-flex align-items-center" to="/">
-            <img src={logoImg} alt="InformaSaúde" className="is-header-logo" />
-          </Link>
-          <Link to="/" className="is-nav-btn is-nav-btn--outline-green d-inline-flex align-items-center gap-1 text-decoration-none">
-            <LogOut size={16} /> Sair
-          </Link>
-        </nav>
-      </header>
+      <SystemNavbar />
 
       <main className="is-container py-4">
         
-        {/* Saudação do Usuário */}
+        
         <div className="mb-4">
           <h1 className="fw-bold text-dark fs-2 mb-1">
-            Bem-vindo de volta, <span style={{ color: 'var(--is-green)' }}>João da Silva!</span>
+            Bem-vindo de volta, <span className="text-is-green">João da Silva!</span>
           </h1>
           <p className="text-muted fs-6 mb-0">Acesse suas jornadas, pontos e serviços de saúde</p>
         </div>
         
-        {/* Ações Rápidas */}
+        
         <section className="mb-5">
-          <h2 className="fs-4 mb-3" style={{ color: 'var(--is-orange)', fontWeight: 600 }}>Ações Rápidas</h2>
+          <h2 className="is-section-title-orange fs-4 mb-3">Ações Rápidas</h2>
 
           <div className="row g-3">
             
@@ -139,14 +81,17 @@ export function HomeSistema() {
             </div>
 
             <div className="col-6 col-md-4 col-lg-3">
-              <div className="is-card is-action-card h-100 w-100 border-0 shadow-sm">
+              <a
+                href="/404.html"
+                className="is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none"
+              >
                 <div className="is-icon-chip mb-2">
                   <Gift size={24} />
                 </div>
                 <div className="is-action-title">
                   <span className="fw-bold text-dark fs-6">Pontos</span>
                 </div>
-              </div>
+              </a>
             </div>
 
             <div className="col-6 col-md-4 col-lg-3">
@@ -166,7 +111,7 @@ export function HomeSistema() {
           </div>
         </section>
 
-        {/* Banner Hero Original Restaurado */}
+        
         <div className="is-hero-card p-4 p-md-5 mb-5 shadow-sm">
           <img src={imgCardiaca} alt="Jornada Cardíaca" className="is-card-bg-img" />
           
@@ -183,7 +128,7 @@ export function HomeSistema() {
         </div>
 
         <section className="mb-5">
-          <h2 className="fs-4 mb-3" style={{ color: 'var(--is-orange)', fontWeight: 600 }}>Continue Assistindo</h2>
+          <h2 className="is-section-title-orange fs-4 mb-3">Continue Assistindo</h2>
           <div className="row g-3">
             <div className="col-12 col-md-6 col-lg-4">
               <div className="is-card h-100 d-flex flex-column justify-content-between">
@@ -196,7 +141,7 @@ export function HomeSistema() {
                     <span>Progresso</span>
                     <span>65%</span>
                   </div>
-                  <div className="progress">
+                  <div className="progress" role="progressbar" aria-label="Progresso da jornada de hipertensão" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
                     <div className="progress-bar w-75"></div>
                   </div>
                 </div>
@@ -214,7 +159,7 @@ export function HomeSistema() {
                     <span>Progresso</span>
                     <span>30%</span>
                   </div>
-                  <div className="progress">
+                  <div className="progress" role="progressbar" aria-label="Progresso da jornada de prevenção" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
                     <div className="progress-bar w-25"></div>
                   </div>
                 </div>
@@ -224,7 +169,7 @@ export function HomeSistema() {
         </section>
 
         <section className="mb-5" id="jornadas">
-          <h2 className="fs-4 mb-3" style={{ color: 'var(--is-orange)', fontWeight: 600 }}>Jornadas Recomendadas</h2>
+          <h2 className="is-section-title-orange fs-4 mb-3">Jornadas Recomendadas</h2>
           <div className="row g-4">
             
             <div className="col-12 col-md-6 col-lg-4">
@@ -284,6 +229,9 @@ export function HomeSistema() {
         <div className="is-modal-overlay" onClick={() => setModalRede(false)}>
           <div 
             className="bg-white rounded-4 shadow-lg border-0 position-relative is-modal-box is-modal-box-auto p-4 p-md-5"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="rede-saude-modal-title"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
@@ -294,7 +242,7 @@ export function HomeSistema() {
             ></button>
 
             <div className="mb-3 pe-4">
-              <h3 className="fw-bold text-dark fs-4 mb-0">Encontrar Rede de Saúde por CEP</h3>
+              <h3 id="rede-saude-modal-title" className="fw-bold text-dark fs-4 mb-0">Encontrar Rede de Saúde por CEP</h3>
             </div>
 
             <p className="text-muted fs-6 mb-3">
@@ -302,8 +250,12 @@ export function HomeSistema() {
             </p>
 
             <form onSubmit={handleBuscarCep} className="mb-3">
+              <label htmlFor="rede-saude-cep" className="visually-hidden">
+                CEP para buscar unidades de saúde
+              </label>
               <div className="input-group">
                 <input 
+                  id="rede-saude-cep"
                   type="text" 
                   className="is-form-input flex-fill" 
                   placeholder="Ex: 90010-000 ou 01001-000"
@@ -351,7 +303,7 @@ export function HomeSistema() {
 
       <nav className="fixed-bottom bg-white border-top shadow-lg py-2 d-md-none">
         <div className="d-flex justify-content-around align-items-center text-center">
-          <Link to="/perfil" className="text-decoration-none text-success fw-bold fs-6">
+          <Link to="/inicio" className="text-decoration-none text-success fw-bold fs-6">
             <HomeIcon size={22} className="d-block mx-auto mb-1" />
             Início
           </Link>

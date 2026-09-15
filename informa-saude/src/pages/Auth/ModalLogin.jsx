@@ -20,7 +20,7 @@ export function ModalLogin({ onClose, onAbrirCadastro }) {
   const handleEntrar = (e) => {
     e.preventDefault();
     onClose();
-    navigate('/perfil');
+    navigate('/inicio');
   };
 
   return (
