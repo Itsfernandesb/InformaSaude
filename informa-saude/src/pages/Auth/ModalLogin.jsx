@@ -91,7 +91,7 @@ export function ModalLogin({ onClose, onAbrirCadastro }) {
 
         <div className="text-center mt-3 pt-2 border-top">
           <span className="text-muted fs-6">Ainda não tem conta? </span>
-          <button type="button" className="is-link-button fs-6" onClick={onAbrirCadastro}>
+          <button type="button" className="is-link-button is-auth-access-link fs-6" onClick={onAbrirCadastro}>
             Criar conta grátis
           </button>
         </div>

@@ -1,0 +1,68 @@
+.is-user-menu {
+  min-height: 44px;
+  padding: 0.25rem 0.5rem;
+  color: var(--is-text);
+  cursor: pointer;
+}
+
+.is-user-menu:focus-visible {
+  outline: 3px solid var(--is-orange);
+  outline-offset: 3px;
+}
+
+.is-user-menu-avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.is-navbar {
+  background-color: var(--is-white);
+}
+
+.is-navbar .nav-link {
+  position: relative;
+  color: var(--is-text);
+  transition: color 0.2s ease;
+}
+
+.is-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 100%;
+  height: 3px;
+  background-color: var(--is-orange);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.is-navbar .nav-link:hover,
+.is-navbar .nav-link:focus-visible {
+  color: var(--is-orange) !important;
+}
+
+.is-navbar .nav-link:hover::after,
+.is-navbar .nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navbar-toggler:focus-visible,
+.btn-close:focus-visible {
+  outline: 3px solid var(--is-orange);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--is-green-light);
+  color: var(--is-green-dark);
+  box-shadow: inset 0 -1px 0 var(--is-border);
+}
+
+.accordion-button:focus {
+  border-color: var(--is-border);
+  box-shadow: var(--is-focus-ring);
+}

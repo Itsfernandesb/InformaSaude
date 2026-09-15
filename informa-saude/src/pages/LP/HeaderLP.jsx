@@ -61,7 +61,7 @@ export function HeaderLP({ onAbrirLogin, onAbrirCadastro }) {
         </div>
       </div>
 
-      <header className="is-navbar is-navbar--translucent sticky-top border-bottom shadow-sm">
+      <header className="is-navbar sticky-top border-bottom shadow-sm">
         <nav className="navbar navbar-expand-lg is-container py-2" aria-label="Navegação principal">
           <Link className="navbar-brand m-0 p-0 text-decoration-none d-flex align-items-center" to="/">
             <img src={logoImagem} alt="InformaSaúde" className="is-header-logo" />

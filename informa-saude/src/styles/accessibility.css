@@ -42,27 +42,27 @@ html.alto-contraste .is-navbar,
 html.alto-contraste .bg-white,
 html.alto-contraste .bg-light,
 html.alto-contraste .is-card {
-  background-color: #000000 !important;
-  color: #FFFFFF !important;
-  border-color: #00E676 !important;
+  background-color: var(--is-contrast-background) !important;
+  color: var(--is-contrast-text) !important;
+  border-color: var(--is-contrast-accent) !important;
 }
 
 html.alto-contraste .is-action-card {
-  background-color: #000000 !important;
-  border: 2px solid #00E676 !important;
-  color: #FFFFFF !important;
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .is-top-accessibility-bar {
   background-color: var(--is-green-light) !important;
-  border-bottom: 2px solid #00E676 !important;
+  border-bottom: 2px solid var(--is-contrast-accent) !important;
 }
 
 html.alto-contraste .is-top-accessibility-bar,
 html.alto-contraste .is-top-accessibility-bar span,
 html.alto-contraste .is-top-accessibility-bar div,
 html.alto-contraste .is-top-accessibility-bar .is-acc-btn {
-  color: #000000 !important;
+  color: var(--is-contrast-on-accent) !important;
 }
 
 html.alto-contraste .is-navbar,
@@ -74,8 +74,8 @@ html.alto-contraste #beneficios {
 }
 
 html.alto-contraste .is-footer-green {
-  background-color: #008952 !important;
-  color: #FFFFFF !important;
+  background-color: var(--is-contrast-footer) !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .is-footer-logo {
@@ -87,7 +87,7 @@ html.alto-contraste .is-header-logo {
 }
 
 html.alto-contraste .navbar-toggler {
-  color: #FFFFFF !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .btn-close {
@@ -95,18 +95,18 @@ html.alto-contraste .btn-close {
 }
 
 html.alto-contraste .is-nav-btn--outline-green {
-  background-color: #000000 !important;
-  border-color: #FFFFFF !important;
-  color: #FFFFFF !important;
+  background-color: var(--is-contrast-background) !important;
+  border-color: var(--is-contrast-text) !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .is-card-green,
 html.alto-contraste .is-card-orange,
 html.alto-contraste .is-card-green-light,
 html.alto-contraste .is-card-gray {
-  background-color: #000000 !important;
-  border: 2px solid #00E676 !important;
-  color: #FFFFFF !important;
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .is-card-green h3,
@@ -121,19 +121,19 @@ html.alto-contraste .is-card-green svg,
 html.alto-contraste .is-card-orange svg,
 html.alto-contraste .is-card-green-light svg,
 html.alto-contraste .is-card-gray svg {
-  color: #FFFFFF !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .accordion-item,
 html.alto-contraste .accordion-button,
 html.alto-contraste .accordion-body {
-  background-color: #000000 !important;
-  border-color: #00E676 !important;
-  color: #FFFFFF !important;
+  background-color: var(--is-contrast-background) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .accordion-button:not(.collapsed) {
-  box-shadow: inset 0 -1px 0 #00E676;
+  box-shadow: inset 0 -1px 0 var(--is-contrast-accent);
 }
 
 html.alto-contraste .is-card-green .is-btn,
@@ -141,50 +141,50 @@ html.alto-contraste .is-card-orange .is-btn,
 html.alto-contraste .is-card-green-light .is-btn,
 html.alto-contraste .is-card-gray .is-btn {
   background-color: transparent !important;
-  border: 2px solid #FFFFFF !important;
-  color: #FFFFFF !important;
+  border: 2px solid var(--is-contrast-text) !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .is-card-green .is-btn:hover,
 html.alto-contraste .is-card-orange .is-btn:hover,
 html.alto-contraste .is-card-green-light .is-btn:hover,
 html.alto-contraste .is-card-gray .is-btn:hover {
-  background-color: #FFFFFF !important;
-  border-color: #FFFFFF !important;
-  color: #000000 !important;
+  background-color: var(--is-contrast-text) !important;
+  border-color: var(--is-contrast-text) !important;
+  color: var(--is-contrast-on-accent) !important;
 }
 
 html.alto-contraste .is-card-green .is-btn:hover svg,
 html.alto-contraste .is-card-orange .is-btn:hover svg,
 html.alto-contraste .is-card-green-light .is-btn:hover svg,
 html.alto-contraste .is-card-gray .is-btn:hover svg {
-  color: #000000 !important;
+  color: var(--is-contrast-on-accent) !important;
 }
 
 html.alto-contraste #como-funciona .card {
-  background-color: #000000 !important;
-  border: 2px solid #00E676 !important;
-  color: #FFFFFF !important;
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste #como-funciona .card h3,
 html.alto-contraste #como-funciona .card p,
 html.alto-contraste #como-funciona .card svg,
 html.alto-contraste #como-funciona .card .border-bottom {
-  color: #FFFFFF !important;
-  border-color: #00E676 !important;
+  color: var(--is-contrast-text) !important;
+  border-color: var(--is-contrast-accent) !important;
 }
 
 html.alto-contraste h1,
 html.alto-contraste h2,
 html.alto-contraste h3,
 html.alto-contraste .is-eyebrow {
-  color: #00E676 !important;
+  color: var(--is-contrast-accent) !important;
 }
 
 html.alto-contraste .is-card .text-dark,
 html.alto-contraste .is-card .text-muted {
-  color: #FFFFFF !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste p,
@@ -193,32 +193,70 @@ html.alto-contraste a,
 html.alto-contraste label,
 html.alto-contraste .nav-link,
 html.alto-contraste .is-lead {
-  color: #FFFFFF !important;
+  color: var(--is-contrast-text) !important;
 }
 
 html.alto-contraste .is-icon-chip {
-  background-color: #000000 !important;
-  border: 2px solid #00E676 !important;
-  color: #00E676 !important;
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-chat-fab {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .progress-bar {
+  background-color: var(--is-contrast-accent) !important;
 }
 
 html.alto-contraste .is-btn--orange,
 html.alto-contraste .is-nav-btn--orange {
-  background-color: #00E676 !important;
-  border-color: #00E676 !important;
-  color: #000000 !important;
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-auth-access-action,
+html.alto-contraste .is-auth-access-action:hover,
+html.alto-contraste .is-auth-access-action:focus-visible {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-auth-access-link,
+html.alto-contraste .is-auth-access-link:hover,
+html.alto-contraste .is-auth-access-link:focus-visible {
+  color: var(--is-contrast-accent) !important;
 }
 
 html.alto-contraste .form-check-input {
-  background-color: #000000 !important;
-  border-color: #00E676 !important;
+  background-color: var(--is-contrast-background) !important;
+  border-color: var(--is-contrast-accent) !important;
 }
 
 html.alto-contraste .form-check-input:checked {
-  background-color: #00E676 !important;
-  border-color: #00E676 !important;
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
 }
 
 html.alto-contraste .form-check-label {
-  color: #FFFFFF !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-auth-modal-title,
+html.alto-contraste .is-auth-feedback-title,
+html.alto-contraste .is-modal-content-col .is-form-label {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-alert-icon {
+  color: var(--is-orange) !important;
+}
+
+html.alto-contraste .is-auth-success-icon {
+  color: var(--is-contrast-accent) !important;
 }

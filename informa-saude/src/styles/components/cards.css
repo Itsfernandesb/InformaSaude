@@ -1,0 +1,33 @@
+.is-card {
+  background-color: var(--is-white);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  box-shadow: var(--is-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.is-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--is-shadow-md);
+}
+
+.is-card-green {
+  background-color: var(--is-green) !important;
+  color: var(--is-white) !important;
+}
+
+.is-card-orange {
+  background-color: var(--is-orange) !important;
+  color: var(--is-white) !important;
+}
+
+.is-card-green-light {
+  background-color: var(--is-green-light) !important;
+  color: var(--is-green-dark) !important;
+}
+
+.is-card-gray {
+  background-color: var(--is-surface-muted) !important;
+  color: var(--is-text) !important;
+}

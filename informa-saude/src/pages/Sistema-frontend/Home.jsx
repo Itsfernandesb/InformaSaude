@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Play, Award, Home as HomeIcon, User, Gift, BookOpen } from 'lucide-react';
+import { Play, Award, Home as HomeIcon, User, Gift, BookOpen, Hospital } from 'lucide-react';
 import imgCardiaca from '../../assets/images/imagem-cardiaca.png';
 import imgSono from '../../assets/images/imagem-sono.png';
 import imgRespiracao from '../../assets/images/imagem-respiracao.jpg';
@@ -38,6 +38,20 @@ export function HomeSistema() {
                 </div>
                 <div className="is-action-title">
                   <span className="fw-bold text-dark fs-6">Jornadas</span>
+                </div>
+              </a>
+            </div>
+
+            <div className="col-6 col-md-4 col-lg-3">
+              <a
+                href="/404.html"
+                className="is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none"
+              >
+                <div className="is-icon-chip mb-2">
+                  <Hospital size={24} />
+                </div>
+                <div className="is-action-title">
+                  <span className="fw-bold text-dark fs-6">Rede Pública</span>
                 </div>
               </a>
             </div>

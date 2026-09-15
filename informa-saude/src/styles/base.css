@@ -39,11 +39,6 @@ p, .is-body {
   line-height: 1.6;
 }
 
-.is-muted-text {
-  font-size: 1rem;
-  color: var(--is-muted);
-}
-
 .is-eyebrow {
   display: inline-block;
   font-size: 0.9rem;
@@ -71,7 +66,7 @@ p, .is-body {
 }
 
 .is-section--gray {
-  background-color: var(--is-gray);
+  background-color: var(--is-surface-muted);
 }
 
 .app-container {

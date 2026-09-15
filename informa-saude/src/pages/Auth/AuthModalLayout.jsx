@@ -14,7 +14,7 @@ export function AuthModalLayout({
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="auth-modal-titulo"
+        aria-labelledby={titulo ? 'auth-modal-titulo' : undefined}
       >
         <div className="row g-0 h-100">
           <div className="col-12 col-md-5 is-footer-green py-3 px-4 p-md-4 d-flex flex-column justify-content-between text-white position-relative">
@@ -49,11 +49,13 @@ export function AuthModalLayout({
             />
             <div className="is-modal-content-inner">
               {conteudoAntesDoTitulo}
-              <div className="mb-2 pe-4">
-                <h4 id="auth-modal-titulo" className="fw-bold text-dark fs-4 mb-0">
-                  {titulo}
-                </h4>
-              </div>
+              {titulo && (
+                <div className="mb-2 pe-4">
+                  <h4 id="auth-modal-titulo" className="is-auth-modal-title fw-bold text-dark fs-4 mb-0">
+                    {titulo}
+                  </h4>
+                </div>
+              )}
               {children}
             </div>
           </div>

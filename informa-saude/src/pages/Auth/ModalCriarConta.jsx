@@ -10,6 +10,12 @@ const OPCOES_SEXO = [
   { id: 'sexoOutro', valor: 'Outro / Prefiro não informar' }
 ];
 
+const CHAVE_CONTAS_LOCAIS = 'informa-saude-contas';
+const CONTA_DEMONSTRACAO = {
+  email: 'joaodasilva@example.com',
+  telefone: '(51) 99999-9999'
+};
+
 export function ModalCriarConta({ onClose, onAbrirLogin }) {
   const navigate = useNavigate();
   const [etapaCadastro, setEtapaCadastro] = useState(1);
@@ -42,10 +48,29 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
 
   const handleFinalizarCadastro = (e) => {
     e.preventDefault();
-    if (dadosCadastro.email === 'existe@exemplo.com') {
+
+    const contasSalvas = JSON.parse(localStorage.getItem(CHAVE_CONTAS_LOCAIS) || '[]');
+    const contas = contasSalvas.length > 0 ? contasSalvas : [CONTA_DEMONSTRACAO];
+    const emailInformado = dadosCadastro.email.trim().toLowerCase();
+    const telefoneInformado = dadosCadastro.telefone.trim();
+    const cadastroExistente = contas.some((conta) => (
+      conta.email.toLowerCase() === emailInformado
+      || conta.telefone === telefoneInformado
+    ));
+
+    if (cadastroExistente) {
       setFeedback('alerta');
       return;
     }
+
+    localStorage.setItem(CHAVE_CONTAS_LOCAIS, JSON.stringify([
+      ...contas,
+      {
+        nome: dadosCadastro.nome,
+        email: emailInformado,
+        telefone: telefoneInformado
+      }
+    ]));
     setFeedback('sucesso');
   };
 
@@ -85,12 +110,12 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
 
   if (feedback === 'sucesso') {
     return (
-      <AuthModalLayout onClose={onClose} titulo="Cadastro concluído" centralizarConteudo>
+      <AuthModalLayout onClose={onClose} centralizarConteudo>
         <div className="py-3 text-center d-flex flex-column align-items-center justify-content-center h-100">
-          <CheckCircle2 size={56} className="text-success mb-2" />
-          <h4 className="fw-bold text-dark fs-4 mb-1">Cadastro criado com sucesso!</h4>
+          <CheckCircle2 size={56} className="is-auth-success-icon mb-2" />
+          <h4 className="is-auth-feedback-title fw-bold text-dark fs-4 mb-1">Cadastro criado com sucesso!</h4>
           <p className="text-muted fs-6 mb-3">Agora você já tem acesso completo ao Informa Saúde!</p>
-          <button type="button" className="is-btn is-btn--orange w-100 fs-6 py-2" onClick={handleIrParaPerfil}>
+          <button type="button" className="is-btn is-btn--orange is-auth-access-action w-100 fs-6 py-2" onClick={handleIrParaPerfil}>
             Acessar minha conta
           </button>
         </div>
@@ -100,14 +125,14 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
 
   if (feedback === 'alerta') {
     return (
-      <AuthModalLayout onClose={onClose} titulo="Atenção" centralizarConteudo>
+      <AuthModalLayout onClose={onClose} centralizarConteudo>
         <div className="py-3 text-center d-flex flex-column align-items-center justify-content-center h-100">
-          <AlertTriangle size={56} className="text-warning mb-2" />
+          <AlertTriangle size={56} className="is-alert-icon mb-2" />
           <h4 className="fw-bold text-dark fs-4 mb-1">Dados já cadastrados</h4>
           <p className="text-muted fs-6 mb-1">E-mail ou telefone já cadastrados em nosso banco de dados.</p>
           <p className="text-muted fs-6 mb-3">Confira os dados digitados e tente novamente.</p>
           <div className="d-flex flex-column gap-2 w-100">
-            <button type="button" className="is-btn is-btn--orange w-100 fs-6 py-2" onClick={onAbrirLogin}>
+            <button type="button" className="is-btn is-btn--orange is-auth-access-action w-100 fs-6 py-2" onClick={onAbrirLogin}>
               Acessar minha conta
             </button>
             <button type="button" className="is-btn is-btn--outline-green w-100 fs-6 py-2" onClick={() => setFeedback(null)}>
@@ -207,7 +232,7 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
 
       <div className="text-center mt-3 pt-2 border-top">
         <span className="text-muted fs-6">Já tem uma conta? </span>
-        <button type="button" className="is-link-button fs-6" onClick={onAbrirLogin}>
+        <button type="button" className="is-link-button is-auth-access-link fs-6" onClick={onAbrirLogin}>
           Acessar conta
         </button>
       </div>

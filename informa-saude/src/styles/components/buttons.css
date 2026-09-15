@@ -1,0 +1,104 @@
+.btn.is-btn,
+.is-btn,
+.is-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn.is-btn,
+.is-btn {
+  min-height: 54px;
+  padding: 0.85rem 1.75rem;
+  font-size: 1.0625rem;
+}
+
+.btn.is-btn-sm,
+.is-btn.is-btn-sm {
+  min-height: 40px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+.btn.is-btn--profile,
+.is-btn.is-btn--profile {
+  min-height: 44px;
+  padding: 0.55rem 1.25rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+}
+
+.is-nav-btn {
+  min-height: 40px;
+  padding: 0.4rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+.is-btn:focus-visible,
+.is-nav-btn:focus-visible {
+  outline: 3px solid var(--is-orange);
+  outline-offset: 3px;
+}
+
+.is-btn svg,
+.is-nav-btn svg {
+  color: currentColor;
+  transition: color 0.2s ease;
+}
+
+.is-btn--green {
+  background-color: var(--is-green);
+  border-color: var(--is-green);
+  color: var(--is-white) !important;
+}
+
+.is-btn--green:hover {
+  background-color: var(--is-green-dark);
+  border-color: var(--is-green-dark);
+}
+
+.is-btn--orange,
+.is-nav-btn--orange {
+  background-color: var(--is-orange);
+  border-color: var(--is-orange);
+  color: var(--is-white) !important;
+}
+
+.is-btn--orange:hover,
+.is-nav-btn--orange:hover {
+  background-color: var(--is-orange-dark);
+  border-color: var(--is-orange-dark);
+}
+
+.is-btn--outline-green,
+.is-nav-btn--outline-green {
+  background-color: transparent;
+  border: 2px solid var(--is-green);
+  color: var(--is-green) !important;
+}
+
+.is-btn--outline-green:hover,
+.is-nav-btn--outline-green:hover {
+  background-color: var(--is-green);
+  color: var(--is-white) !important;
+}
+
+.is-btn--outline-white,
+.is-nav-btn--outline-white {
+  background-color: transparent;
+  border: 2px solid var(--is-white);
+  color: var(--is-white) !important;
+}
+
+.is-btn--outline-white:hover,
+.is-nav-btn--outline-white:hover {
+  background-color: var(--is-white);
+  color: var(--is-green-dark) !important;
+}
