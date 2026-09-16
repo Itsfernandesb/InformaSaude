@@ -62,7 +62,7 @@ p, .is-body {
 }
 
 .is-section {
-  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
 }
 
 .is-section--gray {

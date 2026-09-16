@@ -2,21 +2,37 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import fotoPerfil from '../../assets/images/foto-perfil.png';
-import SystemNavbar from '../../components/SystemNavbar/SystemNavbar';
+import { SystemNavbar, ToastFeedback, AvatarUsuario, FormInput } from '../../components';
 
 export function EditarPerfil() {
   const dadosIniciais = {
     nome: 'João da Silva',
-    email: 'joao.silva@exemplo.com',
+    email: 'joaodasilva@example.com',
     telefone: '(51) 9 9999 - 9999',
     dataNascimento: '23/03/1954',
   };
   const [nome, setNome] = useState('João da Silva');
-  const [email, setEmail] = useState('joao.silva@exemplo.com');
+  const [email, setEmail] = useState('joaodasilva@example.com');
   const [telefone, setTelefone] = useState('(51) 9 9999 - 9999');
   const [dataNascimento, setDataNascimento] = useState('23/03/1954');
   const [modoEdicao, setModoEdicao] = useState(false);
   const [toastSucesso, setToastSucesso] = useState(false);
+  const [toastFotoMsg, setToastFotoMsg] = useState(null);
+  const [foto, setFoto] = useState(() => {
+    const fotoSalva = localStorage.getItem('informa-saude-foto-perfil');
+    if (fotoSalva === 'null') return null;
+    return fotoSalva || fotoPerfil;
+  });
+
+  const atualizarFotoPerfil = (novaFoto) => {
+    setFoto(novaFoto);
+    if (novaFoto) {
+      localStorage.setItem('informa-saude-foto-perfil', novaFoto);
+    } else {
+      localStorage.setItem('informa-saude-foto-perfil', 'null');
+    }
+    window.dispatchEvent(new Event('foto-perfil-atualizada'));
+  };
 
   const formatarDataNascimento = (valor) => {
     let valorFormatado = valor.replace(/\D/g, '');
@@ -67,14 +83,22 @@ export function EditarPerfil() {
           <div className="col-12 col-lg-4">
             <div className="bg-white rounded-4 shadow-sm p-4 text-center border-0">
               <div className="d-flex justify-content-center mb-3">
-                <img 
-                  src={fotoPerfil} 
-                  alt="João Da Silva" 
-                  className="rounded-circle object-fit-cover shadow-sm border border-3 border-success-subtle is-profile-avatar" 
+                <AvatarUsuario 
+                  nome={nome} 
+                  src={foto} 
+                  podeEditar
+                  onAlterarFoto={(novaUrl) => {
+                    atualizarFotoPerfil(novaUrl);
+                    setToastFotoMsg('Foto de perfil atualizada!');
+                  }}
+                  onRemoverFoto={() => {
+                    atualizarFotoPerfil(null);
+                    setToastFotoMsg('Foto removida com sucesso!');
+                  }}
                 />
               </div>
-              <h3 className="fw-bold text-dark fs-3 mb-1">João Da Silva</h3>
-              <p className="text-muted fs-6 mb-0">joao.silva@exemplo.com</p>
+              <h3 className="fw-bold text-dark fs-3 mb-1">{nome}</h3>
+              <p className="text-muted fs-6 mb-0">{email}</p>
             </div>
           </div>
 
@@ -96,65 +120,53 @@ export function EditarPerfil() {
               <form onSubmit={handleSalvar}>
                 <div className="row g-3">
                   <div className="col-12 col-md-6">
-                    <div className="is-form-group">
-                      <label htmlFor="nome-completo" className="form-label is-form-label fs-6">Nome Completo</label>
-                      <input 
-                        id="nome-completo"
-                        type="text" 
-                        className="form-control is-form-input w-100 py-2 fs-6" 
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                        disabled={!modoEdicao}
-                        required
-                      />
-                    </div>
+                    <FormInput
+                      id="nome-completo"
+                      label="Nome Completo"
+                      type="text"
+                      value={nome}
+                      onChange={(e) => setNome(e.target.value)}
+                      disabled={!modoEdicao}
+                      required
+                    />
                   </div>
 
                   <div className="col-12 col-md-6">
-                    <div className="is-form-group">
-                      <label htmlFor="email" className="form-label is-form-label fs-6">E-mail</label>
-                      <input 
-                        id="email"
-                        type="email" 
-                        className="form-control is-form-input w-100 py-2 fs-6" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        disabled={!modoEdicao}
-                        required
-                      />
-                    </div>
+                    <FormInput
+                      id="email"
+                      label="E-mail"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={!modoEdicao}
+                      required
+                    />
                   </div>
 
                   <div className="col-12 col-md-6">
-                    <div className="is-form-group">
-                      <label htmlFor="telefone" className="form-label is-form-label fs-6">Telefone</label>
-                      <input 
-                        id="telefone"
-                        type="tel" 
-                        className="form-control is-form-input w-100 py-2 fs-6" 
-                        value={telefone}
-                        onChange={(e) => setTelefone(e.target.value)}
-                        disabled={!modoEdicao}
-                        required
-                      />
-                    </div>
+                    <FormInput
+                      id="telefone"
+                      label="Telefone"
+                      type="tel"
+                      value={telefone}
+                      onChange={(e) => setTelefone(e.target.value)}
+                      disabled={!modoEdicao}
+                      required
+                    />
                   </div>
 
                   <div className="col-12 col-md-6">
-                    <div className="is-form-group">
-                      <label htmlFor="data-nascimento" className="form-label is-form-label fs-6">Data de nascimento</label>
-                      <input 
-                        id="data-nascimento"
-                        type="text" 
-                        className="form-control is-form-input w-100 py-2 fs-6" 
-                        placeholder="dd/mm/aaaa"
-                        maxLength={10}
-                        value={dataNascimento}
-                        onChange={(e) => setDataNascimento(formatarDataNascimento(e.target.value))}
-                        disabled={!modoEdicao}
-                        required
-                      />
-                    </div>
+                    <FormInput
+                      id="data-nascimento"
+                      label="Data de nascimento"
+                      type="text"
+                      placeholder="dd/mm/aaaa"
+                      maxLength={10}
+                      value={dataNascimento}
+                      onChange={(e) => setDataNascimento(formatarDataNascimento(e.target.value))}
+                      disabled={!modoEdicao}
+                      required
+                    />
                   </div>
                 </div>
 
@@ -179,24 +191,21 @@ export function EditarPerfil() {
         </div>
       </main>
 
-      {toastSucesso && (
-        <div className="toast-container position-fixed top-0 end-0 p-3">
-          <div className="toast show text-bg-success" role="status" aria-live="polite" aria-atomic="true">
-            <div className="toast-header text-bg-success border-bottom border-light-subtle">
-              <strong className="me-auto">Perfil atualizado</strong>
-              <button
-                type="button"
-                className="btn-close"
-                onClick={() => setToastSucesso(false)}
-                aria-label="Fechar"
-              ></button>
-            </div>
-            <div className="toast-body text-white">
-              Seus dados foram atualizados com sucesso no sistema.
-            </div>
-          </div>
-        </div>
-      )}
+      <ToastFeedback
+        visivel={toastSucesso}
+        onClose={() => setToastSucesso(false)}
+        titulo="Perfil atualizado"
+        mensagem="Seus dados foram atualizados com sucesso no sistema."
+        tipo="sucesso"
+      />
+
+      <ToastFeedback
+        visivel={!!toastFotoMsg}
+        onClose={() => setToastFotoMsg(null)}
+        titulo="Foto de perfil"
+        mensagem={toastFotoMsg}
+        tipo="sucesso"
+      />
     </div>
   );
 }

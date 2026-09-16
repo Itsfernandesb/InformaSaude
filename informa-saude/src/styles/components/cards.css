@@ -7,9 +7,14 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.is-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--is-shadow-md);
+.is-card:hover,
+.is-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--is-shadow-md) !important;
+}
+
+.is-card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .is-card-green {
@@ -25,6 +30,11 @@
 .is-card-green-light {
   background-color: var(--is-green-light) !important;
   color: var(--is-green-dark) !important;
+}
+
+.is-card-orange-light {
+  background-color: var(--is-orange-light) !important;
+  color: var(--is-orange-dark) !important;
 }
 
 .is-card-gray {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { AuthModalLayout } from './AuthModalLayout';
-import CampoSenha from '../../components/Auth/CampoSenha';
+import { FormInput } from '../../components';
 
 const OPCOES_SEXO = [
   { id: 'sexoFem', valor: 'Feminino' },
@@ -27,10 +27,6 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
     telefone: '',
     senha: '',
     confirmarSenha: ''
-  });
-  const [senhasVisiveis, setSenhasVisiveis] = useState({
-    senha: false,
-    confirmarSenha: false
   });
   const [feedback, setFeedback] = useState(null);
 
@@ -77,7 +73,7 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
   const handleIrParaPerfil = () => {
     setFeedback(null);
     onClose();
-    navigate('/inicio');
+    navigate('/questionario');
   };
 
   const atualizarCampo = (campo, valor) => {
@@ -165,15 +161,26 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
 
       {etapaCadastro === 1 ? (
         <form onSubmit={handleAvancarCadastroEtapa1}>
-          <div className="is-form-group">
-            <label htmlFor="modal-nome" className="form-label is-form-label">Nome Completo</label>
-            <input id="modal-nome" type="text" className="form-control is-form-input w-100" placeholder="Digite seu nome completo" value={dadosCadastro.nome} onChange={(e) => atualizarCampo('nome', e.target.value)} required />
-          </div>
+          <FormInput
+            id="modal-nome"
+            label="Nome Completo"
+            type="text"
+            placeholder="Digite seu nome completo"
+            value={dadosCadastro.nome}
+            onChange={(e) => atualizarCampo('nome', e.target.value)}
+            required
+          />
 
-          <div className="is-form-group">
-            <label htmlFor="modal-data-nascimento" className="form-label is-form-label">Data de aniversário</label>
-            <input id="modal-data-nascimento" type="text" className="form-control is-form-input w-100" placeholder="dd/mm/aaaa" maxLength={10} value={dadosCadastro.dataNascimento} onChange={(e) => atualizarCampo('dataNascimento', formatarDataNascimento(e.target.value))} required />
-          </div>
+          <FormInput
+            id="modal-data-nascimento"
+            label="Data de aniversário"
+            type="text"
+            placeholder="dd/mm/aaaa"
+            maxLength={10}
+            value={dadosCadastro.dataNascimento}
+            onChange={(e) => atualizarCampo('dataNascimento', formatarDataNascimento(e.target.value))}
+            required
+          />
 
           <fieldset className="is-form-group border-0 p-0">
             <legend className="form-label is-form-label mb-2">Sexo</legend>
@@ -191,31 +198,47 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
         </form>
       ) : (
         <form onSubmit={handleFinalizarCadastro}>
-          <div className="is-form-group">
-            <label htmlFor="modal-email" className="form-label is-form-label">E-mail</label>
-            <input id="modal-email" type="email" className="form-control is-form-input w-100" placeholder="seuemail@exemplo.com" value={dadosCadastro.email} onChange={(e) => atualizarCampo('email', e.target.value)} required />
-          </div>
-
-          <div className="is-form-group">
-            <label htmlFor="modal-telefone" className="form-label is-form-label">Telefone</label>
-            <input id="modal-telefone" type="tel" className="form-control is-form-input w-100" placeholder="(51) 9 9999-9999" maxLength={15} value={dadosCadastro.telefone} onChange={(e) => atualizarCampo('telefone', formatarTelefone(e.target.value))} required />
-          </div>
-
-          <CampoSenha
-            id="modal-senha-cadastro"
-            rotulo="Senha"
-            valor={dadosCadastro.senha}
-            onChange={(valor) => atualizarCampo('senha', valor)}
-            visivel={senhasVisiveis.senha}
-            onAlternar={() => alternarVisibilidadeSenha('senha')}
+          <FormInput
+            id="modal-email"
+            label="E-mail"
+            type="email"
+            placeholder="seuemail@exemplo.com"
+            value={dadosCadastro.email}
+            onChange={(e) => atualizarCampo('email', e.target.value)}
+            required
           />
-          <CampoSenha
+
+          <FormInput
+            id="modal-telefone"
+            label="Telefone"
+            type="tel"
+            placeholder="(51) 9 9999-9999"
+            maxLength={15}
+            value={dadosCadastro.telefone}
+            onChange={(e) => atualizarCampo('telefone', formatarTelefone(e.target.value))}
+            required
+          />
+
+          <FormInput
+            id="modal-senha-cadastro"
+            label="Senha"
+            type="password"
+            isPasswordToggle
+            placeholder="••••••••"
+            value={dadosCadastro.senha}
+            onChange={(e) => atualizarCampo('senha', e.target.value)}
+            required
+          />
+
+          <FormInput
             id="modal-confirmar-senha"
-            rotulo="Confirmar Senha"
-            valor={dadosCadastro.confirmarSenha}
-            onChange={(valor) => atualizarCampo('confirmarSenha', valor)}
-            visivel={senhasVisiveis.confirmarSenha}
-            onAlternar={() => alternarVisibilidadeSenha('confirmarSenha')}
+            label="Confirmar Senha"
+            type="password"
+            isPasswordToggle
+            placeholder="••••••••"
+            value={dadosCadastro.confirmarSenha}
+            onChange={(e) => atualizarCampo('confirmarSenha', e.target.value)}
+            required
           />
 
           <div className="is-password-checklist my-2">

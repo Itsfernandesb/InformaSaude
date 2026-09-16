@@ -12,6 +12,7 @@ import HomeSistema from "./pages/Sistema-frontend/Home";
 import MeuPerfil from "./pages/Sistema-frontend/MeuPerfil";
 import EditarPerfil from "./pages/Sistema-frontend/EditarPerfil";
 import Configuracoes from "./pages/Sistema-frontend/Configuracoes";
+import Questionario from "./pages/Questionario/Questionario";
 
 function LandingPage() {
   const [modalConfig, setModalConfig] = useState({ aberto: false, abaInicial: 'login' });
@@ -56,6 +57,7 @@ function App() {
         <Route path="/meu-perfil" element={<MeuPerfil />} />
         <Route path="/editar-perfil" element={<EditarPerfil />} />
         <Route path="/configuracoes" element={<Configuracoes />} />
+        <Route path="/questionario" element={<Questionario />} />
       </Routes>
     </BrowserRouter>
   );

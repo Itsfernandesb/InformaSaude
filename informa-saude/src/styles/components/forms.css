@@ -44,6 +44,36 @@ select.is-form-input {
   padding-right: 2.2rem;
 }
 
+.is-form-help-text {
+  font-size: 0.8rem;
+  color: var(--is-text-secondary);
+  margin-top: 0.2rem;
+}
+
+.is-form-error-text {
+  font-size: 0.8rem;
+  color: var(--is-danger);
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
+
+.is-form-input-icon-left {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--is-text-secondary);
+  pointer-events: none;
+}
+
+.is-form-input-icon-right {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--is-text-secondary);
+}
+
 .is-icon-chip,
 .is-icon-chip-orange {
   display: inline-flex;
