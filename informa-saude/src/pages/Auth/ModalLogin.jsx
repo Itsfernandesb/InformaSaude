@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthModalLayout } from './AuthModalLayout';
-import { Eye, EyeOff } from 'lucide-react';
+import { FormInput } from '../../components';
 import googleIcon from '../../assets/images/google.svg';
 
 export function ModalLogin({ onClose, onAbrirCadastro }) {
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
-  const [verSenha, setVerSenha] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -26,41 +25,26 @@ export function ModalLogin({ onClose, onAbrirCadastro }) {
   return (
     <AuthModalLayout onClose={onClose} titulo="Acessar conta" centralizarConteudo>
       <form onSubmit={handleEntrar}>
-        <div className="is-form-group">
-          <label htmlFor="modal-usuario" className="form-label is-form-label">Usuário ou E-mail</label>
-          <input
-            id="modal-usuario"
-            type="text"
-            className="form-control is-form-input w-100"
-            placeholder="Digite seu usuário ou e-mail"
-            value={usuario}
-            onChange={(e) => setUsuario(e.target.value)}
-            required
-          />
-        </div>
+        <FormInput
+          id="modal-usuario"
+          label="Usuário ou E-mail"
+          type="text"
+          placeholder="Digite seu usuário ou e-mail"
+          value={usuario}
+          onChange={(e) => setUsuario(e.target.value)}
+          required
+        />
 
-        <div className="is-form-group">
-          <label htmlFor="modal-senha" className="form-label is-form-label">Senha</label>
-          <div className="position-relative">
-            <input
-              id="modal-senha"
-              type={verSenha ? 'text' : 'password'}
-              className="form-control is-form-input w-100 pe-5"
-              placeholder="Digite sua senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
-            />
-            <button
-              type="button"
-              className="btn border-0 position-absolute end-0 top-50 translate-middle-y text-muted p-2 me-1"
-              onClick={() => setVerSenha(!verSenha)}
-              aria-label={verSenha ? 'Ocultar senha' : 'Mostrar senha'}
-            >
-              {verSenha ? <EyeOff size={16} /> : <Eye size={16} />}
-            </button>
-          </div>
-        </div>
+        <FormInput
+          id="modal-senha"
+          label="Senha"
+          type="password"
+          isPasswordToggle
+          placeholder="Digite sua senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          required
+        />
 
         <div className="text-end mb-2">
           <a href="/404.html" className="text-decoration-none fw-bold fs-6 text-dark">

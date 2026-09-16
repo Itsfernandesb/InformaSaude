@@ -217,11 +217,17 @@
 .is-hero-image {
   width: 100%;
   height: auto;
+  max-height: 520px;
   object-fit: contain;
+  display: block;
 }
 
 .text-is-green {
   color: var(--is-green);
+}
+
+.text-is-orange {
+  color: var(--is-orange) !important;
 }
 
 .is-section-title-orange {

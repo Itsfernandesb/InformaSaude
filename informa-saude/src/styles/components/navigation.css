@@ -66,3 +66,27 @@
   border-color: var(--is-border);
   box-shadow: var(--is-focus-ring);
 }
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--is-green-light) !important;
+  color: var(--is-green-dark) !important;
+}
+
+.dropdown-item:active,
+.dropdown-item.active {
+  background-color: var(--is-green) !important;
+  color: var(--is-white) !important;
+}
+
+.dropdown-item.text-danger:hover,
+.dropdown-item.text-danger:focus {
+  background-color: var(--is-danger-light) !important;
+  color: var(--is-danger) !important;
+}
+
+.dropdown-item.text-danger:active {
+  background-color: var(--is-danger) !important;
+  color: var(--is-white) !important;
+}
+

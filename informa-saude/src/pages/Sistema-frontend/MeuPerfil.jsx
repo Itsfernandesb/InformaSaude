@@ -1,14 +1,29 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { User, Settings, KeyRound, LogOut, ChevronRight } from 'lucide-react';
-import fotoPerfil from '../../assets/images/foto-perfil.png';
-import SystemNavbar from '../../components/SystemNavbar/SystemNavbar';
+import { useNavigate } from 'react-router-dom';
+import { User, Settings, KeyRound, LogOut } from 'lucide-react';
+import fotoPerfilInicial from '../../assets/images/foto-perfil.png';
+import { SystemNavbar, ItemMeuPerfil, AvatarUsuario, ToastFeedback } from '../../components';
 
 export function MeuPerfil() {
   const navigate = useNavigate();
   const [modalSair, setModalSair] = useState(false);
   const [modalSenha, setModalSenha] = useState(false);
-  const [modalSenhaSucesso, setModalSenhaSucesso] = useState(false);
+  const [foto, setFoto] = useState(() => {
+    const fotoSalva = localStorage.getItem('informa-saude-foto-perfil');
+    if (fotoSalva === 'null') return null;
+    return fotoSalva || fotoPerfilInicial;
+  });
+  const [toastMsg, setToastMsg] = useState(null);
+
+  const atualizarFotoPerfil = (novaFoto) => {
+    setFoto(novaFoto);
+    if (novaFoto) {
+      localStorage.setItem('informa-saude-foto-perfil', novaFoto);
+    } else {
+      localStorage.setItem('informa-saude-foto-perfil', 'null');
+    }
+    window.dispatchEvent(new Event('foto-perfil-atualizada'));
+  };
 
   const handleConfirmarSair = () => {
     setModalSair(false);
@@ -18,7 +33,7 @@ export function MeuPerfil() {
   const handleSalvarSenha = (e) => {
     e.preventDefault();
     setModalSenha(false);
-    setModalSenhaSucesso(true);
+    setToastMsg('Senha alterada com sucesso!');
   };
 
   return (
@@ -36,14 +51,22 @@ export function MeuPerfil() {
           <div className="col-12 col-lg-4">
             <div className="bg-white rounded-4 shadow-sm p-4 text-center border-0">
               <div className="d-flex justify-content-center mb-3">
-                <img 
-                  src={fotoPerfil} 
-                  alt="João Da Silva" 
-                  className="rounded-circle object-fit-cover shadow-sm border border-3 border-success-subtle is-profile-avatar" 
+                <AvatarUsuario
+                  nome="João Da Silva"
+                  src={foto}
+                  podeEditar
+                  onAlterarFoto={(novaUrl) => {
+                    atualizarFotoPerfil(novaUrl);
+                    setToastMsg('Foto de perfil atualizada!');
+                  }}
+                  onRemoverFoto={() => {
+                    atualizarFotoPerfil(null);
+                    setToastMsg('Foto removida com sucesso!');
+                  }}
                 />
               </div>
               <h3 className="fw-bold text-dark fs-3 mb-1">João Da Silva</h3>
-              <p className="text-muted fs-6 mb-0">joao.silva@exemplo.com</p>
+              <p className="text-muted fs-6 mb-0">joaodasilva@example.com</p>
             </div>
           </div>
 
@@ -52,71 +75,34 @@ export function MeuPerfil() {
               <h4 className="fw-bold text-dark fs-4 mb-4">Opções da Conta</h4>
 
               <div className="d-flex flex-column gap-3">
-                <Link 
-                  to="/editar-perfil" 
-                  className="d-flex align-items-center justify-content-between p-3 rounded-3 bg-light text-decoration-none text-dark border"
-                >
-                  <div className="d-flex align-items-center gap-3">
-                    <div className="is-icon-chip mb-0 rounded-circle is-profile-icon">
-                      <User size={22} />
-                    </div>
-                    <div>
-                      <span className="fw-bold fs-5 d-block">Editar Perfil</span>
-                      <span className="text-muted fs-6">Atualizar nome, e-mail, telefone e data de nascimento</span>
-                    </div>
-                  </div>
-                  <ChevronRight size={22} className="text-muted" />
-                </Link>
+                <ItemMeuPerfil
+                  icone={<User size={22} />}
+                  titulo="Editar Perfil"
+                  descricao="Atualizar nome, e-mail, telefone e data de nascimento"
+                  to="/editar-perfil"
+                />
 
-                <Link 
-                  to="/configuracoes" 
-                  className="d-flex align-items-center justify-content-between p-3 rounded-3 bg-light text-decoration-none text-dark border"
-                >
-                  <div className="d-flex align-items-center gap-3">
-                    <div className="is-icon-chip mb-0 rounded-circle is-profile-icon">
-                      <Settings size={22} />
-                    </div>
-                    <div>
-                      <span className="fw-bold fs-5 d-block">Configurações</span>
-                      <span className="text-muted fs-6">Gerenciar notificações e opções da conta</span>
-                    </div>
-                  </div>
-                  <ChevronRight size={22} className="text-muted" />
-                </Link>
+                <ItemMeuPerfil
+                  icone={<Settings size={22} />}
+                  titulo="Configurações"
+                  descricao="Gerenciar notificações e opções da conta"
+                  to="/configuracoes"
+                />
 
-                <button 
-                  type="button"
-                  className="d-flex align-items-center justify-content-between p-3 rounded-3 bg-light text-decoration-none text-dark border w-100 text-start"
+                <ItemMeuPerfil
+                  icone={<KeyRound size={22} />}
+                  titulo="Alterar Senha"
+                  descricao="Atualizar sua senha de acesso ao sistema"
                   onClick={() => setModalSenha(true)}
-                >
-                  <div className="d-flex align-items-center gap-3">
-                    <div className="is-icon-chip mb-0 rounded-circle is-profile-icon">
-                      <KeyRound size={22} />
-                    </div>
-                    <div>
-                      <span className="fw-bold fs-5 d-block">Alterar Senha</span>
-                      <span className="text-muted fs-6">Atualizar sua senha de acesso ao sistema</span>
-                    </div>
-                  </div>
-                  <ChevronRight size={22} className="text-muted" />
-                </button>
+                />
 
-                <button 
-                  type="button"
-                  className="d-flex align-items-center justify-content-between p-3 rounded-3 bg-light text-decoration-none text-dark border w-100 text-start"
+                <ItemMeuPerfil
+                  icone={<LogOut size={22} className="text-danger" />}
+                  titulo="Sair da Conta"
+                  descricao="Encerrar a sessão atual com segurança"
                   onClick={() => setModalSair(true)}
-                >
-                  <div className="d-flex align-items-center gap-3">
-                    <div className="is-icon-chip mb-0 rounded-circle is-profile-icon">
-                      <LogOut size={22} />
-                    </div>
-                    <div>
-                      <span className="fw-bold fs-5 d-block text-danger">Sair da Conta</span>
-                      <span className="text-muted fs-6">Encerrar a sessão atual com segurança</span>
-                    </div>
-                  </div>
-                  <ChevronRight size={22} className="text-muted" />
-                </button>
+                  perigo
+                />
               </div>
             </div>
           </div>
@@ -175,30 +161,6 @@ export function MeuPerfil() {
         </div>
       )}
 
-      {modalSenhaSucesso && (
-        <div className="is-modal-overlay" onClick={() => setModalSenhaSucesso(false)}>
-          <div 
-            className="bg-white rounded-4 shadow-lg border-0 position-relative is-modal-box is-modal-box-sm p-4 text-center"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="senha-alterada-modal-title"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 id="senha-alterada-modal-title" className="fw-bold text-success fs-3 mb-2">Senha Alterada!</h3>
-            <p className="text-muted fs-6 mb-4">
-              Sua senha foi atualizada com sucesso.
-            </p>
-            <button 
-              type="button" 
-              className="is-btn is-btn--profile is-btn--orange w-100 fs-6"
-              onClick={() => setModalSenhaSucesso(false)}
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      )}
-
       {modalSair && (
         <div className="is-modal-overlay" onClick={() => setModalSair(false)}>
           <div
@@ -229,6 +191,14 @@ export function MeuPerfil() {
           </div>
         </div>
       )}
+
+      <ToastFeedback
+        visivel={!!toastMsg}
+        onClose={() => setToastMsg(null)}
+        titulo="Atualização"
+        mensagem={toastMsg}
+        tipo="sucesso"
+      />
 
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AccordionItem } from '../../components';
 
 const FAQS = [
   {
@@ -31,11 +32,9 @@ export function FaqSection() {
   };
 
   return (
-    <section className="is-section py-5 bg-light border-top" id="faq">
-      <div className="is-container py-4">
+    <section className="is-section bg-light" id="faq">
+      <div className="is-container">
         <div className="row g-4 align-items-start">
-          
-          
           <div className="col-12 col-lg-4">
             <span className="is-eyebrow mb-2">Dúvidas Frequentes</span>
             <h2 className="fw-bold text-dark fs-2 mb-3">Perguntas Frequentes</h2>
@@ -44,36 +43,20 @@ export function FaqSection() {
             </p>
           </div>
 
-          
           <div className="col-12 col-lg-8">
             <div className="accordion d-flex flex-column gap-3" id="accordionFaq">
-              {FAQS.map((faq, idx) => {
-                const isExpanded = aberto === idx;
-                const itemId = `faq-item-${faq.id}`;
-
-                return (
-                  <div key={faq.id} className="accordion-item rounded-3 overflow-hidden shadow-sm">
-                    <button
-                      type="button"
-                      onClick={() => toggleFaq(idx)}
-                      className={`accordion-button ${isExpanded ? '' : 'collapsed'} fw-bold text-dark fs-5`}
-                      aria-expanded={isExpanded}
-                      aria-controls={itemId}
-                    >
-                      {faq.pergunta}
-                    </button>
-
-                    <div id={itemId} className={`accordion-collapse collapse ${isExpanded ? 'show' : ''}`}>
-                      <div className="accordion-body text-muted fs-6">
-                        {faq.resposta}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+              {FAQS.map((faq, idx) => (
+                <AccordionItem
+                  key={faq.id}
+                  id={faq.id}
+                  pergunta={faq.pergunta}
+                  resposta={faq.resposta}
+                  aberto={aberto === idx}
+                  onToggle={() => toggleFaq(idx)}
+                />
+              ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

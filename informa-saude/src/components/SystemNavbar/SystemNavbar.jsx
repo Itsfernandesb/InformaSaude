@@ -1,12 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import fotoPerfil from '../../assets/images/foto-perfil.png';
-import logoImg from '../../assets/images/logo.svg';
+import { BarraAcessibilidade } from '../BarraAcessibilidade/BarraAcessibilidade';
+import { AvatarUsuario } from '../AvatarUsuario/AvatarUsuario';
+import { Logo } from '../Logo/Logo';
 
 export function SystemNavbar() {
   const navigate = useNavigate();
   const [modalSair, setModalSair] = useState(false);
+  const [fotoNavbar, setFotoNavbar] = useState(() => {
+    const fotoSalva = localStorage.getItem('informa-saude-foto-perfil');
+    if (fotoSalva === 'null') return null;
+    return fotoSalva || fotoPerfil;
+  });
+
+  useEffect(() => {
+    const atualizarFoto = () => {
+      const fotoSalva = localStorage.getItem('informa-saude-foto-perfil');
+      if (fotoSalva === 'null') {
+        setFotoNavbar(null);
+      } else if (fotoSalva) {
+        setFotoNavbar(fotoSalva);
+      } else {
+        setFotoNavbar(fotoPerfil);
+      }
+    };
+
+    window.addEventListener('storage', atualizarFoto);
+    window.addEventListener('foto-perfil-atualizada', atualizarFoto);
+    atualizarFoto();
+
+    return () => {
+      window.removeEventListener('storage', atualizarFoto);
+      window.removeEventListener('foto-perfil-atualizada', atualizarFoto);
+    };
+  }, []);
 
   const confirmarSaida = () => {
     setModalSair(false);
@@ -15,46 +44,21 @@ export function SystemNavbar() {
 
   return (
     <>
-      <div className="is-top-accessibility-bar py-1 px-3 border-bottom fs-6">
-        <div className="is-container d-flex justify-content-between align-items-center">
-          <div className="d-none d-md-block fs-6">Acessibilidade:</div>
-          <div className="d-flex align-items-center gap-3 ms-auto fs-6">
-            <span>Tamanho do texto:</span>
-            <button type="button" onClick={() => {
-              document.documentElement.classList.remove('font-reduzida');
-              document.documentElement.classList.add('font-aumentada');
-            }} className="is-acc-btn" title="Aumentar Texto">A+</button>
-            <button type="button" onClick={() => {
-              document.documentElement.classList.remove('font-aumentada');
-              document.documentElement.classList.add('font-reduzida');
-            }} className="is-acc-btn" title="Diminuir Texto">A-</button>
-            <span className="ms-1 opacity-50">|</span>
-            <button type="button" onClick={() => document.documentElement.classList.toggle('alto-contraste')} className="is-acc-btn" title="Alternar Alto Contraste">
-              Alto Contraste ◐
-            </button>
-          </div>
-        </div>
-      </div>
+      <BarraAcessibilidade />
 
       <header className="is-navbar sticky-top bg-white border-bottom shadow-sm">
         <nav className="is-container py-2 d-flex align-items-center justify-content-between">
-          <Link
-            className="navbar-brand m-0 p-0 d-flex align-items-center"
-            to="/inicio"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <img src={logoImg} alt="InformaSaúde" className="is-header-logo" />
-          </Link>
+          <Logo to="/inicio" />
           <div className="dropdown">
             <button
               type="button"
-              className="is-user-menu d-flex align-items-center gap-2 border-0 bg-transparent"
+              className="is-user-menu d-flex align-items-center gap-2 border-0 bg-transparent text-nowrap"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <img src={fotoPerfil} alt="" className="is-user-menu-avatar rounded-circle" />
-              <span className="d-none d-sm-inline fw-bold text-dark">João da Silva</span>
-              <ChevronDown size={18} aria-hidden="true" />
+              <AvatarUsuario nome="João da Silva" src={fotoNavbar} tamanho="sm" />
+              <span className="d-none d-sm-inline fw-bold text-dark text-nowrap">João da Silva</span>
+              <ChevronDown size={18} className="flex-shrink-0 text-muted ms-1" aria-hidden="true" />
             </button>
             <ul className="dropdown-menu dropdown-menu-end shadow-sm">
               <li><Link className="dropdown-item" to="/meu-perfil">Meu Perfil</Link></li>

@@ -1,4 +1,5 @@
 import { UserCheck, BookOpen, Activity, Award } from 'lucide-react';
+import { CardLP } from '../../components';
 
 const STEPS = [
   { icon: UserCheck, title: 'Seu perfil de saúde', text: 'Conte um pouco sobre você e suas necessidades para personalizar seu acompanhamento.' },
@@ -9,7 +10,7 @@ const STEPS = [
 
 export function ComoFunciona() {
   return (
-    <section className="is-section bg-white" id="como-funciona">
+    <section className="is-section bg-light" id="como-funciona">
       <div className="is-container">
         <div className="mb-4">
           <span className="is-eyebrow mb-2">Passo a passo</span>
@@ -18,20 +19,15 @@ export function ComoFunciona() {
         </div>
         
         <div className="row g-4">
-          {STEPS.map(({ icon: Icon, title, text }, index) => (
+          {STEPS.map(({ icon, title, text }, index) => (
             <div className="col-12 col-md-6 col-lg-3" key={title}>
-              <article className="card h-100 shadow-sm">
-                <div className="card-body p-4 d-flex flex-column justify-content-between">
-                  <div>
-                    <div className="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
-                      <span className="fw-bold text-success fs-5">0{index + 1}</span>
-                      <Icon size={24} className="text-success" aria-hidden="true" />
-                    </div>
-                    <h3 className="card-title fw-bold fs-5 text-dark mb-2">{title}</h3>
-                    <p className="card-text fs-6 text-muted m-0 lh-base">{text}</p>
-                  </div>
-                </div>
-              </article>
+              <CardLP
+                tipo="passo"
+                numero={`0${index + 1}`}
+                icone={icon}
+                titulo={title}
+                texto={text}
+              />
             </div>
           ))}
         </div>
