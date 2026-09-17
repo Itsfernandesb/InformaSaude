@@ -1,4 +1,5 @@
-import { User, Gift, BookOpen, Hospital } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Play, Award, Home as HomeIcon, User, Gift, BookOpen, Hospital } from 'lucide-react';
 import imgCardiaca from '../../assets/images/imagem-cardiaca.png';
 import imgSono from '../../assets/images/imagem-sono.png';
 import imgRespiracao from '../../assets/images/imagem-respiracao.jpg';
@@ -11,6 +12,7 @@ import {
   TituloPaginaSistema,
   TituloSecao
 } from '../../components';
+import { obterNomeUsuario } from '../../utils/usuario';
 
 const ACOES_RAPIDAS = [
   { id: 'jornadas', icone: BookOpen, titulo: 'Jornadas', href: '#jornadas' },
@@ -55,7 +57,36 @@ const JORNADAS_RECOMENDADAS = [
   }
 ];
 
+const MAPA_HERO_JORNADAS = {
+  cardiaca: {
+    imagem: imgCardiaca,
+    subtitulo: 'Comece sua',
+    titulo: 'Jornada Cardíaca',
+    descricao: 'Aprenda como pequenos hábitos diários podem auxiliar na prevenção de infarto, controle de hipertensão e muito mais!',
+    textoBotao: 'Iniciar Jornada'
+  },
+  sono: {
+    imagem: imgSono,
+    subtitulo: 'Comece sua',
+    titulo: 'Jornada do Sono',
+    descricao: 'Melhore a qualidade do seu descanso com orientações práticas para higiene do sono, relaxamento e rotina noturna saudável.',
+    textoBotao: 'Iniciar Jornada'
+  },
+  respiratoria: {
+    imagem: imgRespiracao,
+    subtitulo: 'Comece sua',
+    titulo: 'Jornada Respiratória',
+    descricao: 'Descubra técnicas de respiração, exercícios de fortalecimento pulmonar e cuidados fundamentais para sua capacidade respiratória.',
+    textoBotao: 'Iniciar Jornada'
+  }
+};
+
 export function HomeSistema() {
+  const location = useLocation();
+  const nomeUsuario = obterNomeUsuario();
+  const jornadaAtivaKey = location.state?.jornadaRecomendada || localStorage.getItem('informa-saude-jornada-destaque') || 'cardiaca';
+  const heroData = MAPA_HERO_JORNADAS[jornadaAtivaKey] || MAPA_HERO_JORNADAS.cardiaca;
+
   return (
     <div className="bg-light min-vh-100 pb-5">
       <SystemNavbar />
@@ -63,7 +94,7 @@ export function HomeSistema() {
       <main className="is-container py-4">
         <TituloPaginaSistema
           isBoasVindas
-          nome="João da Silva"
+          nome={nomeUsuario}
           subtitulo="Acesse suas jornadas, pontos e serviços de saúde"
         />
 
@@ -81,11 +112,11 @@ export function HomeSistema() {
         <CardSistema
           isMedia
           isHero
-          imagem={imgCardiaca}
-          subtitulo="Comece sua"
-          titulo="Jornada Cardíaca"
-          descricao="Aprenda como pequenos hábitos diários podem auxiliar na prevenção de infarto, controle de hipertensão e muito mais!"
-          textoBotao="Iniciar Jornada"
+          imagem={heroData.imagem}
+          subtitulo={heroData.subtitulo}
+          titulo={heroData.titulo}
+          descricao={heroData.descricao}
+          textoBotao={heroData.textoBotao}
           className="mb-5"
         />
 

@@ -102,3 +102,15 @@
   background-color: var(--is-white);
   color: var(--is-green-dark) !important;
 }
+
+.is-btn:disabled,
+.is-btn.is-btn--disabled,
+.is-btn.disabled {
+  background-color: var(--is-surface-muted) !important;
+  border-color: var(--is-border) !important;
+  color: var(--is-text-secondary) !important;
+  cursor: not-allowed !important;
+  opacity: 0.8 !important;
+  box-shadow: none !important;
+}
+

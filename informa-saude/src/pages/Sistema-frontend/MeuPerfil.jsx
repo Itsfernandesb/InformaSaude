@@ -11,9 +11,12 @@ import {
   ModalAlterarSenha,
   ModalConfirmacao
 } from '../../components';
+import { obterNomeUsuario, obterEmailUsuario } from '../../utils/usuario';
 
 export function MeuPerfil() {
   const navigate = useNavigate();
+  const nomeUsuario = obterNomeUsuario();
+  const emailUsuario = obterEmailUsuario();
   const [modalSair, setModalSair] = useState(false);
   const [modalSenha, setModalSenha] = useState(false);
   const [foto, setFoto] = useState(() => {
@@ -51,8 +54,8 @@ export function MeuPerfil() {
         <div className="row g-4">
           <div className="col-12 col-lg-4">
             <CardPerfilSidebar
-              nome="João Da Silva"
-              email="joaodasilva@example.com"
+              nome={nomeUsuario}
+              email={emailUsuario}
               foto={foto}
               podeEditar
               onAlterarFoto={(novaUrl) => {

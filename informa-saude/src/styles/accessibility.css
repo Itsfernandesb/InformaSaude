@@ -47,6 +47,14 @@ html.alto-contraste .is-card {
   border-color: var(--is-contrast-accent) !important;
 }
 
+html.alto-contraste .is-card.is-selected,
+html.alto-contraste [role="radio"][aria-checked="true"] {
+  background-color: var(--is-contrast-surface) !important;
+  border-color: var(--is-contrast-accent) !important;
+  outline: 3px solid var(--is-contrast-accent) !important;
+  outline-offset: 2px !important;
+}
+
 html.alto-contraste .is-action-card {
   background-color: var(--is-contrast-surface) !important;
   border: 2px solid var(--is-contrast-accent) !important;
@@ -87,7 +95,8 @@ html.alto-contraste .is-footer-green .border-top {
   border-color: color-mix(in srgb, var(--is-contrast-on-accent) 25%, transparent) !important;
 }
 
-html.alto-contraste .is-footer-green .is-logo-white {
+html.alto-contraste .is-footer-green .is-logo-white,
+html.alto-contraste .is-footer-green .is-footer-logo {
   filter: brightness(0) !important;
 }
 
@@ -359,4 +368,573 @@ html.alto-contraste .is-alert-icon {
 
 html.alto-contraste .is-auth-success-icon {
   color: var(--is-contrast-accent) !important;
+}
+
+.is-acc-btn {
+  background: transparent;
+  border: none;
+  color: var(--is-white);
+  font-weight: 700;
+  padding: 0 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease;
+}
+
+.is-acc-btn:hover {
+  opacity: 0.85;
+  color: var(--is-white);
+}
+
+html.font-aumentada {
+  font-size: 120% !important;
+}
+
+html.font-reduzida {
+  font-size: 90% !important;
+}
+
+html.alto-contraste,
+html.alto-contraste body,
+html.alto-contraste main,
+html.alto-contraste section,
+html.alto-contraste .is-section,
+html.alto-contraste .is-section--gray,
+html.alto-contraste .is-navbar,
+html.alto-contraste .bg-white,
+html.alto-contraste .bg-light,
+html.alto-contraste .is-card {
+  background-color: var(--is-contrast-background) !important;
+  color: var(--is-contrast-text) !important;
+  border-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-card.is-selected,
+html.alto-contraste [role="radio"][aria-checked="true"] {
+  background-color: var(--is-contrast-surface) !important;
+  border-color: var(--is-contrast-accent) !important;
+  outline: 3px solid var(--is-contrast-accent) !important;
+  outline-offset: 2px !important;
+}
+
+html.alto-contraste .is-action-card {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-top-accessibility-bar {
+  background-color: var(--is-green-light) !important;
+  border-bottom: 2px solid var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-top-accessibility-bar,
+html.alto-contraste .is-top-accessibility-bar span,
+html.alto-contraste .is-top-accessibility-bar div,
+html.alto-contraste .is-top-accessibility-bar .is-acc-btn {
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-navbar,
+html.alto-contraste #home,
+html.alto-contraste #heroCarousel,
+html.alto-contraste #beneficios {
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+html.alto-contraste .is-footer-green {
+  background-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+  border-top: 2px solid var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-footer-green h3,
+html.alto-contraste .is-footer-green p,
+html.alto-contraste .is-footer-green a,
+html.alto-contraste .is-footer-green span,
+html.alto-contraste .is-footer-green div {
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-footer-green .border-top {
+  border-color: color-mix(in srgb, var(--is-contrast-on-accent) 25%, transparent) !important;
+}
+
+html.alto-contraste .is-footer-green .is-footer-logo {
+  filter: brightness(0) !important;
+}
+
+html.alto-contraste .is-footer-logo,
+html.alto-contraste .is-header-logo,
+html.alto-contraste .is-logo-sm,
+html.alto-contraste .is-logo-lg {
+  filter: brightness(0) invert(1) !important;
+}
+
+html.alto-contraste .navbar-toggler {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .btn-close {
+  filter: invert(1) grayscale(1) brightness(2) !important;
+}
+
+html.alto-contraste .is-nav-btn--outline-green {
+  background-color: var(--is-contrast-background) !important;
+  border-color: var(--is-contrast-text) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-card-green,
+html.alto-contraste .is-card-orange,
+html.alto-contraste .is-card-green-light,
+html.alto-contraste .is-card-orange-light,
+html.alto-contraste .is-card-gray {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-card-green h3,
+html.alto-contraste .is-card-orange h3,
+html.alto-contraste .is-card-green-light h3,
+html.alto-contraste .is-card-orange-light h3,
+html.alto-contraste .is-card-gray h3,
+html.alto-contraste .is-card-green p,
+html.alto-contraste .is-card-orange p,
+html.alto-contraste .is-card-green-light p,
+html.alto-contraste .is-card-orange-light p,
+html.alto-contraste .is-card-gray p,
+html.alto-contraste .is-card-green svg,
+html.alto-contraste .is-card-orange svg,
+html.alto-contraste .is-card-green-light svg,
+html.alto-contraste .is-card-orange-light svg,
+html.alto-contraste .is-card-gray svg {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .accordion-item {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .accordion-button,
+html.alto-contraste .accordion-body {
+  background-color: var(--is-contrast-surface) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .accordion-button:not(.collapsed) {
+  background-color: var(--is-contrast-surface) !important;
+  color: var(--is-contrast-accent) !important;
+  box-shadow: none !important;
+}
+
+.accordion-button.is-custom-accordion-btn::after {
+  display: none !important;
+}
+
+html.alto-contraste .is-accordion-chevron {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .accordion-button:focus {
+  border-color: var(--is-contrast-accent) !important;
+  box-shadow: 0 0 0 3px var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-card-green .is-btn,
+html.alto-contraste .is-card-orange .is-btn,
+html.alto-contraste .is-card-green-light .is-btn,
+html.alto-contraste .is-card-orange-light .is-btn,
+html.alto-contraste .is-card-gray .is-btn,
+html.alto-contraste .is-card-green .is-nav-btn,
+html.alto-contraste .is-card-orange .is-nav-btn,
+html.alto-contraste .is-card-green-light .is-nav-btn,
+html.alto-contraste .is-card-orange-light .is-nav-btn,
+html.alto-contraste .is-card-gray .is-nav-btn {
+  background-color: transparent !important;
+  border: 2px solid var(--is-contrast-text) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-card-green .is-btn:hover,
+html.alto-contraste .is-card-orange .is-btn:hover,
+html.alto-contraste .is-card-green-light .is-btn:hover,
+html.alto-contraste .is-card-orange-light .is-btn:hover,
+html.alto-contraste .is-card-gray .is-btn:hover,
+html.alto-contraste .is-card-green .is-nav-btn:hover,
+html.alto-contraste .is-card-orange .is-nav-btn:hover,
+html.alto-contraste .is-card-green-light .is-nav-btn:hover,
+html.alto-contraste .is-card-orange-light .is-nav-btn:hover,
+html.alto-contraste .is-card-gray .is-nav-btn:hover {
+  background-color: var(--is-contrast-text) !important;
+  border-color: var(--is-contrast-text) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-card-green .is-btn:hover svg,
+html.alto-contraste .is-card-orange .is-btn:hover svg,
+html.alto-contraste .is-card-green-light .is-btn:hover svg,
+html.alto-contraste .is-card-orange-light .is-btn:hover svg,
+html.alto-contraste .is-card-gray .is-btn:hover svg,
+html.alto-contraste .is-card-green .is-nav-btn:hover svg,
+html.alto-contraste .is-card-orange .is-nav-btn:hover svg,
+html.alto-contraste .is-card-green-light .is-nav-btn:hover svg,
+html.alto-contraste .is-card-orange-light .is-nav-btn:hover svg,
+html.alto-contraste .is-card-gray .is-nav-btn:hover svg {
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste #como-funciona .card {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste #como-funciona .card h3,
+html.alto-contraste #como-funciona .card p,
+html.alto-contraste #como-funciona .card svg,
+html.alto-contraste #como-funciona .card .border-bottom {
+  color: var(--is-contrast-text) !important;
+  border-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste h1,
+html.alto-contraste h2,
+html.alto-contraste h3,
+html.alto-contraste .is-eyebrow {
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .text-dark,
+html.alto-contraste .text-muted,
+html.alto-contraste .text-secondary,
+html.alto-contraste .text-body,
+html.alto-contraste .is-card .text-dark,
+html.alto-contraste .is-card .text-muted {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste p,
+html.alto-contraste span,
+html.alto-contraste a,
+html.alto-contraste label,
+html.alto-contraste .nav-link,
+html.alto-contraste .is-lead {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-icon-chip {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-chat-fab {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .progress-bar {
+  background-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-btn--orange,
+html.alto-contraste .is-nav-btn--orange {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-auth-access-action,
+html.alto-contraste .is-auth-access-action:hover,
+html.alto-contraste .is-auth-access-action:focus-visible {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-auth-access-link,
+html.alto-contraste .is-auth-access-link:hover,
+html.alto-contraste .is-auth-access-link:focus-visible {
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .form-check-input {
+  background-color: var(--is-contrast-background) !important;
+  border-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .form-check-input:checked {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .form-check-label {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-auth-modal-title,
+html.alto-contraste .is-auth-feedback-title,
+html.alto-contraste .is-modal-content-col .is-form-label {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-alert-icon {
+  color: var(--is-orange) !important;
+}
+
+html.alto-contraste .is-auth-success-icon {
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-avatar-circle {
+  background-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-avatar-circle *,
+html.alto-contraste .is-avatar-circle span {
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-password-checklist {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-password-checklist *,
+html.alto-contraste .is-password-checklist strong,
+html.alto-contraste .is-password-checklist ul,
+html.alto-contraste .is-password-checklist li {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-option-check-circle {
+  background-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-questionnaire-option-indicator {
+  border-color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-questionnaire-progress {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-btn:disabled,
+html.alto-contraste .is-accordion-chevron {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .accordion-button:focus {
+  border-color: var(--is-contrast-accent) !important;
+  box-shadow: 0 0 0 3px var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-card-green .is-btn,
+html.alto-contraste .is-card-orange .is-btn,
+html.alto-contraste .is-card-green-light .is-btn,
+html.alto-contraste .is-card-orange-light .is-btn,
+html.alto-contraste .is-card-gray .is-btn,
+html.alto-contraste .is-card-green .is-nav-btn,
+html.alto-contraste .is-card-orange .is-nav-btn,
+html.alto-contraste .is-card-green-light .is-nav-btn,
+html.alto-contraste .is-card-orange-light .is-nav-btn,
+html.alto-contraste .is-card-gray .is-nav-btn {
+  background-color: transparent !important;
+  border: 2px solid var(--is-contrast-text) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-card-green .is-btn:hover,
+html.alto-contraste .is-card-orange .is-btn:hover,
+html.alto-contraste .is-card-green-light .is-btn:hover,
+html.alto-contraste .is-card-orange-light .is-btn:hover,
+html.alto-contraste .is-card-gray .is-btn:hover,
+html.alto-contraste .is-card-green .is-nav-btn:hover,
+html.alto-contraste .is-card-orange .is-nav-btn:hover,
+html.alto-contraste .is-card-green-light .is-nav-btn:hover,
+html.alto-contraste .is-card-orange-light .is-nav-btn:hover,
+html.alto-contraste .is-card-gray .is-nav-btn:hover {
+  background-color: var(--is-contrast-text) !important;
+  border-color: var(--is-contrast-text) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-card-green .is-btn:hover svg,
+html.alto-contraste .is-card-orange .is-btn:hover svg,
+html.alto-contraste .is-card-green-light .is-btn:hover svg,
+html.alto-contraste .is-card-orange-light .is-btn:hover svg,
+html.alto-contraste .is-card-gray .is-btn:hover svg,
+html.alto-contraste .is-card-green .is-nav-btn:hover svg,
+html.alto-contraste .is-card-orange .is-nav-btn:hover svg,
+html.alto-contraste .is-card-green-light .is-nav-btn:hover svg,
+html.alto-contraste .is-card-orange-light .is-nav-btn:hover svg,
+html.alto-contraste .is-card-gray .is-nav-btn:hover svg {
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste #como-funciona .card {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste #como-funciona .card h3,
+html.alto-contraste #como-funciona .card p,
+html.alto-contraste #como-funciona .card svg,
+html.alto-contraste #como-funciona .card .border-bottom {
+  color: var(--is-contrast-text) !important;
+  border-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste h1,
+html.alto-contraste h2,
+html.alto-contraste h3,
+html.alto-contraste .is-eyebrow {
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .text-dark,
+html.alto-contraste .text-muted,
+html.alto-contraste .text-secondary,
+html.alto-contraste .text-body,
+html.alto-contraste .is-card .text-dark,
+html.alto-contraste .is-card .text-muted {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste p,
+html.alto-contraste span,
+html.alto-contraste a,
+html.alto-contraste label,
+html.alto-contraste .nav-link,
+html.alto-contraste .is-lead {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-icon-chip {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-chat-fab {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .progress-bar {
+  background-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-btn--orange,
+html.alto-contraste .is-nav-btn--orange {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-auth-access-action,
+html.alto-contraste .is-auth-access-action:hover,
+html.alto-contraste .is-auth-access-action:focus-visible {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-auth-access-link,
+html.alto-contraste .is-auth-access-link:hover,
+html.alto-contraste .is-auth-access-link:focus-visible {
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .form-check-input {
+  background-color: var(--is-contrast-background) !important;
+  border-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .form-check-input:checked {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .form-check-label {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-auth-modal-title,
+html.alto-contraste .is-auth-feedback-title,
+html.alto-contraste .is-modal-content-col .is-form-label {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-alert-icon {
+  color: var(--is-orange) !important;
+}
+
+html.alto-contraste .is-auth-success-icon {
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-avatar-circle {
+  background-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-avatar-circle *,
+html.alto-contraste .is-avatar-circle span {
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-password-checklist {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-password-checklist *,
+html.alto-contraste .is-password-checklist strong,
+html.alto-contraste .is-password-checklist ul,
+html.alto-contraste .is-password-checklist li {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-option-check-circle {
+  background-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-questionnaire-option-indicator {
+  border-color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-questionnaire-progress {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-btn:disabled,
+html.alto-contraste .is-btn.is-btn--disabled,
+html.alto-contraste .is-btn.disabled {
+  background-color: transparent !important;
+  border: 2px dashed var(--is-contrast-text) !important;
+  color: var(--is-contrast-text) !important;
+  opacity: 0.65 !important;
+  cursor: not-allowed !important;
 }
