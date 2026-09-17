@@ -79,11 +79,7 @@ html.alto-contraste .is-footer-green {
   border-top: 2px solid var(--is-contrast-accent) !important;
 }
 
-html.alto-contraste .is-footer-green h3,
-html.alto-contraste .is-footer-green p,
-html.alto-contraste .is-footer-green a,
-html.alto-contraste .is-footer-green span,
-html.alto-contraste .is-footer-green div {
+html.alto-contraste .is-footer-green * {
   color: var(--is-contrast-on-accent) !important;
 }
 
@@ -91,7 +87,7 @@ html.alto-contraste .is-footer-green .border-top {
   border-color: color-mix(in srgb, var(--is-contrast-on-accent) 25%, transparent) !important;
 }
 
-html.alto-contraste .is-footer-green .is-footer-logo {
+html.alto-contraste .is-footer-green .is-logo-white {
   filter: brightness(0) !important;
 }
 
@@ -110,10 +106,27 @@ html.alto-contraste .btn-close {
   filter: invert(1) grayscale(1) brightness(2) !important;
 }
 
-html.alto-contraste .is-nav-btn--outline-green {
-  background-color: var(--is-contrast-background) !important;
-  border-color: var(--is-contrast-text) !important;
+html.alto-contraste .is-nav-btn--outline-green,
+html.alto-contraste .is-btn--outline-green,
+html.alto-contraste .btn-outline-danger {
+  background-color: transparent !important;
+  border: 2px solid var(--is-contrast-text) !important;
   color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .is-nav-btn--outline-green:hover,
+html.alto-contraste .is-btn--outline-green:hover,
+html.alto-contraste .btn-outline-danger:hover {
+  background-color: var(--is-contrast-accent) !important;
+  border-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .is-modal-box {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  color: var(--is-contrast-text) !important;
+  box-shadow: 0 0 30px rgba(0, 230, 118, 0.2) !important;
 }
 
 html.alto-contraste .is-card-green,
@@ -261,6 +274,32 @@ html.alto-contraste .is-icon-chip {
   background-color: var(--is-contrast-surface) !important;
   border: 2px solid var(--is-contrast-accent) !important;
   color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .is-icon-chip svg,
+html.alto-contraste .is-icon-chip .text-danger {
+  color: var(--is-contrast-accent) !important;
+}
+
+html.alto-contraste .dropdown-menu {
+  background-color: var(--is-contrast-surface) !important;
+  border: 2px solid var(--is-contrast-accent) !important;
+  box-shadow: none !important;
+}
+
+html.alto-contraste .dropdown-item {
+  color: var(--is-contrast-text) !important;
+}
+
+html.alto-contraste .dropdown-item:hover,
+html.alto-contraste .dropdown-item:focus {
+  background-color: var(--is-contrast-accent) !important;
+  color: var(--is-contrast-on-accent) !important;
+}
+
+html.alto-contraste .dropdown-divider {
+  border-top-color: var(--is-contrast-accent) !important;
+  opacity: 0.5;
 }
 
 html.alto-contraste .is-chat-fab {

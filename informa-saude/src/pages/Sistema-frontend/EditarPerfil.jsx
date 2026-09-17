@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
 import fotoPerfil from '../../assets/images/foto-perfil.png';
-import { SystemNavbar, ToastFeedback, AvatarUsuario, FormInput } from '../../components';
+import { SystemNavbar, ToastFeedback, FormInput, TituloPaginaSistema, CardPerfilSidebar } from '../../components';
 
 export function EditarPerfil() {
   const dadosIniciais = {
@@ -67,39 +65,28 @@ export function EditarPerfil() {
       <SystemNavbar />
 
       <main className="is-container py-4">
-        <div className="mb-4">
-          <h1 className="fw-bold text-dark fs-2 mb-1">Editar Perfil</h1>
-          <p className="text-muted fs-6 mb-0">Mantenha seus dados de contato e informações cadastrais atualizados</p>
-        </div>
-
-        <div className="mb-3">
-          <Link to="/meu-perfil" className="is-link-green d-inline-flex align-items-center gap-1 fs-6">
-            <ArrowLeft size={18} /> Voltar para Meu Perfil
-          </Link>
-        </div>
+        <TituloPaginaSistema
+          titulo="Editar Perfil"
+          subtitulo="Mantenha seus dados de contato e informações cadastrais atualizados"
+          linkVoltar={{ to: '/meu-perfil', texto: 'Voltar para Meu Perfil' }}
+        />
 
         <div className="row g-4">
-          
           <div className="col-12 col-lg-4">
-            <div className="bg-white rounded-4 shadow-sm p-4 text-center border-0">
-              <div className="d-flex justify-content-center mb-3">
-                <AvatarUsuario 
-                  nome={nome} 
-                  src={foto} 
-                  podeEditar
-                  onAlterarFoto={(novaUrl) => {
-                    atualizarFotoPerfil(novaUrl);
-                    setToastFotoMsg('Foto de perfil atualizada!');
-                  }}
-                  onRemoverFoto={() => {
-                    atualizarFotoPerfil(null);
-                    setToastFotoMsg('Foto removida com sucesso!');
-                  }}
-                />
-              </div>
-              <h3 className="fw-bold text-dark fs-3 mb-1">{nome}</h3>
-              <p className="text-muted fs-6 mb-0">{email}</p>
-            </div>
+            <CardPerfilSidebar
+              nome={nome}
+              email={email}
+              foto={foto}
+              podeEditar
+              onAlterarFoto={(novaUrl) => {
+                atualizarFotoPerfil(novaUrl);
+                setToastFotoMsg('Foto de perfil atualizada!');
+              }}
+              onRemoverFoto={() => {
+                atualizarFotoPerfil(null);
+                setToastFotoMsg('Foto removida com sucesso!');
+              }}
+            />
           </div>
 
           <div className="col-12 col-lg-8">
@@ -187,7 +174,6 @@ export function EditarPerfil() {
               </form>
             </div>
           </div>
-
         </div>
       </main>
 

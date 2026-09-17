@@ -46,7 +46,7 @@ export function ModalLogin({ onClose, onAbrirCadastro }) {
           required
         />
 
-        <div className="text-end mb-2">
+        <div className="text-end mb-4">
           <a href="/404.html" className="text-decoration-none fw-bold fs-6 text-dark">
             Esqueci minha senha
           </a>
@@ -73,7 +73,7 @@ export function ModalLogin({ onClose, onAbrirCadastro }) {
           </button>
         </div>
 
-        <div className="text-center mt-3 pt-2 border-top">
+        <div className="text-center mt-2 pt-2">
           <span className="text-muted fs-6">Ainda não tem conta? </span>
           <button type="button" className="is-link-button is-auth-access-link fs-6" onClick={onAbrirCadastro}>
             Criar conta grátis

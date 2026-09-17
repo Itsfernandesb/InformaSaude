@@ -1,11 +1,59 @@
-import { Link } from 'react-router-dom';
-import { Play, Award, Home as HomeIcon, User, Gift, BookOpen, Hospital } from 'lucide-react';
+import { User, Gift, BookOpen, Hospital } from 'lucide-react';
 import imgCardiaca from '../../assets/images/imagem-cardiaca.png';
 import imgSono from '../../assets/images/imagem-sono.png';
 import imgRespiracao from '../../assets/images/imagem-respiracao.jpg';
 import imgProgresso from '../../assets/images/acompanhe-progresso.png';
-import SystemNavbar from '../../components/SystemNavbar/SystemNavbar';
-import ChatAssistant from '../../components/ChatAssistant/ChatAssistant';
+import {
+  SystemNavbar,
+  ChatAssistant,
+  CardSistema,
+  FooterSistemaMobile,
+  TituloPaginaSistema,
+  TituloSecao
+} from '../../components';
+
+const ACOES_RAPIDAS = [
+  { id: 'jornadas', icone: BookOpen, titulo: 'Jornadas', href: '#jornadas' },
+  { id: 'rede-publica', icone: Hospital, titulo: 'Rede Pública', href: '/404.html' },
+  { id: 'pontos', icone: Gift, titulo: 'Pontos', href: '/404.html' },
+  { id: 'perfil', icone: User, titulo: 'Meu Perfil', to: '/meu-perfil' }
+];
+
+const JORNADAS_EM_ANDAMENTO = [
+  {
+    id: 1,
+    categoria: 'Hipertensão',
+    titulo: 'Controlando o colesterol na alimentação',
+    progresso: 65
+  },
+  {
+    id: 2,
+    categoria: 'Prevenção',
+    titulo: 'Hábitos diários para o controle da glicemia',
+    progresso: 30
+  }
+];
+
+const JORNADAS_RECOMENDADAS = [
+  {
+    id: 'sono',
+    imagem: imgSono,
+    titulo: 'Jornada do Sono',
+    textoBotao: 'Iniciar Jornada'
+  },
+  {
+    id: 'cardiaca',
+    imagem: imgCardiaca,
+    titulo: 'Jornada Cardíaca',
+    textoBotao: 'Iniciar Jornada'
+  },
+  {
+    id: 'respiratoria',
+    imagem: imgRespiracao,
+    titulo: 'Jornada Respiratória',
+    textoBotao: 'Iniciar Jornada'
+  }
+];
 
 export function HomeSistema() {
   return (
@@ -13,215 +61,79 @@ export function HomeSistema() {
       <SystemNavbar />
 
       <main className="is-container py-4">
-        
-        
-        <div className="mb-4">
-          <h1 className="fw-bold text-dark fs-2 mb-1">
-            Bem-vindo de volta, <span className="text-is-green">João da Silva!</span>
-          </h1>
-          <p className="text-muted fs-6 mb-0">Acesse suas jornadas, pontos e serviços de saúde</p>
-        </div>
-        
-        
+        <TituloPaginaSistema
+          isBoasVindas
+          nome="João da Silva"
+          subtitulo="Acesse suas jornadas, pontos e serviços de saúde"
+        />
+
         <section className="mb-5">
-          <h2 className="is-section-title-orange fs-4 mb-3">Ações Rápidas</h2>
-
+          <TituloSecao>Ações Rápidas</TituloSecao>
           <div className="row g-3">
-            
-            <div className="col-6 col-md-4 col-lg-3">
-              <a 
-                href="#jornadas" 
-                className="is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none"
-              >
-                <div className="is-icon-chip mb-2">
-                  <BookOpen size={24} />
-                </div>
-                <div className="is-action-title">
-                  <span className="fw-bold text-dark fs-6">Jornadas</span>
-                </div>
-              </a>
-            </div>
-
-            <div className="col-6 col-md-4 col-lg-3">
-              <a
-                href="/404.html"
-                className="is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none"
-              >
-                <div className="is-icon-chip mb-2">
-                  <Hospital size={24} />
-                </div>
-                <div className="is-action-title">
-                  <span className="fw-bold text-dark fs-6">Rede Pública</span>
-                </div>
-              </a>
-            </div>
-
-            <div className="col-6 col-md-4 col-lg-3">
-              <a
-                href="/404.html"
-                className="is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none"
-              >
-                <div className="is-icon-chip mb-2">
-                  <Gift size={24} />
-                </div>
-                <div className="is-action-title">
-                  <span className="fw-bold text-dark fs-6">Pontos</span>
-                </div>
-              </a>
-            </div>
-
-            <div className="col-6 col-md-4 col-lg-3">
-              <Link 
-                to="/meu-perfil" 
-                className="is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none"
-              >
-                <div className="is-icon-chip mb-2">
-                  <User size={24} />
-                </div>
-                <div className="is-action-title">
-                  <span className="fw-bold text-dark fs-6">Meu Perfil</span>
-                </div>
-              </Link>
-            </div>
-
+            {ACOES_RAPIDAS.map((acao) => (
+              <div key={acao.id} className="col-6 col-md-4 col-lg-3">
+                <CardSistema isAcao icone={acao.icone} titulo={acao.titulo} href={acao.href} to={acao.to} />
+              </div>
+            ))}
           </div>
         </section>
 
-        
-        <div className="is-hero-card p-4 p-md-5 mb-5 shadow-sm">
-          <img src={imgCardiaca} alt="Jornada Cardíaca" className="is-card-bg-img" />
-          
-          <div className="is-hero-content col-12 col-lg-8">
-            <p className="text-white fs-3 mb-0 fw-light">Comece sua</p>
-            <h2 className="fw-bold text-white display-4 mb-2">Jornada Cardíaca</h2>
-            <p className="text-white fs-6 mb-4">
-              Aprenda como pequenos hábitos diários podem auxiliar na prevenção de infarto, controle de hipertensão e muito mais!
-            </p>
-            <button type="button" className="is-btn is-btn--orange fs-5 px-4 py-2 d-inline-flex align-items-center gap-2">
-              Iniciar Jornada <Play size={20} fill="currentColor" />
-            </button>
-          </div>
-        </div>
+        <CardSistema
+          isMedia
+          isHero
+          imagem={imgCardiaca}
+          subtitulo="Comece sua"
+          titulo="Jornada Cardíaca"
+          descricao="Aprenda como pequenos hábitos diários podem auxiliar na prevenção de infarto, controle de hipertensão e muito mais!"
+          textoBotao="Iniciar Jornada"
+          className="mb-5"
+        />
 
         <section className="mb-5">
-          <h2 className="is-section-title-orange fs-4 mb-3">Continue Assistindo</h2>
+          <TituloSecao>Continue Assistindo</TituloSecao>
           <div className="row g-3">
-            <div className="col-12 col-md-6 col-lg-4">
-              <div className="is-card h-100 d-flex flex-column justify-content-between">
-                <div>
-                  <span className="is-eyebrow mb-2">Hipertensão</span>
-                  <h4 className="fw-bold text-dark fs-5 mb-3">Controlando o colesterol na alimentação</h4>
-                </div>
-                <div>
-                  <div className="d-flex justify-content-between text-muted fs-6 mb-1">
-                    <span>Progresso</span>
-                    <span>65%</span>
-                  </div>
-                  <div className="progress" role="progressbar" aria-label="Progresso da jornada de hipertensão" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                    <div className="progress-bar w-75"></div>
-                  </div>
-                </div>
+            {JORNADAS_EM_ANDAMENTO.map((jornada) => (
+              <div key={jornada.id} className="col-12 col-md-6 col-lg-4">
+                <CardSistema
+                  isProgresso
+                  categoria={jornada.categoria}
+                  titulo={jornada.titulo}
+                  progresso={jornada.progresso}
+                />
               </div>
-            </div>
-
-            <div className="col-12 col-md-6 col-lg-4">
-              <div className="is-card h-100 d-flex flex-column justify-content-between">
-                <div>
-                  <span className="is-eyebrow mb-2">Prevenção</span>
-                  <h4 className="fw-bold text-dark fs-5 mb-3">Hábitos diários para o controle da glicemia</h4>
-                </div>
-                <div>
-                  <div className="d-flex justify-content-between text-muted fs-6 mb-1">
-                    <span>Progresso</span>
-                    <span>30%</span>
-                  </div>
-                  <div className="progress" role="progressbar" aria-label="Progresso da jornada de prevenção" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                    <div className="progress-bar w-25"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
         <section className="mb-5" id="jornadas">
-          <h2 className="is-section-title-orange fs-4 mb-3">Jornadas Recomendadas</h2>
+          <TituloSecao>Jornadas Recomendadas</TituloSecao>
           <div className="row g-4">
-            
-            <div className="col-12 col-md-6 col-lg-4">
-              <div className="is-jornada-card">
-                <img src={imgSono} alt="Jornada do Sono" className="is-card-bg-img" />
-                <div className="is-jornada-content">
-                  <h4 className="fw-bold text-white fs-3 mb-3">Jornada do Sono</h4>
-                  <button type="button" className="is-btn is-btn--orange w-100 fs-6 py-2 d-flex align-items-center justify-content-center gap-2">
-                    Iniciar Jornada <Play size={18} fill="currentColor" />
-                  </button>
-                </div>
+            {JORNADAS_RECOMENDADAS.map((jornada) => (
+              <div key={jornada.id} className="col-12 col-md-6 col-lg-4">
+                <CardSistema
+                  isMedia
+                  imagem={jornada.imagem}
+                  titulo={jornada.titulo}
+                  textoBotao={jornada.textoBotao}
+                />
               </div>
-            </div>
-
-            <div className="col-12 col-md-6 col-lg-4">
-              <div className="is-jornada-card">
-                <img src={imgCardiaca} alt="Jornada Cardíaca" className="is-card-bg-img" />
-                <div className="is-jornada-content">
-                  <h4 className="fw-bold text-white fs-3 mb-3">Jornada Cardíaca</h4>
-                  <button type="button" className="is-btn is-btn--orange w-100 fs-6 py-2 d-flex align-items-center justify-content-center gap-2">
-                    Iniciar Jornada <Play size={18} fill="currentColor" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-12 col-md-6 col-lg-4">
-              <div className="is-jornada-card">
-                <img src={imgRespiracao} alt="Jornada Respiratória" className="is-card-bg-img" />
-                <div className="is-jornada-content">
-                  <h4 className="fw-bold text-white fs-3 mb-3">Jornada Respiratória</h4>
-                  <button type="button" className="is-btn is-btn--orange w-100 fs-6 py-2 d-flex align-items-center justify-content-center gap-2">
-                    Iniciar Jornada <Play size={18} fill="currentColor" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
+            ))}
           </div>
         </section>
 
         <section>
-          <div className="is-jornada-card text-center p-4 p-md-5">
-            <img src={imgProgresso} alt="Acompanhe seu progresso" className="is-card-bg-img" />
-            <div className="is-jornada-content w-100 d-flex flex-column align-items-center justify-content-center">
-              <h3 className="fw-bold text-white fs-2 mb-3 text-center">Acompanhe seu progresso</h3>
-              <button type="button" className="is-btn is-btn--outline-white fs-6 py-2 px-4">
-                Veja suas estatísticas
-              </button>
-            </div>
-          </div>
+          <CardSistema
+            isMedia
+            centralizado
+            imagem={imgProgresso}
+            titulo="Acompanhe seu progresso"
+            textoBotao="Veja suas estatísticas"
+            varianteBotao="outline-white"
+          />
         </section>
-
       </main>
 
-      <nav className="fixed-bottom bg-white border-top shadow-lg py-2 d-md-none">
-        <div className="d-flex justify-content-around align-items-center text-center">
-          <Link to="/inicio" className="text-decoration-none text-success fw-bold fs-6">
-            <HomeIcon size={22} className="d-block mx-auto mb-1" />
-            Início
-          </Link>
-          <a href="#jornadas" className="text-decoration-none text-muted fs-6">
-            <Play size={22} className="d-block mx-auto mb-1" />
-            Jornadas
-          </a>
-          <span className="text-decoration-none text-muted fs-6">
-            <Award size={22} className="d-block mx-auto mb-1" />
-            Pontos
-          </span>
-          <Link to="/meu-perfil" className="text-decoration-none text-muted fs-6">
-            <User size={22} className="d-block mx-auto mb-1" />
-            Perfil
-          </Link>
-        </div>
-      </nav>
-
+      <FooterSistemaMobile />
       <ChatAssistant />
     </div>
   );

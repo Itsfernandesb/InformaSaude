@@ -30,12 +30,12 @@ export function AuthModalLayout({
 
             <div>
               <h4 className="fw-bold text-white mb-2 fs-4 d-none d-md-block">Sua jornada de saúde começa aqui!</h4>
-              <p className="text-white-50 fs-6 m-0 d-none d-md-block">
+              <p className="text-white fs-6 m-0 d-none d-md-block">
                 Informações claras, acessíveis e seguras para você.
               </p>
             </div>
 
-            <div className="pt-2 border-top border-white border-opacity-25 fs-6 text-white-50 d-none d-md-block">
+            <div className="pt-2 border-top border-white border-opacity-25 fs-6 text-white d-none d-md-block">
               © 2026 Informa Saúde
             </div>
           </div>

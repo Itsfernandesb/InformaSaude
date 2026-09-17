@@ -3,12 +3,13 @@ import React from 'react';
 export function BotaoLP({
   children,
   onClick,
-  variante = 'orange', // 'orange' | 'green' | 'outline-white' | 'outline-green'
+  variante = 'orange',
+  href,
+  tamanho = 'md',
   desabilitado = false,
   tipo = 'button',
+  isNav = false,
   larguraTotal = false,
-  isNav = false, // Se true, utiliza .is-nav-btn (altura 40px ideal para Navbar)
-  href,
   className = '',
   ariaLabel
 }) {

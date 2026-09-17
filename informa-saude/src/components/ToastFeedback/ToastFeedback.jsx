@@ -29,6 +29,7 @@ export function ToastFeedback({
           icone: <CheckCircle2 size={18} className="me-2 text-white" />
         };
       case 'erro':
+      case 'error':
         return {
           classeBg: 'text-bg-danger',
           icone: <XCircle size={18} className="me-2 text-white" />
@@ -42,6 +43,12 @@ export function ToastFeedback({
         return {
           classeBg: 'text-bg-info text-dark',
           icone: <Info size={18} className="me-2 text-dark" />
+        };
+      case 'neutro':
+      case 'secondary':
+        return {
+          classeBg: 'text-bg-secondary',
+          icone: <Info size={18} className="me-2 text-white" />
         };
       default:
         return {

@@ -26,7 +26,7 @@ export function AvatarUsuario({
       case 'sm': return { width: 40, height: 40, fontSize: '0.9rem' };
       case 'md': return { width: 56, height: 56, fontSize: '1.2rem' };
       case 'xl': return { width: 140, height: 140, fontSize: '2.5rem' };
-      default: return { width: 120, height: 120, fontSize: '2.2rem' }; // 'lg'
+      default: return { width: 120, height: 120, fontSize: '2.2rem' };
     }
   };
 
@@ -52,7 +52,7 @@ export function AvatarUsuario({
 
       
       <div
-        className="rounded-circle d-flex align-items-center justify-content-center overflow-hidden shadow-sm mb-3"
+        className={`rounded-circle d-flex align-items-center justify-content-center overflow-hidden shadow-sm ${podeEditar ? 'mb-3' : 'mb-0'}`}
         style={{
           width,
           height,

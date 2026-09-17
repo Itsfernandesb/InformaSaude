@@ -67,6 +67,23 @@
   box-shadow: var(--is-focus-ring);
 }
 
+.dropdown-menu {
+  padding: 0.35rem 0 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: var(--is-shadow-md) !important;
+  border: 1px solid var(--is-border) !important;
+}
+
+.dropdown-item 
+{
+  padding: 0.35rem 1rem !important;
+  font-size: 0.9rem !important;
+}
+
+.dropdown-divider {
+  margin: 0.25rem 0 !important;
+}
+
 .dropdown-item:hover,
 .dropdown-item:focus {
   background-color: var(--is-green-light) !important;
