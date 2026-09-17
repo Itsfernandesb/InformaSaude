@@ -1,21 +1,36 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './NewPassword.css';
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import './NewPassword.css'
 
- function ResetPassword() {
+
+function ResetPassword() {
   const navigate = useNavigate()
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (newPassword !== confirmPassword) {
-      alert('As senhas não coincidem!')
+
+    if (newPassword.length < 8) {
+      setErrorMessage('A senha deve ter no mínimo 8 dígitos.')
       return
     }
-    alert('Senha alterada com sucesso!')
-    navigate('/esqueci-senha')
+
+    if (newPassword !== confirmPassword) {
+      setErrorMessage('As senhas não coincidem!')
+      return
+    }
+
+    setErrorMessage('')
+    setIsSuccessModalOpen(true)
+  }
+
+  const handleModalContinue = () => {
+    setIsSuccessModalOpen(false)
+    navigate('/')
   }
 
   return (
@@ -37,7 +52,10 @@ import './NewPassword.css';
               type={showPassword ? 'text' : 'password'}
               placeholder="Digite sua nova senha"
               value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
+              onChange={(e) => {
+                setNewPassword(e.target.value)
+                if (errorMessage) setErrorMessage('')
+              }}
               required
             />
             <button
@@ -57,7 +75,10 @@ import './NewPassword.css';
               type={showPassword ? 'text' : 'password'}
               placeholder="Confirme sua nova senha"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value)
+                if (errorMessage) setErrorMessage('')
+              }}
               required
             />
             <button
@@ -70,12 +91,45 @@ import './NewPassword.css';
           </div>
         </div>
 
+        {errorMessage && (
+          <p className="error-message">
+            {errorMessage}
+          </p>
+        )}
+
         <button type="submit" className="btn-submit">
           Alterar senha
         </button>
       </form>
+
+      {isSuccessModalOpen && (
+        <div className="modal-overlay-RecoverEmailGet">
+          <div className="modal-content-RecoverEmailGet">
+            <div className="modal-icon-RecoverEmailGet">
+              <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h2 className="modal-title-RecoverEmailGet">
+              Senha alterada com sucesso!
+            </h2>
+            <p className="modal-text-RecoverEmailGet">
+              Sua senha foi redefinida. Clique em continuar para prosseguir.
+            </p>
+            <div className="modal-actions-RecoverEmailGet">
+              <button
+                type="button"
+                className="btn-continue-RecoverEmailGet"
+                onClick={handleModalContinue}
+              >
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-  );
+  )
 }
 
 export default ResetPassword

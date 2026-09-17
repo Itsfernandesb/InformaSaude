@@ -7,6 +7,7 @@ export function VerifyCode() {
   const [code, setCode] = useState(['', '', '', '', ''])
   const [errorMessage, setErrorMessage] = useState('')
   const [status, setStatus] = useState('idle')
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const navigate = useNavigate()
   const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)]
@@ -77,7 +78,7 @@ export function VerifyCode() {
   }
 
   const handleResendCode = () => {
-    alert('Um novo código foi enviado para o seu e-mail!')
+    setIsModalOpen(true)
   }
 
   return (
@@ -157,6 +158,33 @@ export function VerifyCode() {
           </Link>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="modal-overlay-RecoverEmailGet">
+          <div className="modal-content-RecoverEmailGet">
+            <div className="modal-icon-RecoverEmailGet">
+              <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h2 className="modal-title-RecoverEmailGet">
+              Um novo código foi enviado!
+            </h2>
+            <p className="modal-text-RecoverEmailGet">
+              Acesse seu e-mail para visualizar o novo código de verificação.
+            </p>
+            <div className="modal-actions-RecoverEmailGet">
+              <button
+                type="button"
+                className="btn-continue-RecoverEmailGet"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

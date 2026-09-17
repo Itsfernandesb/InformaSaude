@@ -10,6 +10,7 @@ export function ForgotPassword() {
 
   const [timer, setTimer] = useState(60)
   const [canResend, setCanResend] = useState(false)
+  
 
   useEffect(() => {
     let interval = null
