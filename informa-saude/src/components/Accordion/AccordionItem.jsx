@@ -35,11 +35,7 @@ export function AccordionItem({
 
           <ChevronDown
             size={20}
-            className="is-accordion-chevron flex-shrink-0 ms-2"
-            style={{
-              transform: aberto ? 'rotate(180deg)' : 'rotate(0deg)',
-              transition: 'transform 0.25s ease'
-            }}
+            className={`is-accordion-chevron flex-shrink-0 ms-2 ${aberto ? 'is-open' : ''}`}
             aria-hidden="true"
           />
         </button>

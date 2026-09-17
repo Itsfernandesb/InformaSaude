@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { User, Settings, KeyRound, LogOut } from 'lucide-react';
 import fotoPerfilInicial from '../../assets/images/foto-perfil.png';
 import { SystemNavbar, ItemMeuPerfil, AvatarUsuario, ToastFeedback } from '../../components';
+import { obterNomeUsuario, obterEmailUsuario } from '../../utils/usuario';
 
 export function MeuPerfil() {
   const navigate = useNavigate();
+  const nomeUsuario = obterNomeUsuario();
+  const emailUsuario = obterEmailUsuario();
   const [modalSair, setModalSair] = useState(false);
   const [modalSenha, setModalSenha] = useState(false);
   const [foto, setFoto] = useState(() => {
@@ -52,7 +55,7 @@ export function MeuPerfil() {
             <div className="bg-white rounded-4 shadow-sm p-4 text-center border-0">
               <div className="d-flex justify-content-center mb-3">
                 <AvatarUsuario
-                  nome="João Da Silva"
+                  nome={nomeUsuario}
                   src={foto}
                   podeEditar
                   onAlterarFoto={(novaUrl) => {
@@ -65,8 +68,8 @@ export function MeuPerfil() {
                   }}
                 />
               </div>
-              <h3 className="fw-bold text-dark fs-3 mb-1">João Da Silva</h3>
-              <p className="text-muted fs-6 mb-0">joaodasilva@example.com</p>
+              <h3 className="fw-bold text-dark fs-3 mb-1">{nomeUsuario}</h3>
+              <p className="text-muted fs-6 mb-0">{emailUsuario}</p>
             </div>
           </div>
 

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Play, Award, Home as HomeIcon, User, Gift, BookOpen, Hospital } from 'lucide-react';
 import imgCardiaca from '../../assets/images/imagem-cardiaca.png';
 import imgSono from '../../assets/images/imagem-sono.png';
@@ -6,8 +6,38 @@ import imgRespiracao from '../../assets/images/imagem-respiracao.jpg';
 import imgProgresso from '../../assets/images/acompanhe-progresso.png';
 import SystemNavbar from '../../components/SystemNavbar/SystemNavbar';
 import ChatAssistant from '../../components/ChatAssistant/ChatAssistant';
+import { obterNomeUsuario } from '../../utils/usuario';
+
+const MAPA_HERO_JORNADAS = {
+  cardiaca: {
+    imagem: imgCardiaca,
+    subtitulo: 'Comece sua',
+    titulo: 'Jornada Cardíaca',
+    descricao: 'Aprenda como pequenos hábitos diários podem auxiliar na prevenção de infarto, controle de hipertensão e muito mais!',
+    textoBotao: 'Iniciar Jornada'
+  },
+  sono: {
+    imagem: imgSono,
+    subtitulo: 'Comece sua',
+    titulo: 'Jornada do Sono',
+    descricao: 'Melhore a qualidade do seu descanso com orientações práticas para higiene do sono, relaxamento e rotina noturna saudável.',
+    textoBotao: 'Iniciar Jornada'
+  },
+  respiratoria: {
+    imagem: imgRespiracao,
+    subtitulo: 'Comece sua',
+    titulo: 'Jornada Respiratória',
+    descricao: 'Descubra técnicas de respiração, exercícios de fortalecimento pulmonar e cuidados fundamentais para sua capacidade respiratória.',
+    textoBotao: 'Iniciar Jornada'
+  }
+};
 
 export function HomeSistema() {
+  const location = useLocation();
+  const nomeUsuario = obterNomeUsuario();
+  const jornadaAtivaKey = location.state?.jornadaRecomendada || localStorage.getItem('informa-saude-jornada-destaque') || 'cardiaca';
+  const heroData = MAPA_HERO_JORNADAS[jornadaAtivaKey] || MAPA_HERO_JORNADAS.cardiaca;
+
   return (
     <div className="bg-light min-vh-100 pb-5">
       <SystemNavbar />
@@ -17,7 +47,7 @@ export function HomeSistema() {
         
         <div className="mb-4">
           <h1 className="fw-bold text-dark fs-2 mb-1">
-            Bem-vindo de volta, <span className="text-is-green">João da Silva!</span>
+            Bem-vindo de volta, <span className="text-is-green">{nomeUsuario}!</span>
           </h1>
           <p className="text-muted fs-6 mb-0">Acesse suas jornadas, pontos e serviços de saúde</p>
         </div>
@@ -89,16 +119,16 @@ export function HomeSistema() {
 
         
         <div className="is-hero-card p-4 p-md-5 mb-5 shadow-sm">
-          <img src={imgCardiaca} alt="Jornada Cardíaca" className="is-card-bg-img" />
+          <img src={heroData.imagem} alt={heroData.titulo} className="is-card-bg-img" />
           
           <div className="is-hero-content col-12 col-lg-8">
-            <p className="text-white fs-3 mb-0 fw-light">Comece sua</p>
-            <h2 className="fw-bold text-white display-4 mb-2">Jornada Cardíaca</h2>
+            <p className="text-white fs-3 mb-0 fw-light">{heroData.subtitulo}</p>
+            <h2 className="fw-bold text-white display-4 mb-2">{heroData.titulo}</h2>
             <p className="text-white fs-6 mb-4">
-              Aprenda como pequenos hábitos diários podem auxiliar na prevenção de infarto, controle de hipertensão e muito mais!
+              {heroData.descricao}
             </p>
             <button type="button" className="is-btn is-btn--orange fs-5 px-4 py-2 d-inline-flex align-items-center gap-2">
-              Iniciar Jornada <Play size={20} fill="currentColor" />
+              {heroData.textoBotao} <Play size={20} fill="currentColor" />
             </button>
           </div>
         </div>

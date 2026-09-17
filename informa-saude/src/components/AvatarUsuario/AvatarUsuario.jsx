@@ -52,16 +52,7 @@ export function AvatarUsuario({
 
       
       <div
-        className="rounded-circle d-flex align-items-center justify-content-center overflow-hidden shadow-sm mb-3"
-        style={{
-          width,
-          height,
-          backgroundColor: src ? 'transparent' : 'var(--is-green)',
-          color: 'var(--is-white)',
-          fontWeight: 700,
-          fontSize,
-          flexShrink: 0
-        }}
+        className={`is-avatar-circle is-avatar-${tamanho} ${src ? 'has-photo' : ''} rounded-circle d-flex align-items-center justify-content-center overflow-hidden shadow-sm mb-3`}
       >
         {src ? (
           <img

@@ -12,7 +12,7 @@ export function Logo({
     switch (tamanho) {
       case 'sm': return 'is-logo-sm';
       case 'lg': return 'is-logo-lg';
-      default: return 'is-header-logo'; // 'md'
+      default: return 'is-header-logo';
     }
   };
 

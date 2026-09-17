@@ -170,3 +170,16 @@
   color: var(--is-green) !important;
 }
 
+.is-toast-container {
+  z-index: 1100;
+}
+
+.is-accordion-chevron {
+  transition: transform 0.25s ease;
+}
+
+.is-accordion-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+

@@ -5,9 +5,11 @@ import fotoPerfil from '../../assets/images/foto-perfil.png';
 import { BarraAcessibilidade } from '../BarraAcessibilidade/BarraAcessibilidade';
 import { AvatarUsuario } from '../AvatarUsuario/AvatarUsuario';
 import { Logo } from '../Logo/Logo';
+import { obterNomeUsuario } from '../../utils/usuario';
 
 export function SystemNavbar() {
   const navigate = useNavigate();
+  const nomeUsuario = obterNomeUsuario();
   const [modalSair, setModalSair] = useState(false);
   const [fotoNavbar, setFotoNavbar] = useState(() => {
     const fotoSalva = localStorage.getItem('informa-saude-foto-perfil');
@@ -56,8 +58,8 @@ export function SystemNavbar() {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <AvatarUsuario nome="João da Silva" src={fotoNavbar} tamanho="sm" />
-              <span className="d-none d-sm-inline fw-bold text-dark text-nowrap">João da Silva</span>
+              <AvatarUsuario nome={nomeUsuario} src={fotoNavbar} tamanho="sm" />
+              <span className="d-none d-sm-inline fw-bold text-dark text-nowrap">{nomeUsuario}</span>
               <ChevronDown size={18} className="flex-shrink-0 text-muted ms-1" aria-hidden="true" />
             </button>
             <ul className="dropdown-menu dropdown-menu-end shadow-sm">

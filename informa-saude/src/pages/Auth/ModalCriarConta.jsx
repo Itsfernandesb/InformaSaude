@@ -16,6 +16,38 @@ const CONTA_DEMONSTRACAO = {
   telefone: '(51) 99999-9999'
 };
 
+const validarDataNascimento = (dataStr) => {
+  if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dataStr)) return false;
+  const [diaStr, mesStr, anoStr] = dataStr.split('/');
+  const dia = parseInt(diaStr, 10);
+  const mes = parseInt(mesStr, 10);
+  const ano = parseInt(anoStr, 10);
+  const anoAtual = new Date().getFullYear();
+
+  if (mes < 1 || mes > 12) return false;
+  if (ano < 1900 || ano > anoAtual) return false;
+
+  const diasNoMes = new Date(ano, mes, 0).getDate();
+  return dia >= 1 && dia <= diasNoMes;
+};
+
+const validarRequisitosSenha = (senha) => {
+  const minCaracteres = senha.length >= 6;
+  const temSimbolo = /[@#%*!$&&^\-_+=\[{\]:;'"<>,.?\/|\\]/.test(senha);
+  const temMaiuscula = /[A-Z]/.test(senha);
+  const temMinuscula = /[a-z]/.test(senha);
+  const temNumero = /\d/.test(senha);
+
+  return {
+    valido: minCaracteres && temSimbolo && temMaiuscula && temMinuscula && temNumero,
+    minCaracteres,
+    temSimbolo,
+    temMaiuscula,
+    temMinuscula,
+    temNumero
+  };
+};
+
 export function ModalCriarConta({ onClose, onAbrirLogin }) {
   const navigate = useNavigate();
   const [etapaCadastro, setEtapaCadastro] = useState(1);
@@ -28,6 +60,8 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
     senha: '',
     confirmarSenha: ''
   });
+  const [erroEtapa1, setErroEtapa1] = useState('');
+  const [erroEtapa2, setErroEtapa2] = useState('');
   const [feedback, setFeedback] = useState(null);
 
   useEffect(() => {
@@ -39,11 +73,28 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
 
   const handleAvancarCadastroEtapa1 = (e) => {
     e.preventDefault();
+    if (!validarDataNascimento(dadosCadastro.dataNascimento)) {
+      setErroEtapa1('Por favor, digite uma data de nascimento válida (DD/MM/AAAA).');
+      return;
+    }
+    setErroEtapa1('');
     setEtapaCadastro(2);
   };
 
   const handleFinalizarCadastro = (e) => {
     e.preventDefault();
+    setErroEtapa2('');
+
+    const statusSenha = validarRequisitosSenha(dadosCadastro.senha);
+    if (!statusSenha.valido) {
+      setErroEtapa2('A senha precisa atender a todos os requisitos mínimos listados abaixo.');
+      return;
+    }
+
+    if (dadosCadastro.senha !== dadosCadastro.confirmarSenha) {
+      setErroEtapa2('A confirmação de senha não coincide com a senha digitada.');
+      return;
+    }
 
     const contasSalvas = JSON.parse(localStorage.getItem(CHAVE_CONTAS_LOCAIS) || '[]');
     const contas = contasSalvas.length > 0 ? contasSalvas : [CONTA_DEMONSTRACAO];
@@ -59,14 +110,17 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
       return;
     }
 
+    const novoUsuario = {
+      nome: dadosCadastro.nome,
+      email: emailInformado,
+      telefone: telefoneInformado
+    };
+
     localStorage.setItem(CHAVE_CONTAS_LOCAIS, JSON.stringify([
       ...contas,
-      {
-        nome: dadosCadastro.nome,
-        email: emailInformado,
-        telefone: telefoneInformado
-      }
+      novoUsuario
     ]));
+    localStorage.setItem('informa-saude-usuario-ativo', JSON.stringify(novoUsuario));
     setFeedback('sucesso');
   };
 
@@ -161,6 +215,12 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
 
       {etapaCadastro === 1 ? (
         <form onSubmit={handleAvancarCadastroEtapa1}>
+          {erroEtapa1 && (
+            <div className="alert alert-danger py-2 px-3 fs-6 mb-3" role="alert">
+              {erroEtapa1}
+            </div>
+          )}
+
           <FormInput
             id="modal-nome"
             label="Nome Completo"
@@ -178,7 +238,10 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
             placeholder="dd/mm/aaaa"
             maxLength={10}
             value={dadosCadastro.dataNascimento}
-            onChange={(e) => atualizarCampo('dataNascimento', formatarDataNascimento(e.target.value))}
+            onChange={(e) => {
+              setErroEtapa1('');
+              atualizarCampo('dataNascimento', formatarDataNascimento(e.target.value));
+            }}
             required
           />
 
@@ -198,6 +261,12 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
         </form>
       ) : (
         <form onSubmit={handleFinalizarCadastro}>
+          {erroEtapa2 && (
+            <div className="alert alert-danger py-2 px-3 fs-6 mb-3" role="alert">
+              {erroEtapa2}
+            </div>
+          )}
+
           <FormInput
             id="modal-email"
             label="E-mail"
@@ -226,7 +295,10 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
             isPasswordToggle
             placeholder="••••••••"
             value={dadosCadastro.senha}
-            onChange={(e) => atualizarCampo('senha', e.target.value)}
+            onChange={(e) => {
+              setErroEtapa2('');
+              atualizarCampo('senha', e.target.value);
+            }}
             required
           />
 
@@ -237,15 +309,22 @@ export function ModalCriarConta({ onClose, onAbrirLogin }) {
             isPasswordToggle
             placeholder="••••••••"
             value={dadosCadastro.confirmarSenha}
-            onChange={(e) => atualizarCampo('confirmarSenha', e.target.value)}
+            onChange={(e) => {
+              setErroEtapa2('');
+              atualizarCampo('confirmarSenha', e.target.value);
+            }}
             required
           />
 
           <div className="is-password-checklist my-2">
-            <strong className="d-block mb-0.5 text-dark fs-6">Requisitos da senha:</strong>
-            <ul className="mb-0">
-              <li>Mínimo 6 caracteres | 1 símbolo (@#%*)</li>
-              <li>Uma letra maiúscula, uma minúscula e um número</li>
+            <strong className="d-block mb-1 text-dark fs-6">Requisitos da senha:</strong>
+            <ul className="mb-0 ps-3">
+              <li className={validarRequisitosSenha(dadosCadastro.senha).minCaracteres && validarRequisitosSenha(dadosCadastro.senha).temSimbolo ? 'text-success fw-bold' : ''}>
+                Mínimo 6 caracteres | 1 símbolo (@#%*)
+              </li>
+              <li className={validarRequisitosSenha(dadosCadastro.senha).temMaiuscula && validarRequisitosSenha(dadosCadastro.senha).temMinuscula && validarRequisitosSenha(dadosCadastro.senha).temNumero ? 'text-success fw-bold' : ''}>
+                Uma letra maiúscula, uma minúscula e um número
+              </li>
             </ul>
           </div>
 

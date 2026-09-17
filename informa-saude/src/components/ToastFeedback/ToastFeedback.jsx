@@ -54,7 +54,7 @@ export function ToastFeedback({
   const { classeBg, icone } = obterEstilosTipo();
 
   return (
-    <div className="toast-container position-fixed top-0 end-0 p-3" style={{ zIndex: 1100 }}>
+    <div className="toast-container is-toast-container position-fixed top-0 end-0 p-3">
       <div 
         className={`toast show ${classeBg} shadow-lg border-0 rounded-3`} 
         role={tipo === 'erro' || tipo === 'alerta' ? 'alert' : 'status'} 

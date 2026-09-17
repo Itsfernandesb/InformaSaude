@@ -3,8 +3,8 @@ import React from 'react';
 export function BotaoSistema({
   children,
   onClick,
-  variante = 'orange', // 'orange' | 'outline-green' | 'green' | 'danger' | 'secondary'
-  tamanho = 'md', // 'sm' | 'md' | 'lg'
+  variante = 'orange',
+  tamanho = 'md',
   desabilitado = false,
   tipo = 'button',
   larguraTotal = false,
@@ -31,7 +31,7 @@ export function BotaoSistema({
   const obterClasseTamanho = () => {
     if (tamanho === 'sm') return 'is-btn-sm';
     if (tamanho === 'lg') return '';
-    return 'is-btn--profile'; // 'md' padrão do sistema
+    return 'is-btn--profile';
   };
 
   return (

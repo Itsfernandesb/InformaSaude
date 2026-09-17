@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import logoImg from '../../assets/images/logo.svg';
-import { BarraAcessibilidade, BotaoSistema, OpcaoCard } from '../../components';
+import { BarraAcessibilidade, BotaoSistema, OpcaoCard, Logo } from '../../components';
+import { obterNomeUsuario } from '../../utils/usuario';
 
 const PERGUNTAS = [
   {
@@ -111,15 +111,35 @@ export function Questionario() {
     }));
   };
 
+  const calcularJornadaRecomendada = () => {
+    const contagem = { cardiaca: 0, sono: 0, respiratoria: 0 };
+    Object.values(respostas).forEach(opcaoId => {
+      if (opcaoId === 'a') contagem.cardiaca += 1;
+      else if (opcaoId === 'b') contagem.sono += 1;
+      else if (opcaoId === 'c') contagem.respiratoria += 1;
+      else contagem.cardiaca += 1;
+    });
+
+    if (contagem.sono > contagem.cardiaca && contagem.sono >= contagem.respiratoria) {
+      return 'sono';
+    }
+    if (contagem.respiratoria > contagem.cardiaca && contagem.respiratoria > contagem.sono) {
+      return 'respiratoria';
+    }
+    return 'cardiaca';
+  };
+
   const handleAvancar = () => {
     if (etapaAtual < PERGUNTAS.length - 1) {
       setEtapaAtual(prev => prev + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
+      const recomendada = calcularJornadaRecomendada();
       setIsConcluindo(true);
+      localStorage.setItem('informa-saude-jornada-destaque', recomendada);
       setTimeout(() => {
-        navigate('/inicio', { state: { questionarioConcluido: true } });
-      }, 1200);
+        navigate('/inicio', { state: { jornadaRecomendada: recomendada } });
+      }, 2000);
     }
   };
 
@@ -133,16 +153,19 @@ export function Questionario() {
   };
 
   const opcaoSelecionada = respostas[perguntaAtual.id];
+  const nomeUsuario = obterNomeUsuario();
 
   if (isConcluindo) {
     return (
       <div className="min-vh-100 bg-white d-flex align-items-center justify-content-center p-4">
-        <div className="text-center is-profile-container">
-          <h2 className="fw-bold text-dark fs-2 mb-3">Concluindo o questionário...</h2>
+        <div className="text-center col-12 col-md-8 col-lg-6 mx-auto">
+          <h2 className="fw-bold text-dark fs-2 mb-3">
+            Parabéns por cuidar da sua saúde, {nomeUsuario}!
+          </h2>
           <p className="text-muted fs-5 mb-4">
-            Processando suas respostas para direcionar à sua área inicial.
+            Analisamos suas respostas e preparamos o seu início. Aguarde...
           </p>
-          <div className="spinner-border text-success" role="status" style={{ width: '3rem', height: '3rem' }}>
+          <div className="spinner-border text-success is-spinner-lg" role="status">
             <span className="visually-hidden">Carregando...</span>
           </div>
         </div>
@@ -167,23 +190,18 @@ export function Questionario() {
                 <ArrowLeft size={20} /> <span className="d-none d-sm-inline">Voltar</span>
               </button>
 
-              <Link to="/inicio" className="navbar-brand m-0 p-0 text-decoration-none">
-                <img src={logoImg} alt="InformaSaúde" className="is-header-logo" />
-              </Link>
+              <Logo to="/inicio" />
 
               <span className="fw-bold text-is-green fs-6">
                 {etapaAtual + 1} de {PERGUNTAS.length}
               </span>
             </div>
 
-            <div className="progress is-questionnaire-progress" style={{ height: '8px' }}>
+            <div className="progress is-questionnaire-progress overflow-hidden rounded-pill">
               <div 
                 className="progress-bar transition-all" 
                 role="progressbar" 
-                style={{ 
-                  width: `${percentualProgresso}%`,
-                  backgroundColor: 'var(--is-green)'
-                }} 
+                style={{ width: `${percentualProgresso}%` }} 
                 aria-valuenow={percentualProgresso} 
                 aria-valuemin="0" 
                 aria-valuemax="100"
@@ -230,7 +248,7 @@ export function Questionario() {
                   desabilitado={!opcaoSelecionada}
                   onClick={handleAvancar}
                 >
-                  {etapaAtual === PERGUNTAS.length - 1 ? 'CONCLUIR' : 'SEGUINTE'}
+                  {etapaAtual === PERGUNTAS.length - 1 ? 'Concluir' : 'Seguinte'}
                 </BotaoSistema>
               </div>
 
