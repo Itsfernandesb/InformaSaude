@@ -214,11 +214,15 @@
   width: auto;
 }
 
+.is-hero-section {
+  margin-top: -35px;
+}
+
 .is-hero-image {
   width: 100%;
-  height: auto;
-  max-height: 520px;
-  object-fit: contain;
+  height: 560px;
+  object-fit: cover;
+  object-position: bottom center;
   display: block;
 }
 

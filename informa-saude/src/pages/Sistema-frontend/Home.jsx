@@ -1,9 +1,9 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Play, Award, Home as HomeIcon, User, Gift, BookOpen, Hospital } from 'lucide-react';
-import imgCardiaca from '../../assets/images/imagem-cardiaca.png';
-import imgSono from '../../assets/images/imagem-sono.png';
-import imgRespiracao from '../../assets/images/imagem-respiracao.jpg';
-import imgProgresso from '../../assets/images/acompanhe-progresso.png';
+import imgCardiaca from '../../assets/images/imagem-cardiaca.webp';
+import imgSono from '../../assets/images/imagem-sono.webp';
+import imgRespiracao from '../../assets/images/imagem-respiracao.webp';
+import imgProgresso from '../../assets/images/acompanhe-progresso.webp';
 import {
   SystemNavbar,
   ChatAssistant,
@@ -57,35 +57,8 @@ const JORNADAS_RECOMENDADAS = [
   }
 ];
 
-const MAPA_HERO_JORNADAS = {
-  cardiaca: {
-    imagem: imgCardiaca,
-    subtitulo: 'Comece sua',
-    titulo: 'Jornada Cardíaca',
-    descricao: 'Aprenda como pequenos hábitos diários podem auxiliar na prevenção de infarto, controle de hipertensão e muito mais!',
-    textoBotao: 'Iniciar Jornada'
-  },
-  sono: {
-    imagem: imgSono,
-    subtitulo: 'Comece sua',
-    titulo: 'Jornada do Sono',
-    descricao: 'Melhore a qualidade do seu descanso com orientações práticas para higiene do sono, relaxamento e rotina noturna saudável.',
-    textoBotao: 'Iniciar Jornada'
-  },
-  respiratoria: {
-    imagem: imgRespiracao,
-    subtitulo: 'Comece sua',
-    titulo: 'Jornada Respiratória',
-    descricao: 'Descubra técnicas de respiração, exercícios de fortalecimento pulmonar e cuidados fundamentais para sua capacidade respiratória.',
-    textoBotao: 'Iniciar Jornada'
-  }
-};
-
 export function HomeSistema() {
-  const location = useLocation();
   const nomeUsuario = obterNomeUsuario();
-  const jornadaAtivaKey = location.state?.jornadaRecomendada || localStorage.getItem('informa-saude-jornada-destaque') || 'cardiaca';
-  const heroData = MAPA_HERO_JORNADAS[jornadaAtivaKey] || MAPA_HERO_JORNADAS.cardiaca;
 
   return (
     <div className="bg-light min-vh-100 pb-5">
@@ -112,11 +85,11 @@ export function HomeSistema() {
         <CardSistema
           isMedia
           isHero
-          imagem={heroData.imagem}
-          subtitulo={heroData.subtitulo}
-          titulo={heroData.titulo}
-          descricao={heroData.descricao}
-          textoBotao={heroData.textoBotao}
+          imagem={imgCardiaca}
+          subtitulo="Comece sua"
+          titulo="Jornada Cardíaca"
+          descricao="Aprenda como pequenos hábitos diários podem auxiliar na prevenção de infarto, controle de hipertensão e muito mais!"
+          textoBotao="Iniciar Jornada"
           className="mb-5"
         />
 

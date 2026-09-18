@@ -20,6 +20,7 @@ export { ModalSistema } from './ModalSistema/ModalSistema';
 export { ModalConfirmacao } from './ModalSistema/ModalConfirmacao';
 export { ModalAlterarSenha } from './ModalSistema/ModalAlterarSenha';
 export { AccordionItem } from './Accordion/AccordionItem';
+export { ScrollToTop } from './ScrollToTop/ScrollToTop';
 
 
 

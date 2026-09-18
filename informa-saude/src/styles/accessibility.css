@@ -135,7 +135,7 @@ html.alto-contraste .is-modal-box {
   background-color: var(--is-contrast-surface) !important;
   border: 2px solid var(--is-contrast-accent) !important;
   color: var(--is-contrast-text) !important;
-  box-shadow: 0 0 30px rgba(0, 230, 118, 0.2) !important;
+  box-shadow: var(--is-contrast-modal-glow) !important;
 }
 
 html.alto-contraste .is-card-green,

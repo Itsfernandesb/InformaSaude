@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import fotoPerfil from '../../assets/images/foto-perfil.png';
+import fotoPerfil from '../../assets/images/foto-perfil.webp';
 import { SystemNavbar, ToastFeedback, FormInput, TituloPaginaSistema, CardPerfilSidebar } from '../../components';
 
 export function EditarPerfil() {

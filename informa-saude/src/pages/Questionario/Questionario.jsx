@@ -111,34 +111,14 @@ export function Questionario() {
     }));
   };
 
-  const calcularJornadaRecomendada = () => {
-    const contagem = { cardiaca: 0, sono: 0, respiratoria: 0 };
-    Object.values(respostas).forEach(opcaoId => {
-      if (opcaoId === 'a') contagem.cardiaca += 1;
-      else if (opcaoId === 'b') contagem.sono += 1;
-      else if (opcaoId === 'c') contagem.respiratoria += 1;
-      else contagem.cardiaca += 1;
-    });
-
-    if (contagem.sono > contagem.cardiaca && contagem.sono >= contagem.respiratoria) {
-      return 'sono';
-    }
-    if (contagem.respiratoria > contagem.cardiaca && contagem.respiratoria > contagem.sono) {
-      return 'respiratoria';
-    }
-    return 'cardiaca';
-  };
-
   const handleAvancar = () => {
     if (etapaAtual < PERGUNTAS.length - 1) {
       setEtapaAtual(prev => prev + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const recomendada = calcularJornadaRecomendada();
       setIsConcluindo(true);
-      localStorage.setItem('informa-saude-jornada-destaque', recomendada);
       setTimeout(() => {
-        navigate('/inicio', { state: { jornadaRecomendada: recomendada } });
+        navigate('/inicio');
       }, 2000);
     }
   };

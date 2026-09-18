@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Settings, KeyRound, LogOut } from 'lucide-react';
-import fotoPerfilInicial from '../../assets/images/foto-perfil.png';
+import fotoPerfilInicial from '../../assets/images/foto-perfil.webp';
 import {
   SystemNavbar,
   ItemMeuPerfil,

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
-import fotoPerfil from '../../assets/images/foto-perfil.png';
+import fotoPerfil from '../../assets/images/foto-perfil.webp';
 import { BarraAcessibilidade } from '../BarraAcessibilidade/BarraAcessibilidade';
 import { AvatarUsuario } from '../AvatarUsuario/AvatarUsuario';
 import { Logo } from '../Logo/Logo';

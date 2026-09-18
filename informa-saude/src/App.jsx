@@ -15,6 +15,9 @@ import Configuracoes from "./pages/Sistema-frontend/Configuracoes";
 import Questionario from "./pages/Questionario/Questionario";
 import NaoEncontrada from "./pages/NaoEncontrada/NaoEncontrada";
 
+import { ScrollToTop } from './components';
+import { UserProvider } from './context/UserContext';
+
 function LandingPage() {
   const [modalConfig, setModalConfig] = useState({ aberto: false, abaInicial: 'login' });
 
@@ -50,20 +53,23 @@ function LandingPage() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/inicio" element={<HomeSistema />} />
-        <Route path="/perfil" element={<Navigate to="/meu-perfil" replace />} />
-        <Route path="/meu-perfil" element={<MeuPerfil />} />
-        <Route path="/editar-perfil" element={<EditarPerfil />} />
-        <Route path="/configuracoes" element={<Configuracoes />} />
-        <Route path="/questionario" element={<Questionario />} />
-        <Route path="/404" element={<NaoEncontrada />} />
-        <Route path="/404.html" element={<NaoEncontrada />} />
-        <Route path="*" element={<NaoEncontrada />} />
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/inicio" element={<HomeSistema />} />
+          <Route path="/perfil" element={<Navigate to="/meu-perfil" replace />} />
+          <Route path="/meu-perfil" element={<MeuPerfil />} />
+          <Route path="/editar-perfil" element={<EditarPerfil />} />
+          <Route path="/configuracoes" element={<Configuracoes />} />
+          <Route path="/questionario" element={<Questionario />} />
+          <Route path="/404" element={<NaoEncontrada />} />
+          <Route path="/404.html" element={<NaoEncontrada />} />
+          <Route path="*" element={<NaoEncontrada />} />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 

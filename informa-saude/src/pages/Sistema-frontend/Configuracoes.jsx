@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Bell, Trash2 } from 'lucide-react';
-import fotoPerfilInicial from '../../assets/images/foto-perfil.png';
+import fotoPerfilInicial from '../../assets/images/foto-perfil.webp';
 import {
   SystemNavbar,
   TituloPaginaSistema,

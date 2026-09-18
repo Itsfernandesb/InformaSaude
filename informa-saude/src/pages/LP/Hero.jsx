@@ -1,5 +1,5 @@
-import heroCareImg from '../../assets/images/hero-care.png';
-import hero2Img from '../../assets/images/hero-2.jpg';
+import heroCareImg from '../../assets/images/hero-care.webp';
+import hero2Img from '../../assets/images/hero-2.webp';
 import { CarrosselSistema } from '../../components';
 
 const SLIDES = [
@@ -9,7 +9,7 @@ const SLIDES = [
 
 export function Hero() {
   return (
-    <section className="w-100 p-0 position-relative overflow-hidden" id="home">
+    <section className="w-100 p-0 position-relative overflow-hidden is-hero-section" id="home">
       <CarrosselSistema id="heroCarousel" slides={SLIDES} intervalo={5000} />
     </section>
   );

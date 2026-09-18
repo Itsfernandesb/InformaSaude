@@ -9,7 +9,7 @@ export function HeaderLP({ onAbrirLogin, onAbrirCadastro }) {
     <>
       <BarraAcessibilidade />
 
-      <header className="is-navbar sticky-top border-bottom shadow-sm">
+      <header className="is-navbar sticky-top shadow-sm">
         <nav className="navbar navbar-expand-lg is-container py-2" aria-label="Navegação principal">
           <Logo to="/" />
 

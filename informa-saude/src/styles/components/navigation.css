@@ -17,7 +17,12 @@
 }
 
 .is-navbar {
-  background-color: var(--is-white);
+  position: relative;
+  z-index: 1000;
+  background-color: var(--is-navbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--is-navbar-shadow);
 }
 
 .is-navbar .nav-link {
