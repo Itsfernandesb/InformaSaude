@@ -6,7 +6,6 @@ function Header() {
   const [fontSize, setFontSize] = useState(100);
   const [menuAberto, setMenuAberto] = useState(false);
 
-  // Função para ajustar o tamanho da fonte da página
   const handleAcessibilidade = (acao) => {
     let novoTamanho = fontSize;
     if (acao === 'aumentar' && fontSize < 140) novoTamanho += 10;
@@ -22,14 +21,12 @@ function Header() {
 
   return (
     <header className="cabecalho">
-      {/* Marca e Logo */}
       <div className="cabecalho-logo">
         <a href="/">
           <img src={logoImagem} alt="InformaSaúde" className="logo-img" />
         </a>
       </div>
 
-      {/* Botão Hambúrguer (Aparece apenas no mobile) */}
       <button 
         className={`hamburger ${menuAberto ? 'ativo' : ''}`} 
         onClick={toggleMenu}
@@ -40,9 +37,7 @@ function Header() {
         <span className="bar"></span>
       </button>
 
-      {/* Conteúdo de Navegação e Acessibilidade */}
       <div className={`cabecalho-conteudo ${menuAberto ? 'ativo' : ''}`}>
-        {/* Menu Principal */}
         <nav className="cabecalho-menu" aria-label="Navegação principal">
           <a href="#inicio" onClick={() => setMenuAberto(false)}>Início</a>
           <a href="#jornadas" onClick={() => setMenuAberto(false)}>Jornadas de Saúde</a>
@@ -51,7 +46,6 @@ function Header() {
           <a href="#quiz" onClick={() => setMenuAberto(false)}>Quiz</a>
         </nav>
 
-        {/* Controles de Acessibilidade */}
         <div className="cabecalho-acessibilidade">
           <span className="acessibilidade-rotulo">Tamanho do texto:</span>
           <button 
