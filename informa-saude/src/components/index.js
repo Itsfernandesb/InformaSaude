@@ -21,8 +21,7 @@ export { ModalConfirmacao } from './ModalSistema/ModalConfirmacao';
 export { ModalAlterarSenha } from './ModalSistema/ModalAlterarSenha';
 export { AccordionItem } from './Accordion/AccordionItem';
 export { ScrollToTop } from './ScrollToTop/ScrollToTop';
-
-
-
-
-
+export { default as CardDiasAprendidos } from './CardDiasAprendidos/CardDiasAprendidos';
+export { default as CardProgressoSemanal } from './CardProgressoSemanal/CardProgressoSemanal';
+export { default as XPChart } from './XPChart/XPChart';
+export { default as CardStat } from './CardStat/CardStat';

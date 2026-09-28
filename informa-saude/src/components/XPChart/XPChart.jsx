@@ -17,7 +17,7 @@ export default function XPChart() {
           <div key={legendas[index]} className='xp-column'>
             <span className={`xp-value${index === 2 ? " is-current" : ""}`}>{xp} XP</span>
             
-            <div className={`xp-bar xp-bar--${Math.max(25, Math.min(80, Math.round((xp / max) * 80 / 5) * 5))}`} role="img" aria-label={`${legendas[index]}: ${xp} XP`} />
+            <div className={`xp-bar${index === 2 ? " is-current" : ""} xp-bar--${Math.max(25, Math.min(80, Math.round((xp / max) * 80 / 5) * 5))}`} role="img" aria-label={`${legendas[index]}: ${xp} XP`} />
           </div>
         ))}
       </div>

@@ -240,10 +240,7 @@
 }
 
 .dashboard-page {
-  width: min(100%, 105rem);
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 2rem 0.75rem 7rem;
+  margin-bottom: 2rem;
 }
 
 .dashboard-heading { 
@@ -252,7 +249,7 @@
 
 .dashboard-heading h1 {
   margin: 0.5rem 0 0;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
   line-height: 1.05;
   font-weight: 900;
   color: var(--is-orange);
@@ -274,10 +271,6 @@
   .is-modal-logo {
     height: 40px;
     max-height: 40px;
-  }
-
-  .dashboard-page { 
-    padding: 3rem 2rem; 
   }
 
   .dashboard-grid { 

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Play } from 'lucide-react';
-import { BotaoSistema } from '../Botao/BotaoSistema';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Play } from "lucide-react";
+import { BotaoSistema } from "../Botao/BotaoSistema";
 
 export function CardSistema({
   isAcao = false,
@@ -20,10 +20,10 @@ export function CardSistema({
   href,
   onClick,
   textoBotao,
-  varianteBotao = 'orange',
+  varianteBotao = "orange",
   iconeBotao: IconeBotao = Play,
-  className = '',
-  children
+  className = "",
+  children,
 }) {
   if (isAcao) {
     const conteudo = (
@@ -42,11 +42,19 @@ export function CardSistema({
     const classesAcao = `is-card is-action-card h-100 w-100 border-0 shadow-sm text-decoration-none ${className}`;
 
     if (to) {
-      return <Link to={to} className={classesAcao}>{conteudo}</Link>;
+      return (
+        <Link to={to} className={classesAcao}>
+          {conteudo}
+        </Link>
+      );
     }
 
     if (href) {
-      return <a href={href} className={classesAcao}>{conteudo}</a>;
+      return (
+        <a href={href} className={classesAcao}>
+          {conteudo}
+        </a>
+      );
     }
 
     return (
@@ -59,7 +67,9 @@ export function CardSistema({
   if (isProgresso) {
     const porcentagem = Math.min(100, Math.max(0, progresso));
     return (
-      <article className={`is-card h-100 d-flex flex-column justify-content-between ${className}`}>
+      <article
+        className={`is-card h-100 d-flex flex-column justify-content-between ${className}`}
+      >
         <div>
           {categoria && <span className="is-eyebrow mb-2">{categoria}</span>}
           <h4 className="fw-bold text-dark fs-5 mb-3">{titulo}</h4>
@@ -77,7 +87,10 @@ export function CardSistema({
             aria-valuemin="0"
             aria-valuemax="100"
           >
-            <div className="progress-bar" style={{ width: `${porcentagem}%` }}></div>
+            <div
+              className="progress-bar"
+              style={{ width: `${porcentagem}%` }}
+            ></div>
           </div>
         </div>
       </article>
@@ -88,14 +101,23 @@ export function CardSistema({
     if (isHero) {
       return (
         <article className={`is-hero-card p-4 p-md-5 shadow-sm ${className}`}>
-          {imagem && <img src={imagem} alt={titulo} className="is-card-bg-img" />}
+          {imagem && (
+            <img src={imagem} alt={titulo} className="is-card-bg-img" />
+          )}
           <div className="is-hero-content col-12 col-lg-8">
-            {subtitulo && <p className="text-white fs-3 mb-0 fw-light">{subtitulo}</p>}
+            {subtitulo && (
+              <p className="text-white fs-3 mb-0 fw-light">{subtitulo}</p>
+            )}
             <h2 className="fw-bold text-white display-4 mb-2">{titulo}</h2>
             {descricao && <p className="text-white fs-6 mb-4">{descricao}</p>}
             {textoBotao && (
-              <BotaoSistema variante={varianteBotao} onClick={onClick} className="fs-5 px-4 py-2">
-                {textoBotao} {IconeBotao && <IconeBotao size={20} fill="currentColor" />}
+              <BotaoSistema
+                variante={varianteBotao}
+                onClick={onClick}
+                className="fs-5 px-4 py-2"
+              >
+                {textoBotao}{" "}
+                {IconeBotao && <IconeBotao size={20} fill="currentColor" />}
               </BotaoSistema>
             )}
           </div>
@@ -104,33 +126,48 @@ export function CardSistema({
     }
 
     return (
-      <article className={`is-jornada-card ${centralizado ? 'text-center p-4 p-md-5' : ''} ${className}`}>
+      <article
+        className={`is-jornada-card ${centralizado ? "text-center p-4 p-md-5" : ""} ${className}`}
+      >
         {imagem && <img src={imagem} alt={titulo} className="is-card-bg-img" />}
-        <div className={`is-jornada-content ${centralizado ? 'w-100 d-flex flex-column align-items-center justify-content-center' : ''}`}>
-          <h3 className={`fw-bold text-white mb-3 ${centralizado ? 'fs-2 text-center' : 'fs-3'}`}>
+        <div
+          className={`is-jornada-content ${centralizado ? "w-100 d-flex flex-column align-items-center justify-content-center" : ""}`}
+        >
+          <h3
+            className={`fw-bold text-white mb-3 ${centralizado ? "fs-2 text-center" : "fs-3"}`}
+          >
             {titulo}
           </h3>
           {descricao && <p className="text-white fs-6 mb-4">{descricao}</p>}
-          {textoBotao && (
-            <BotaoSistema
-              variante={varianteBotao}
-              larguraTotal={!centralizado}
-              onClick={onClick}
-              className={`fs-6 py-2 ${centralizado ? 'px-4' : ''}`}
-            >
-              {textoBotao} {IconeBotao && <IconeBotao size={18} fill="currentColor" />}
-            </BotaoSistema>
-          )}
+          {textoBotao &&
+            (to ? (
+              <Link to={to} className="text-decoration-none">
+                <BotaoSistema
+                  variante={varianteBotao}
+                  larguraTotal={!centralizado}
+                  className={`fs-6 py-2 ${centralizado ? "px-4" : ""}`}
+                >
+                  {textoBotao}
+                  {IconeBotao && <IconeBotao size={18} fill="currentColor" />}
+                </BotaoSistema>
+              </Link>
+            ) : (
+              <BotaoSistema
+                variante={varianteBotao}
+                larguraTotal={!centralizado}
+                onClick={onClick}
+                className={`fs-6 py-2 ${centralizado ? "px-4" : ""}`}
+              >
+                {textoBotao}
+                {IconeBotao && <IconeBotao size={18} fill="currentColor" />}
+              </BotaoSistema>
+            ))}
         </div>
       </article>
     );
   }
 
-  return (
-    <article className={`is-card ${className}`}>
-      {children}
-    </article>
-  );
+  return <article className={`is-card ${className}`}>{children}</article>;
 }
 
 export default CardSistema;
