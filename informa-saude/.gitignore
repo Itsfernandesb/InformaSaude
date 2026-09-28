@@ -22,10 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Pastas de mockups e projetos temporários
-referencias/
-referencias-figma/
-"informa saúde app/"
-informa saúde app/
-proximos-ajustes.md
