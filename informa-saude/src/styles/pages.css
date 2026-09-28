@@ -239,6 +239,32 @@
   font-weight: 600;
 }
 
+.dashboard-page {
+  width: min(100%, 105rem);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem 0.75rem 7rem;
+}
+
+.dashboard-heading { 
+  margin-bottom: 2rem; 
+}
+
+.dashboard-heading h1 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  font-weight: 900;
+  color: var(--is-orange);
+}
+
+.dashboard-heading > p:last-child {
+  max-width: 42rem;
+  margin: 0.75rem 0 0;
+  color: var(--is-green-dark);
+  line-height: 1.65;
+}
+
 @media (min-width: 768px) {
   .is-modal-logo {
     height: 40px;
