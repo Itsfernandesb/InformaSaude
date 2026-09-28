@@ -57,15 +57,14 @@
   justify-content: center;
   padding: 1.25rem;
   border: none;
-  background: var(--is-green);
-  color: var(--is-white);
+  color: var(--is-green-light);
 }
 
 .learning-card-label {
   width: 100%; 
   margin: 0; 
   padding: 0.5rem 1rem; 
-  border: 1px solid var(--is-white); 
+  border: 1px solid var(--is-green); 
   border-radius: 0.5rem; 
   text-align: center; 
   font-size: 1.25rem; 
@@ -88,4 +87,73 @@
 .learning-card-action {
   width: 100%; 
   margin-top: 1rem;
+}
+
+.weekly-card {
+  overflow: hidden;
+  height: fit-content;
+  background: var(--is-green-light);
+  border: 1px solid var(--is-green-dark);
+}
+
+.weekly-card-header {
+  padding: 0.75rem 1.25rem; 
+  background: var(--is-green-dark); 
+  color: var(--is-green-light); 
+  text-align: center; 
+  font-weight: 900;
+}
+
+.weekly-days {
+  display: grid; 
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.25rem; 
+  padding: 1.25rem 0.75rem;
+}
+
+.weekly-day {
+  min-width: 0; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 0.75rem;
+}
+
+.weekly-day-label {
+  font-size: 0.75rem; 
+  font-weight: 800;
+  color: var(--is-green-dark);
+}
+
+.weekly-day-status {
+  width: 1.5rem; 
+  height: 1.5rem; 
+  display: grid; 
+  place-items: center; 
+  flex: 0 0 auto; 
+  border: 2px dashed var(--is-orange);
+  border-radius: 50%; 
+  color: transparent; 
+}
+
+.weekly-day-status.is-complete { 
+  border-style: solid; 
+  border-color: var(--is-orange); 
+  background: var(--is-orange); 
+  color: var(--is-green-light); 
+}
+
+.weekly-day-check { 
+  width: 1rem; 
+  height: 1rem; 
+}
+
+@media (min-width: 768px) {
+  .learning-card { 
+    min-height: 0; 
+  }
+
+  .learning-card-value { 
+    font-size: 7.2rem; 
+  }
 }
